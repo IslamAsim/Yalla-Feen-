@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+// @import "~";
+// my custom styles
+@import "styles/mainVariables";
+@import "styles/mixins";
+@import "styles/mainclasess";
+@import "styles/about-us";
+@import "styles/agent_profile";
+@import "styles/customTrip";
+@import "styles/homeCards";
+@import "styles/loginPage";
+@import "styles/navBar";
+@import "styles/reviewPage";
+@import "styles/signUpPage";
+

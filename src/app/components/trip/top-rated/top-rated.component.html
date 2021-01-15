@@ -1,0 +1,52 @@
+<section class="container home">
+  <div  class="row row-cols-1 row-cols-md-3  row-wrapper">
+    <div *ngFor="let trip of trips" class="flip-card-container  col-xl-4 col-md-6 col" style="--hue: 220">
+      <div class="flip-card">
+        <div class="card-front">
+          <figure>
+            <div class="img-bg"></div>
+            <img src='{{trip.img}}' alt="{{trip.title}}">
+            <figcaption>{{trip.title}}</figcaption>
+          </figure>
+          <div class="card-body">
+            <p class="card-text">{{trip.description}}</p>
+            <div class="wrapper">
+              <div class="rating">
+                <i class="far fa-star" [class.fas]="trip.rating>=1"></i>
+                <i class="far fa-star" [class.fas]="trip.rating>=2"></i>
+                <i class="far fa-star" [class.fas]="trip.rating>=3"></i>
+                <i class="far fa-star" [class.fas]="trip.rating>=4"></i>
+                <i class="far fa-star" [class.fas]="trip.rating>=5"></i>
+              </div>
+              <span>{{trip.workingHours}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-back">
+          <div class="favorite">
+            <i class="far fa-heart favorite-event"></i>
+          </div>
+          <figure>
+            <div class="img-bg"></div>
+            <img src='{{trip.img}}' alt="{{trip.title}}">
+          </figure>
+
+          <button>Show Details</button>
+
+          <div class="design-container">
+            <span class="design design--1"></span>
+            <span class="design design--2"></span>
+            <span class="design design--3"></span>
+            <span class="design design--4"></span>
+            <span class="design design--5"></span>
+            <span class="design design--6"></span>
+            <span class="design design--7"></span>
+            <span class="design design--8"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+
+.sign-up-component {
+    form {
+        input {
+            border-radius: 25px;
+        }
+        div{
+            small{
+                color: $termsTextColor;
+                span{
+                    font-weight: bold;
+                    color: $termSpanEmphasisColor;
+                }
+            }
+        }
+
+        button {
+            border-radius: 25px;
+            background-image: url("/images/Rectangle 69.png");
+            color: $menu-icon-color;
+            background-position: top;
+            background-repeat: no-repeat;
+            outline-color: pink;
+            border-color: white;
+            width: 100px;
+            position: absolute;
+            left: 43%;
+        }
+    }
+}

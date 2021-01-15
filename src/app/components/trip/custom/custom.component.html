@@ -1,0 +1,56 @@
+<section class="container customTrip-component">
+  <form action="" method="post">
+    <h2 class="text-center">Custom Trip</h2>
+    <div class="form-group">
+      <label for="InputCategoryAdvanced">Category</label>
+      <input type="text" class="form-control" id="InputCategoryAdvanced" placeholder="Choose category">
+    </div>
+    <div class="form-group">
+      <label for="InputLocation1">Location</label>
+      <input type="text" class="form-control" id="InputLocation1" placeholder="City">
+    </div>
+    <div class="form-group">
+      <label for="InputTags">Tags</label>
+      <input type="text" class="form-control" id="InputTags" placeholder="Tags">
+    </div>
+    <div class="form-group">
+      <label for="InputVisitor">Visitor type</label>
+      <ng-select [items]="VisitorType"
+                 bindLabel="Visitor type"
+                 [virtualScroll]="true"
+                 bindValue="InputVisitor"
+                 id="InputVisitor"
+                 appendTo="body"
+                 placeholder="individually, friends or family.... ">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="InputPrice">Price budget range</label>
+      <div class="row">
+        <div class="col-4">
+          <input type="text" class="form-control" id="InputPrice" placeholder="Min">
+        </div>
+        <label class="col-4" for="InputMaxPrice">
+          <input type="number" class="form-control" id="InputMaxPrice" placeholder="Max">
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="InputDate">Time</label>
+      <div class="row">
+        <div class="col-4">
+          <input type="text" class="form-control" id="InputDate" placeholder="Start">
+        </div>
+        <label class="col-4" for="InputMaxDate">
+          <input type="text" class="form-control" id="InputMaxDate" placeholder="To">
+        </label>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-8">
+        <button type="submit" class="d-block find btn btn-primary">Find</button>
+      </div>
+    </div>
+  </form>
+</section>

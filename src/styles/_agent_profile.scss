@@ -1,0 +1,45 @@
+.agent-profile {
+  .card {
+    border-radius: 50px;
+  }
+
+  .user-card-full .user-profile {
+    border-radius: 50px 0 0 50px;
+  }
+  .bg-c-lite-green {
+    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #a32851, #c6f128)
+  }
+.ff{
+  background-color: rgba(255, 255, 255, 0.71) !important;
+}
+  .card-block {
+    padding: 1.25rem
+  }
+
+  .b-b-default {
+    border-bottom: 1px solid $hover-color
+  }
+
+  .card .card-block p {
+    line-height: 25px
+  }
+
+  .f-w-600 {
+    font-weight: 600
+  }
+
+  .add-btn {
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+  }
+  .wrapper-add{
+    position: relative;
+  }
+  .user-profile {
+    @include medium-screen {
+      border-radius: 50px !important;
+    }
+  }
+}

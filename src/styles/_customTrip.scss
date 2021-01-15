@@ -1,0 +1,28 @@
+.body-customTrip {
+    background-image: url("/images/Rectangle 63.png");
+    background-size: cover;
+    .customTrip-component {
+        form {
+            margin-top: 10%;
+
+            input {
+                border-radius: 25px;
+            }
+            button{
+                border-radius: 25px;
+            }
+            .find {
+                background-image: url("/images/Rectangle 69.png");
+                color: $menu-icon-color;
+                background-position: top;
+                background-repeat: no-repeat;
+                outline-color: pink;
+                border-color: white;
+                width: 100px;
+                position: absolute;
+                left: 70%;
+            }
+            
+        }
+    }
+}
