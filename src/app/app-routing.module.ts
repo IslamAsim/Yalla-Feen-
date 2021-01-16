@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '', component: LayoutComponent,
     loadChildren: () => import('../app/components/trip/trip.module').then(m => m.TripModule)
   },
+  {
+    path: 'user', component: LayoutComponent,
+    loadChildren: () => import('../app/components/user/user.module').then(m => m.UserModule)
+  },
 ];
 
 @NgModule({
