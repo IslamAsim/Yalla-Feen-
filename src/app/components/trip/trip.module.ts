@@ -6,14 +6,18 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { CustomComponent } from './custom/custom.component';
 import {FormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { CustomizedTripsComponent } from './customized-trips/customized-trips.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'custom', component: CustomComponent},
-  {path: 'top-rated', component: TopRatedComponent}
+  {path: 'top-rated', component: TopRatedComponent},
+  {path: 'search-result', component: CustomizedTripsComponent},
+  {path: 'trip/details', component: DetailsComponent},
 ];
 @NgModule({
-  declarations: [IndexComponent, TopRatedComponent, CustomComponent],
+  declarations: [IndexComponent, TopRatedComponent, CustomComponent, CustomizedTripsComponent, DetailsComponent],
   imports: [
     CommonModule, RouterModule.forChild(routes), NgSelectModule, FormsModule
   ]

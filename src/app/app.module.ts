@@ -7,7 +7,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'user', component: LayoutComponent,
     loadChildren: () => import('../app/components/user/user.module').then(m => m.UserModule)
   },
+  {
+    path: 'info', component: LayoutComponent,
+    loadChildren: () => import('../app/components/info/info.module').then(m => m.InfoModule)
+  },
 ];
 
 @NgModule({
