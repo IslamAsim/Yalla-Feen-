@@ -25,59 +25,80 @@
 }
 
 .Custom-form {
-  .Custom-form-wrapper {
-    position: relative;
+  .fix-footer {
     border-radius: 25px;
     color: $hover-color;
     height: calc(100vh - 110px);
     background-color: $wheat !important;
-    @include medium-screen {
-      overflow-y: scroll;
-    }
+    position: relative;
 
-    .carousel-indicators-override {
-
-    }
-
-    .step {
-      .step-title {
-
+    .Custom-form-wrapper {
+      height: 100%;
+      @include medium-screen {
+        overflow-y: scroll;
       }
 
-      .option-wrapper {
-        font-weight: 700;
+      .carousel-indicators-override {
+        bottom: 8px;
+         .carousel-control-style{
+           height: 12px !important;
+           width: 12px !important;
+           border-radius: 50%;
+           border: none;
+           background: $wheat;
+           cursor: pointer;
+           transition: .5s .15s;
+           &.active {
+             background: #842313;
+             box-shadow: 0 0 4px #e17055;
+             pointer-events: none;
+           }
+         }
+      }
 
-        &.not-selected {
-          opacity: 0.5;
+      .step {
+        .step-title {
+
         }
 
-        &.selected {
+        .option-wrapper {
+          font-weight: 700;
+          max-width: 210px;
+          min-width: 200px;
+          margin: 0 auto;
+
+          &.not-selected {
+            opacity: 0.5;
+          }
+
+          &.selected {
+            .img-wrapper {
+              border: 3px solid $hover-color;
+            }
+
+            p {
+              text-decoration: underline;
+            }
+          }
+
           .img-wrapper {
-            border: 3px solid $hover-color;
-          }
-
-          p {
-            text-decoration: underline;
-          }
-        }
-
-        .img-wrapper {
-          transition: all 0.3s;
-          cursor: pointer;
-          box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
-          margin-bottom: 15px;
-          border-radius: 10px;
-          overflow: hidden;
-          width: 100%;
-          height: 150px;
-
-          img {
-            width: 100%;
-            height: 100%;
             transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            height: 150px;
 
-            &:hover {
-              transform: scale(1.2);
+            img {
+              width: 100%;
+              height: 100%;
+              transition: all 0.3s;
+
+              &:hover {
+                transform: scale(1.2);
+              }
             }
           }
         }
@@ -86,16 +107,26 @@
 
     .form-footer {
       border-radius: 25px;
-      background-color: $hover-color;
+      background: linear-gradient(36deg, $hover-color, #e17055) fixed;
       display: flex;
       bottom: 0;
       width: 100%;
       left: 0;
       justify-content: space-between;
       position: absolute;
-      button{
+      align-items: center;
+      height: 60px;
+      p {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        margin: auto;
+        cursor: pointer;
+        color: $wheat;
+        font-weight: bolder;
         transition: all 0.3s;
-        &.hidden{
+
+        &.hidden {
           opacity: 0;
           visibility: hidden;
         }

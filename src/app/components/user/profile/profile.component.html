@@ -1,101 +1,103 @@
 <section class="Custom-form">
-  <div class="container p-5 text-center Custom-form-wrapper" >
-    <ol class="carousel-indicators carousel-indicators-override mt-3">
-      <li [class.active]="MyStep===1" ></li>
-      <li [class.active]="MyStep===2"></li>
-      <li [class.active]="MyStep===3"></li>
-    </ol>
-    <h2>Custom Trip</h2>
-    <div *ngIf="MyStep===1" class="step">
-      <h4 class="step-title mt-5 mb-3">Who are you?</h4>
-      <div class="row">
-        <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-6 pb-4 option-wrapper">
-          <div class="img-wrapper">
-            <img  src="assets/images/indvuidally.jpg" alt="">
+  <div class="container  fix-footer" >
+    <div class="Custom-form-wrapper  p-md-5 p-sm-3 p-1 pt-3 pb-3 text-center">
+      <ol class="carousel-indicators carousel-indicators-override mt-3">
+        <li  class="carousel-control-style" [class.active]="MyStep===1" ></li>
+        <li class="carousel-control-style" [class.active]="MyStep===2"></li>
+        <li class="carousel-control-style" [class.active]="MyStep===3"></li>
+      </ol>
+      <h2>Custom Trip</h2>
+      <div *ngIf="MyStep===1" class="step">
+        <h4 class="step-title mt-5 mb-3">Who are you?</h4>
+        <div class="row">
+          <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper">
+            <div class="img-wrapper">
+              <img  src="assets/images/indvuidally.jpg" alt="">
+            </div>
+            <p >Individually</p>
           </div>
-          <p >Individually</p>
+          <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/friends.jpg" alt="">
+            </div>
+            <p >Friends</p>
+          </div>
+          <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/couple.jpg" alt="">
+            </div>
+            <p >Couple</p>
+          </div>
+          <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img src="assets/images/family.jpg" alt="">
+            </div>
+            <p >Family</p>
+          </div>
         </div>
-        <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/friends.jpg" alt="">
+      </div>
+      <div *ngIf="MyStep===2" class="step">
+        <h4 class="step-title mt-5 mb-3">Category</h4>
+        <div class="row">
+          <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-6 pb-4 option-wrapper">
+            <div class="img-wrapper">
+              <img  src="assets/images/indvuidally.jpg" alt="">
+            </div>
+            <p >Restaurants</p>
           </div>
-          <p >Friends</p>
+          <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img src="assets/images/friends.jpg" alt="">
+            </div>
+            <p >Entertainment</p>
+          </div>
+          <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/couple.jpg" alt="">
+            </div>
+            <p >Mall</p>
+          </div>
+          <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-6 pb-4 option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/family.jpg" alt="">
+            </div>
+            <p>Cinema</p>
+          </div>
         </div>
-        <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/couple.jpg" alt="">
+      </div>
+      <div *ngIf="MyStep===3" class="step">
+        <h4 class="step-title mt-5 mb-3">Budget</h4>
+        <div class="row">
+          <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-6  option-wrapper">
+            <div class="img-wrapper">
+              <img  src="assets/images/indvuidally.jpg" alt="">
+            </div>
+            <p >Restaurants</p>
           </div>
-          <p >Couple</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img src="assets/images/family.jpg" alt="">
+          <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-6  option-wrapper ">
+            <div class="img-wrapper">
+              <img src="assets/images/friends.jpg" alt="">
+            </div>
+            <p >Entertainment</p>
           </div>
-          <p >Family</p>
+          <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-6  option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/couple.jpg" alt="">
+            </div>
+            <p >Mall</p>
+          </div>
+          <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-6  option-wrapper ">
+            <div class="img-wrapper">
+              <img  src="assets/images/family.jpg" alt="">
+            </div>
+            <p>Cinema</p>
+          </div>
         </div>
       </div>
     </div>
-    <div *ngIf="MyStep===2" class="step">
-      <h4 class="step-title mt-5 mb-3">Category</h4>
-      <div class="row">
-        <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-6 pb-4 option-wrapper">
-          <div class="img-wrapper">
-            <img  src="assets/images/indvuidally.jpg" alt="">
-          </div>
-          <p >Restaurants</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img src="assets/images/friends.jpg" alt="">
-          </div>
-          <p >Entertainment</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/couple.jpg" alt="">
-          </div>
-          <p >Mall</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/family.jpg" alt="">
-          </div>
-          <p>Cinema</p>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="MyStep===3" class="step">
-      <h4 class="step-title mt-5 mb-3">Budget</h4>
-      <div class="row">
-        <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'" (click)="VisitorTypeSelection(1)" class="col-md-3 col-6 pb-4 option-wrapper">
-          <div class="img-wrapper">
-            <img  src="assets/images/indvuidally.jpg" alt="">
-          </div>
-          <p >Restaurants</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'" (click)="VisitorTypeSelection(2)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img src="assets/images/friends.jpg" alt="">
-          </div>
-          <p >Entertainment</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'" (click)="VisitorTypeSelection(3)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/couple.jpg" alt="">
-          </div>
-          <p >Mall</p>
-        </div>
-        <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'" (click)="VisitorTypeSelection(4)" class="col-md-3 col-6 pb-4 option-wrapper ">
-          <div class="img-wrapper">
-            <img  src="assets/images/family.jpg" alt="">
-          </div>
-          <p>Cinema</p>
-        </div>
-      </div>
-    </div>
-    <div class="form-footer p-3">
-      <button [class.hidden]="MyStep===1" (click)="StepChanger('back')" class=" btn btn-primary ml-3">Back</button>
-      <button [class.hidden]="MyStep===3" (click)="StepChanger('next')" class=" btn btn-primary mr-3">Next</button>
+    <div class="form-footer">
+      <p [class.hidden]="MyStep===1" (click)="StepChanger('back')" class="btn ml-3">Back</p>
+      <p [class.hidden]="MyStep===3" (click)="StepChanger('next')" class="btn mr-3">Next</p>
     </div>
   </div>
 </section>
