@@ -57,6 +57,9 @@
       }
 
       .step {
+        .input-style{
+
+        }
         .step-title {
         }
 
@@ -73,6 +76,19 @@
           max-width: 210px;
           min-width: 200px;
           margin: 0 auto;
+          position: relative;
+
+          .option-wrapper-selected-cross {
+            position: absolute;
+            top: 10px;
+            font-weight: bolder;
+            font-size: 20px;
+            padding: 5px;
+            cursor: pointer;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.51);
+            z-index: 100;
+          }
 
           &.not-selected {
             opacity: 0.5;
