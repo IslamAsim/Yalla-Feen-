@@ -6,6 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HostProfileComponent } from './host-profile/host-profile.component';
 import {RouterModule, Routes} from '@angular/router';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
@@ -17,7 +19,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [LoginComponent, SignUpComponent, ProfileComponent, ResetPasswordComponent, HostProfileComponent],
   imports: [
-    CommonModule, RouterModule.forChild(routes),
+    CommonModule, RouterModule.forChild(routes), NgSelectModule, NgbCarouselModule,
   ]
 })
 export class UserModule { }

@@ -34,31 +34,38 @@
 
     .Custom-form-wrapper {
       height: 100%;
-      @include medium-screen {
-        overflow-y: scroll;
-      }
+      overflow-y: scroll;
 
       .carousel-indicators-override {
         bottom: 8px;
-         .carousel-control-style{
-           height: 12px !important;
-           width: 12px !important;
-           border-radius: 50%;
-           border: none;
-           background: $wheat;
-           cursor: pointer;
-           transition: .5s .15s;
-           &.active {
-             background: #842313;
-             box-shadow: 0 0 4px #e17055;
-             pointer-events: none;
-           }
-         }
+
+        .carousel-control-style {
+          height: 12px !important;
+          width: 12px !important;
+          border-radius: 50%;
+          border: none;
+          background: $wheat;
+          cursor: pointer;
+          transition: .5s .15s;
+
+          &.active {
+            background: #842313;
+            box-shadow: 0 0 4px #e17055;
+            pointer-events: none;
+          }
+        }
       }
 
       .step {
         .step-title {
+        }
 
+        .ng-select-responsive {
+          width: 55%;
+          margin: 0 auto;
+          @include medium-screen {
+            width: 100%;
+          }
         }
 
         .option-wrapper {
@@ -116,6 +123,7 @@
       position: absolute;
       align-items: center;
       height: 60px;
+
       p {
         display: flex;
         align-items: center;
