@@ -5,11 +5,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HostProfileComponent } from './host-profile/host-profile.component';
-
 import { RouterModule, Routes } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
@@ -31,6 +31,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgSelectModule,
     NgbCarouselModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class UserModule {}
