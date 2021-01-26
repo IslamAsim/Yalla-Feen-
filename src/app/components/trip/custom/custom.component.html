@@ -11,33 +11,12 @@
       <div *ngIf="MyStep===1" class="step">
         <h4 class="step-title mt-5 mb-3">Who are you?</h4>
         <div class="row">
-          <div [class.not-selected]="VisitorType!=='solo' && VisitorType" [class.selected]="VisitorType=='solo'"
-               (click)="VisitorTypeSelection(1)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper">
+          <div *ngFor="let type of types; index as i" [class.not-selected]="VisitorType!==type && VisitorType" [class.selected]="VisitorType==type"
+               (click)="VisitorTypeSelection(i+1)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
             <div class="img-wrapper">
-              <img src="assets/images/indvuidally.jpg" alt="">
-            </div>
-            <p>Individually</p>
-          </div>
-          <div [class.not-selected]="VisitorType!=='friends' && VisitorType" [class.selected]="VisitorType=='friends'"
-               (click)="VisitorTypeSelection(2)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/friends.jpg" alt="">
+              <img src="assets/images/{{type}}.jpg" alt="">
             </div>
             <p>Friends</p>
-          </div>
-          <div [class.not-selected]="VisitorType!=='couple' && VisitorType" [class.selected]="VisitorType=='couple'"
-               (click)="VisitorTypeSelection(3)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/couple.jpg" alt="">
-            </div>
-            <p>Couple</p>
-          </div>
-          <div [class.not-selected]="VisitorType!=='family' && VisitorType" [class.selected]="VisitorType=='family'"
-               (click)="VisitorTypeSelection(4)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/family.jpg" alt="">
-            </div>
-            <p>Family</p>
           </div>
         </div>
       </div>
@@ -67,77 +46,23 @@
         </div>
       </div>
       <div *ngIf="MyStep===3" class="step">
-        <h4 [hidden]="Category" class="step-title mt-3 mb-3">Select Your Category ?</h4>
-        <div [hidden]="Category" class="row">
-          <div [class.not-selected]="Category!=='Cafe & Restaurants' && Category"
-               [class.selected]="Category=='Cafe & Restaurants'"
-               (click)="CategorySelection(1)" class="col-md-3 col-6 pb-4 option-wrapper ">
+        <h4 [hidden]="CategorySelected" class="step-title mt-3 mb-3">Select Your CategorySelected ?</h4>
+        <div [hidden]="CategorySelected" class="row">
+          <div *ngFor="let category of categories; index as i"
+               (click)="i==7||CategorySelection(i+1)" class="col-md-3 col-6 pb-4 option-wrapper {{i==7&&'not-selected'}}">
             <div class="img-wrapper">
-              <img src="assets/images/Cafe & Restaurants.jpg" alt="">
+              <img src="assets/images/{{category}}.jpg" alt="">
             </div>
             <p>Cafe & Restaurants</p>
           </div>
-          <div [class.not-selected]="Category!=='Cinemas & Theater' && Category"
-               [class.selected]="Category=='Cinemas & Theater'"
-               (click)="CategorySelection(2)" class="col-md-3 col-6 pb-4 option-wrapper">
-            <div class="img-wrapper">
-              <img src="assets/images/Cinemas & Theater.jpg" alt="">
-            </div>
-            <p>Cinemas & Theater</p>
-          </div>
-          <div [class.not-selected]="Category!=='Historical Places' && Category"
-               [class.selected]="Category=='Historical Places'"
-               (click)="CategorySelection(3)" class="col-md-3 col-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/Historical Places.jpg" alt="">
-            </div>
-            <p>Historical Places</p>
-          </div>
-          <div [class.not-selected]="Category!=='Gardens & Clubs' && Category"
-               [class.selected]="Category=='Gardens & Clubs'"
-               (click)="CategorySelection(4)" class="col-md-3 col-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/Gardens & Clubs.jpg" alt="">
-            </div>
-            <p>Gardens & Clubs</p>
-          </div>
-          <div [class.not-selected]="Category!=='Co-working Space' && Category"
-               [class.selected]="Category=='Co-working Space'"
-               (click)="CategorySelection(5)" class="col-md-3 col-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/Co-working Space.jpg" alt="">
-            </div>
-            <p>Co-working Space</p>
-          </div>
-          <div [class.not-selected]="Category!=='Shopping' && Category" [class.selected]="Category=='Shopping'"
-               (click)="CategorySelection(6)" class="col-md-3 col-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/Shopping.jpg" alt="">
-            </div>
-            <p>Shopping</p>
-          </div>
-          <div [class.not-selected]="Category!=='Entertainment Places' && Category"
-               [class.selected]="Category=='Entertainment Places'" (click)="CategorySelection(7)"
-               class="col-md-3 col-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
-              <img src="assets/images/Entertainment Places.jpg" alt="">
-            </div>
-            <p>Entertainment Places</p>
-          </div>
-          <div class="col-md-3 col-6 pb-4 option-wrapper not-selected">
-            <div class="img-wrapper">
-              <img src="assets/images/Events.jpg" alt="">
-            </div>
-            <p>Events (coming soon)</p>
-          </div>
         </div>
-        <div *ngIf="Category" class="tags-wrapper">
+        <div *ngIf="CategorySelected" class="tags-wrapper">
           <div class="option-wrapper selected mt-3" (click)="CategorySelection(0)">
             <i class="fas fa-times option-wrapper-selected-cross"></i>
             <div class="img-wrapper mb-0">
-              <img src="assets/images/{{Category}}.jpg" alt="">
+              <img src="assets/images/{{CategorySelected}}.jpg" alt="">
             </div>
-            <p>{{Category}}</p>
+            <p>{{CategorySelected}}</p>
           </div>
           <h4 class="step-title mt-3 mb-3">Select Tag</h4>
           <div class="form-group">

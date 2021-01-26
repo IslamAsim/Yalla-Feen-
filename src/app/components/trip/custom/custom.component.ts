@@ -9,7 +9,9 @@ export class CustomComponent implements OnInit {
   }
   MyStep: number = 1;
   VisitorType: string;
-  Category: string;
+  CategorySelected: string;
+  types = ['solo', 'friends', 'couple', 'family'];
+  categories = ['Cafe & Restaurants', 'Cinemas & Theater', 'Historical Places', 'Gardens & Clubs', 'Co-working Space', 'Shopping', 'Entertainment Places', 'Events'];
   Tags = ['Restaurants', 'Shopping Center', 'Historical Places', 'Entertainment', 'Cinemas & Theater', 'Workspace', 'Gardens'];
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   timeArray = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00'];
@@ -29,17 +31,17 @@ export class CustomComponent implements OnInit {
   // @ts-ignore
   CategorySelection(index: number): string {
     switch (index) {
-      case 0:  this.Category = ''; break;
-      case 1:  this.Category = 'Cafe & Restaurants'; break;
-      case 2:  this.Category = 'Cinemas & Theater'; break;
-      case 3:  this.Category = 'Historical Places'; break;
-      case 4:  this.Category = 'Gardens & Clubs'; break;
-      case 5:  this.Category = 'Co-working Space'; break;
-      case 6:  this.Category = 'Shopping'; break;
-      case 7:  this.Category = 'Entertainment Places'; break;
-      case 8:  this.Category = 'Events'; break;
+      case 0:  this.CategorySelected = ''; break;
+      case 1:  this.CategorySelected = 'Cafe & Restaurants'; break;
+      case 2:  this.CategorySelected = 'Cinemas & Theater'; break;
+      case 3:  this.CategorySelected = 'Historical Places'; break;
+      case 4:  this.CategorySelected = 'Gardens & Clubs'; break;
+      case 5:  this.CategorySelected = 'Co-working Space'; break;
+      case 6:  this.CategorySelected = 'Shopping'; break;
+      case 7:  this.CategorySelected = 'Entertainment Places'; break;
+      case 8:  this.CategorySelected = 'Events'; break;
     }
-    console.log(this.Category);
+    console.log(this.CategorySelected);
   }
   // tslint:disable-next-line:typedef
   StepChanger(status: string){
