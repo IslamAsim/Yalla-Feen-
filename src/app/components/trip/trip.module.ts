@@ -8,6 +8,8 @@ import {FormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { CustomizedTripsComponent } from './customized-trips/customized-trips.component';
 import { DetailsComponent } from './details/details.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -18,8 +20,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [IndexComponent, TopRatedComponent, CustomComponent, CustomizedTripsComponent, DetailsComponent],
-  imports: [
-    CommonModule, RouterModule.forChild(routes), NgSelectModule, FormsModule
+  imports: [CommonModule, RouterModule.forChild(routes), NgSelectModule, FormsModule, MatSelectModule, MatInputModule,
   ]
 })
 export class TripModule { }

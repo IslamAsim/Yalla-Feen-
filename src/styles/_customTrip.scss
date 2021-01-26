@@ -1,29 +1,3 @@
-.body-customTrip {
-  .customTrip-component {
-    form {
-      margin-top: 10%;
-
-      input {
-        border-radius: 25px;
-      }
-
-      button {
-        border-radius: 25px;
-      }
-
-      .find {
-        color: $menu-icon-color;
-        outline-color: pink;
-        border-color: white;
-        width: 100px;
-        position: absolute;
-        left: 70%;
-      }
-
-    }
-  }
-}
-
 .Custom-form {
   .fix-footer {
     border-radius: 25px;
@@ -57,10 +31,37 @@
       }
 
       .step {
-        .input-style{
+        .input-style {
 
         }
+
         .step-title {
+        }
+
+        .time-picker-wrapper {
+          color: $hover-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include medium-screen{
+            display: block;
+          }
+          .time-input{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 178px;
+            @include medium-screen{
+              margin: 0 auto;
+            }
+            .pmam{
+              cursor: pointer;
+              margin-left: 5px;
+            }
+            .time-select{
+              width: 100%;
+            }
+          }
         }
 
         .ng-select-responsive {
