@@ -76,6 +76,7 @@ $yallafeen-theme: mat-light-theme((
 // my custom styles
 @import "styles/mainVariables";
 @import "styles/mixins";
+@import "styles/keyFrames";
 @import "styles/mainclasess";
 @import "styles/about-us";
 @import "styles/agent_profile";
@@ -86,6 +87,8 @@ $yallafeen-theme: mat-light-theme((
 @import "styles/signUpPage";
 @import "styles/resetPassword";
 @import "styles/customTrip";
+@import "styles/sky-layout";
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -46,7 +46,7 @@
         </div>
       </div>
       <div *ngIf="MyStep===3" class="step">
-        <h4 [hidden]="CategorySelected" class="step-title mt-3 mb-3">Select Your CategorySelected ?</h4>
+        <h4 [hidden]="CategorySelected" class="step-title mt-3 mb-3">Select Your Category?</h4>
         <div [hidden]="CategorySelected" class="row">
           <div *ngFor="let category of categories; index as i"
                (click)="i==7||CategorySelection(i+1)" class="col-md-3 col-6 pb-4 option-wrapper {{i==7&&'not-selected'}}">
