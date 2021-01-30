@@ -18,6 +18,7 @@ body {
 }
 
 .main-bg {
+  opacity: 0.9;
   position: absolute;
   top: 0;
   z-index: -1000;
@@ -33,7 +34,6 @@ body {
     -webkit-filter: blur(4px) grayscale(50%);
   }
 }
-
 .img-overlay {
   position: relative;
   &:after {
@@ -86,4 +86,15 @@ body {
   margin: 0 auto !important;
   padding: 10px 20px;
   border-radius: 25px;
+}
+.title-color{
+  color: $menu-icon-color;
+  font-weight: bolder !important;
+  letter-spacing: 1px;
+}
+.favorite{
+  cursor: pointer;
+  .favorite-event{
+
+  }
 }
