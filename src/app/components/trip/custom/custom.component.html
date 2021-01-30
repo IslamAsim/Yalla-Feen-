@@ -1,4 +1,4 @@
-<section class="Custom-form">
+<section class="Custom-form" >
   <div class="container  fix-footer">
     <div class="Custom-form-wrapper  p-md-5 p-sm-3 p-1 pt-3 pb-3 text-center">
       <ol class="carousel-indicators carousel-indicators-override mt-3">
@@ -7,13 +7,13 @@
         <li class="carousel-control-style" [class.active]="MyStep===3"></li>
         <li class="carousel-control-style" [class.active]="MyStep===4"></li>
       </ol>
-      <h2>Custom Trip</h2>
+      <h2 class="green-button">Custom Place</h2>
       <div *ngIf="MyStep===1" class="step">
         <h4 class="step-title mt-5 mb-3">Who are you?</h4>
-        <div class="row">
+        <div class="row row-style">
           <div *ngFor="let type of types; index as i" [class.not-selected]="VisitorType!==type && VisitorType" [class.selected]="VisitorType==type"
                (click)="VisitorTypeSelection(i+1)" class="col-md-3 col-12 col-sm-6 pb-4 option-wrapper ">
-            <div class="img-wrapper">
+            <div class="img-wrapper img-overlay" (click)="StepChanger('next')">
               <img src="assets/images/{{type}}.jpg" alt="">
             </div>
             <p class="text-capitalize">{{type}}</p>
@@ -30,7 +30,7 @@
                      bindValue="Place city"
                      id="LocationCity"
                      appendTo="body"
-                     placeholder="Choose your Trip City...">
+                     placeholder="Choose your Place City...">
           </ng-select>
         </div>
         <div class="form-group">
@@ -41,7 +41,8 @@
                      bindValue="Region"
                      id="Region"
                      appendTo="body"
-                     placeholder="Choose your Trip Region...">
+                     (change)="StepChanger('next')"
+                     placeholder="Choose your Place Region...">
           </ng-select>
         </div>
       </div>
@@ -50,7 +51,7 @@
         <div [hidden]="CategorySelected" class="row">
           <div *ngFor="let category of categories; index as i"
                (click)="i==7||CategorySelection(i+1)" class="col-md-3 col-6 pb-4 option-wrapper {{i==7&&'not-selected'}}">
-            <div class="img-wrapper">
+            <div class="img-wrapper img-overlay">
               <img src="assets/images/{{category}}.jpg" alt="">
             </div>
             <p>{{category}}</p>
@@ -59,7 +60,7 @@
         <div *ngIf="CategorySelected" class="tags-wrapper">
           <div class="option-wrapper selected mt-3" (click)="CategorySelection(0)">
             <i class="fas fa-times option-wrapper-selected-cross"></i>
-            <div class="img-wrapper mb-0">
+            <div class="img-wrapper mb-0 img-overlay">
               <img src="assets/images/{{CategorySelected}}.jpg" alt="">
             </div>
             <p>{{CategorySelected}}</p>
@@ -72,6 +73,7 @@
                        bindValue="Place Tags"
                        id="Place Tags"
                        appendTo="body"
+                       (change)="StepChanger('next')"
                        placeholder="Choose From your category Tags ">
             </ng-select>
           </div>
@@ -90,7 +92,7 @@
           <input matInput type="number">
         </mat-form-field>
         <br>
-        <label>Select Trip time</label>
+        <label>Select Place time</label>
         <br>
         <div class="time-picker-wrapper">
           <div class="time-input mr-md-3">
@@ -117,9 +119,9 @@
       </div>
     </div>
     <div class="form-footer">
-      <p [class.hidden]="MyStep===1" (click)="StepChanger('back')" class="btn ml-3">Back</p>
-      <p *ngIf="MyStep!==4" (click)="StepChanger('next')" class="btn mr-3">Next</p>
-      <p *ngIf="MyStep===4" class="btn mr-3" routerLink="/search-result">Submit</p>
+      <p [class.hidden]="MyStep===1" (click)="StepChanger('back')" class="btn ml-3 next-button">Back</p>
+      <p *ngIf="MyStep!==4" (click)="StepChanger('next')" class="btn mr-3 next-button">Skip</p>
+      <p *ngIf="MyStep===4" class="btn mr-3 next-button" routerLink="/search-result">Submit</p>
     </div>
   </div>
 </section>

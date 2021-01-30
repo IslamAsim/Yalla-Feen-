@@ -1,6 +1,6 @@
 .home {
   .row-wrapper {
-    height: calc(100vh - 110px);
+    height: $calc-height;
     overflow-y: scroll;
     .flip-card-container {
       --hue: 150;

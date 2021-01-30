@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'custom', component: CustomComponent},
   {path: 'top-rated', component: TopRatedComponent},
   {path: 'search-result', component: CustomizedTripsComponent},
-  {path: 'trip/details', component: DetailsComponent},
+  {path: 'trip/details/:id', component: DetailsComponent},
 ];
 @NgModule({
   declarations: [IndexComponent, TopRatedComponent, CustomComponent, CustomizedTripsComponent, DetailsComponent],

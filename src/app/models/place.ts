@@ -1,4 +1,5 @@
-export class Trip{
+export class Place{
+  id: string;
   title: string;
   img: string;
   description: string;

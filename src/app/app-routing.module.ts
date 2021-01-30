@@ -5,7 +5,7 @@ import {LayoutComponent} from './components/layout/layout.component';
 const routes: Routes = [
   {
     path: '', component: LayoutComponent,
-    loadChildren: () => import('../app/components/trip/trip.module').then(m => m.TripModule)
+    loadChildren: () => import('./components/trip/place.module').then(m => m.TripModule)
   },
   {
     path: 'user', component: LayoutComponent,

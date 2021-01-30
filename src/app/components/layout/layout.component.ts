@@ -7,9 +7,13 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  IsNavOpen: boolean = false;
-  IsSearchOpen: boolean = true;
-
+  isCustom = false;
+  IsNavOpen = false;
+  IsSearchOpen = true;
+  // tslint:disable-next-line:typedef
+  componentAdded(e: any){
+    e.isCustom ? this.isCustom = true : this.isCustom = false ;
+  }
   constructor() {
   }
 
@@ -21,8 +25,16 @@ export class LayoutComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  StartSearch() {
+  StartSearch(e: any) {
     this.IsSearchOpen = !this.IsSearchOpen;
-    console.log(this.IsSearchOpen);
+    setTimeout(() => {
+      e.focus();
+    }, 300);
   }
+  loseFocusNav(){
+    setTimeout(() => {
+      this.IsSearchOpen = true;
+    }, 300);
+  }
+
 }

@@ -4,10 +4,13 @@
       <img src="assets/images/yalla%20feen%20logo1.png" alt="logo">
     </a>
     <button
-      class="search-component btn btn-secondary" [hidden]="IsNavOpen" (click)="StartSearch()" [class.active]="IsSearchOpen" >
-      <span class="span-style pr-2 pl-2">Find your trip</span>
-      <span class="icon-search-wrapper">
-        <i class="fas fa-search" [class.fa-times]="!IsSearchOpen"></i>
+      class="search-component btn btn-secondary" [hidden]="IsNavOpen"  [class.active]="IsSearchOpen" >
+      <input #searchInput (focusout)="loseFocusNav()" class="span-style pr-2 pl-2" type="text" placeholder="Find your trip">
+      <span class="icon-search-wrapper" (click)="StartSearch(searchInput)" *ngIf="IsSearchOpen">
+        <i class="fas fa-search"></i>
+      </span>
+      <span class="icon-search-wrapper"  routerLink="/search-result" *ngIf="!IsSearchOpen">
+        <i class="fas fa-search"></i>
       </span>
     </button>
     <div class="mobile-list-icon" [class.menu-open]="IsNavOpen" id="navIcon" (click)="OpenNav()" >
@@ -16,31 +19,31 @@
       <div class="c"></div>
     </div>
   </div>
-  <section class="search-form container" [class.menu-open]="IsNavOpen" [class.active]="!IsSearchOpen">
-    <div class="wrapper mt-3">
-      <span class="search-field">
-        <label for="inputLocation">Location</label>
-        <input type="text" id="inputLocation" class="" placeholder="Where are you going?">
-      </span>
-      <span class="search-field">
-        <label for="inputBudget">Cost</label>
-        <input type="number" id="inputBudget" class="" placeholder="What is your budget">
-      </span>
-      <span class="search-field">
-        <label for="inputCategory">CategorySelected</label>
-        <input type="text" id="inputCategory" class="" placeholder="Choose category..">
-      </span>
-      <span class="search-field search-last">
-        <span class="wrapper">
-          <label for="inputGuests">Guests</label>
-          <input type="text" id="inputGuests" placeholder="who's your company?">
-        </span>
-        <button class="icon-search-wrapper" routerLink="/search-result"  (click)="StartSearch()" >
-          <i class="fas fa-search"></i>
-        </button>
-      </span>
-    </div>
-  </section>
+<!--  <section class="search-form container" [class.menu-open]="IsNavOpen" [class.active]="!IsSearchOpen">-->
+<!--    <div class="wrapper mt-3">-->
+<!--      <span class="search-field">-->
+<!--        <label for="inputLocation">Location</label>-->
+<!--        <input type="text" id="inputLocation" class="" placeholder="Where are you going?">-->
+<!--      </span>-->
+<!--      <span class="search-field">-->
+<!--        <label for="inputBudget">Cost</label>-->
+<!--        <input type="number" id="inputBudget" class="" placeholder="What is your budget">-->
+<!--      </span>-->
+<!--      <span class="search-field">-->
+<!--        <label for="inputCategory">CategorySelected</label>-->
+<!--        <input type="text" id="inputCategory" class="" placeholder="Choose category..">-->
+<!--      </span>-->
+<!--      <span class="search-field search-last">-->
+<!--        <span class="wrapper">-->
+<!--          <label for="inputGuests">Guests</label>-->
+<!--          <input type="text" id="inputGuests" placeholder="who's your company?">-->
+<!--        </span>-->
+<!--        <button class="icon-search-wrapper" routerLink="/search-result"  (click)="StartSearch()" >-->
+<!--          <i class="fas fa-search"></i>-->
+<!--        </button>-->
+<!--      </span>-->
+<!--    </div>-->
+<!--  </section>-->
   <section class="menu-mobile-list" id="navOpen" [class.active]="IsNavOpen">
     <a class=" about item-style" routerLink="">
       <img src="assets/images/yalla%20feen%20logo1.png" alt="logo">
@@ -52,7 +55,7 @@
     <a class="contact item-style" routerLink="/info/contact-us">CONTACT US</a>
   </section>
 </nav>
-<div class="sky-wrapper">
+<div class="sky-wrapper" [class.blur]="isCustom">
   <div class="sky1-wrapper">
     <img src="assets/images/sky1.png" alt="">
   </div>
@@ -78,4 +81,5 @@
     <img src="assets/images/sky4.png" alt="">
   </div>
 </div>
-<router-outlet></router-outlet>
+<div class="main-bg" [class.blur]="isCustom"></div>
+<router-outlet (activate)="componentAdded($event)"></router-outlet>

@@ -1,10 +1,20 @@
 .Custom-form {
+  &.open {
+    body {
+      &:after {
+        filter: blur(4px) grayscale(50%);
+        -webkit-filter: blur(4px) grayscale(50%);
+      }
+    }
+  }
+
   .fix-footer {
     border-radius: 25px;
     color: $hover-color;
     height: calc(100vh - 110px);
     background-image: $wheat !important;
     position: relative;
+
     .Custom-form-wrapper {
       height: 100%;
       overflow-y: scroll;
@@ -16,20 +26,22 @@
           height: 12px !important;
           width: 12px !important;
           border-radius: 50%;
-          border: none;
-          background: $wheat;
+          background: white;
           cursor: pointer;
           transition: .5s .15s;
+          border: 1px $hover-color solid;
 
           &.active {
-            background: #842313;
-            box-shadow: 0 0 4px #e17055;
+            background: $hover-color;
+            box-shadow: 0 0 6px white;
             pointer-events: none;
           }
         }
       }
 
       .step {
+        .row-style{
+        }
         .input-style {
 
         }
@@ -42,22 +54,25 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          @include medium-screen{
+          @include medium-screen {
             display: block;
           }
-          .time-input{
+
+          .time-input {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 178px;
-            @include medium-screen{
+            @include medium-screen {
               margin: 0 auto;
             }
-            .pmam{
+
+            .pmam {
               cursor: pointer;
               margin-left: 5px;
             }
-            .time-select{
+
+            .time-select {
               width: 100%;
             }
           }
@@ -113,12 +128,13 @@
             overflow: hidden;
             width: 100%;
             height: 150px;
+            position: relative;
+
 
             img {
               width: 100%;
               height: 100%;
               transition: all 0.3s;
-
               &:hover {
                 transform: scale(1.2);
               }
@@ -130,7 +146,7 @@
 
     .form-footer {
       border-radius: 25px;
-      background: linear-gradient(36deg, $hover-color, #e17055) fixed;
+      //background: linear-gradient(36deg, $hover-color, #9bdc72) fixed;
       display: flex;
       bottom: 0;
       width: 100%;
@@ -139,17 +155,19 @@
       position: absolute;
       align-items: center;
       height: 60px;
-
       p {
         display: flex;
         align-items: center;
         height: 60px;
         margin: auto;
+        font-size: 18px;
         cursor: pointer;
-        color: $wheat;
+        color: $hover-color;
         font-weight: bolder;
         transition: all 0.3s;
-
+        &:hover{
+          transform: scale(1.2);
+        }
         &.hidden {
           opacity: 0;
           visibility: hidden;

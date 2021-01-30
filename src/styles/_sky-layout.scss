@@ -4,6 +4,10 @@
   position: fixed;
   z-index: -100;
   opacity: 0.5;
+  &.blur{
+    filter: blur(4px) grayscale(50%);
+    -webkit-filter: blur(4px) grayscale(50%);
+  }
   .sky1-wrapper{
     position: absolute;
     top: 34px;

@@ -1,11 +1,14 @@
 // bootstrap variables override
 $grid-gutter-width: 20px;
 $menu-icon-color: #230545;
-$overlay-color : rgba(255, 255, 255, 0.7);
+$overlay-color : white;
 $hover-color: #5c9b4c;
 $light-color: white;
-$wheat: linear-gradient(rgba(228, 233, 211, 0.5), rgba(181, 213, 238, 0.5));;
+$wheat-color: #c3d6b6;
+$wheat: linear-gradient(rgba(228, 233, 211, 0.6), rgba(181, 213, 238, 0.6));;
 $font-dark:black;
 $favorite: darkred;
 $termsTextColor:#098be2;
 $termSpanEmphasisColor: rgb(10, 100, 160);
+$white: #99e5fe;
+$calc-height:calc(100vh - 110px);

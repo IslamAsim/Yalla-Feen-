@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Trip} from '../../../models/trip';
+import {Place} from '../../../models/place';
 
 @Component({
   selector: 'app-customized-trips',
@@ -7,14 +7,14 @@ import {Trip} from '../../../models/trip';
   styleUrls: ['./customized-trips.component.scss']
 })
 export class CustomizedTripsComponent implements OnInit {
-  trips: Trip[] = [];
+  trips: Place[] = [];
 
   constructor() {
   }
 
   ngOnInit(): void {
     // tslint:disable-next-line:label-position
-    const trip: Trip = new Trip();
+    const trip: Place = new Place();
     trip.title = 'Pyramids';
     trip.img = 'assets/images/pyramids.jpg';
     trip.description = 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.';

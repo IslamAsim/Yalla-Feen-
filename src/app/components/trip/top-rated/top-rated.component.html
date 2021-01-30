@@ -1,6 +1,6 @@
 <section class="container home">
   <div  class="row row-cols-1 row-cols-md-3  row-wrapper">
-    <div *ngFor="let trip of trips" class="flip-card-container  col-xl-4 col-md-6 col" style="--hue: 220">
+    <div *ngFor="let trip of places" class="flip-card-container  col-xl-4 col-md-6 col" style="--hue: 220">
       <div class="flip-card">
         <div class="card-front">
           <figure>
@@ -36,7 +36,7 @@
             <img src='{{trip.img}}' alt="{{trip.title}}">
           </figure>
 
-          <button routerLink="/trip/details">Show Details</button>
+          <button routerLink="/trip/details/{{trip.id}}">Show Details</button>
 
           <div class="design-container">
             <span class="design design--1"></span>

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomComponent implements OnInit {
   constructor() {
   }
+  isCustom = true;
   MyStep: number = 1;
   VisitorType: string;
   CategorySelected: string;
