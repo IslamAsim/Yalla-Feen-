@@ -7,8 +7,9 @@ export class Place{
   workingHours: string;
   location: string;
   contact: string;
+  // @ts-ignore
   feedBacks: [{
     user: string;
     feedback: string
-  }];
+  }] = [];
 }

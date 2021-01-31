@@ -10,6 +10,7 @@ import { CustomizedTripsComponent } from './customized-trips/customized-trips.co
 import { DetailsComponent } from './details/details.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {SharedModule} from '../../shared/shared.module';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [IndexComponent, TopRatedComponent, CustomComponent, CustomizedTripsComponent, DetailsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), NgSelectModule, FormsModule, MatSelectModule, MatInputModule,
+  imports: [CommonModule, RouterModule.forChild(routes), NgSelectModule, FormsModule, MatSelectModule, MatInputModule, SharedModule
   ]
 })
 export class TripModule { }
