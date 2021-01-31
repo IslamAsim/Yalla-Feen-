@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
@@ -31,6 +30,7 @@ export class LayoutComponent implements OnInit {
       e.focus();
     }, 300);
   }
+  // tslint:disable-next-line:typedef
   loseFocusNav(){
     setTimeout(() => {
       this.IsSearchOpen = true;

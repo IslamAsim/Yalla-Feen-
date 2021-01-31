@@ -20,14 +20,14 @@
     </div>
   </div>
   <section class="menu-mobile-list" id="navOpen" [class.active]="IsNavOpen">
-    <a class=" about item-style" routerLink="">
+    <a class=" about item-style" routerLink="/" (click)="OpenNav()">
       <img src="assets/images/yalla%20feen%20logo1.png" alt="logo">
     </a>
-    <a class=" services item-style" href="sign_up.html">Places</a>
-    <a class=" faqs item-style" href="./review.html">FAQS</a>
-    <a class=" blog item-style" routerLink="/user/login">Login</a>
-    <a class=" place-order item-style" routerLink="/info/about-us">About Us</a>
-    <a class="contact item-style" routerLink="/info/contact-us">CONTACT US</a>
+    <a class=" services item-style" routerLink="/top-rated" (click)="OpenNav()">Places</a>
+    <a class=" faqs item-style" routerLink="/info/FAQs" (click)="OpenNav()">FAQS</a>
+    <a class=" blog item-style" routerLink="/user/login" (click)="OpenNav()">Login</a>
+    <a class=" place-order item-style" routerLink="/info/about-us" (click)="OpenNav()">About Us</a>
+    <a class="contact item-style" routerLink="/info/contact-us" (click)="OpenNav()">CONTACT US</a>
   </section>
 </nav>
 <div class="sky-wrapper" [class.blur]="isCustom">
