@@ -10,12 +10,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'host-profile', component: HostProfileComponent },
+  { path: 'forget-password', component: ForgetPasswordComponent },
 ];
 
 @NgModule({
@@ -25,6 +27,7 @@ const routes: Routes = [
     ProfileComponent,
     ResetPasswordComponent,
     HostProfileComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     CommonModule,

@@ -17,15 +17,13 @@
           </div>
         </div>
         <div class="card-back">
-          <div class="favorite">
-            <i class="far fa-heart favorite-event"></i>
-          </div>
+          <app-favorite [isFavorite]=false></app-favorite>
           <figure>
             <div class="img-bg"></div>
             <img src='{{trip.img}}' alt="{{trip.title}}">
           </figure>
 
-          <button routerLink="/trip/details">Show Details</button>
+          <button routerLink="/trip/details/{{trip.id}}">Show Details</button>
 
           <div class="design-container">
             <span class="design design--1"></span>

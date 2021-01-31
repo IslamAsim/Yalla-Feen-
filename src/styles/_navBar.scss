@@ -12,11 +12,20 @@ nav {
     z-index: 1100;
 
     .logo {
+      width: 120px;
       transition: opacity 0.3s, visibility 0.3s 0.3s;
-
+      @include medium-screen{
+        width: 90px;
+      }
+      @include mobile-screen{
+        width: 70px;
+      }
       &.deactivate {
         opacity: 0;
         visibility: hidden;
+      }
+      img{
+        width: 100%;
       }
     }
 
@@ -144,7 +153,13 @@ nav {
     &.active {
       transform: translateY(0);
     }
-
+.logo-open{
+  width: 150px;
+  height: auto;
+  img{
+    width: 100%;
+  }
+}
     .item-style {
       font-weight: 700;
       font-size: 16px;

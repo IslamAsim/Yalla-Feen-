@@ -18,13 +18,14 @@ body {
 }
 
 .main-bg {
-  opacity: 0.9;
+  //opacity: 0.9;
   position: absolute;
   top: 0;
   z-index: -1000;
   height: 100%;
   width: 100%;
-  background-image: url("../assets/images/33001465-fcf4-48ab-93b0-14577909acd5.jpg");
+  background-color: #bddaf4;
+  //background-image: url("../assets/images/33001465-fcf4-48ab-93b0-14577909acd5.jpg");
   background-size: cover;
   background-position: 50% 100%;
   background-attachment: fixed;

@@ -16,6 +16,7 @@ export class CustomizedTripsComponent implements OnInit {
     // tslint:disable-next-line:label-position
     const trip: Place = new Place();
     trip.title = 'Pyramids';
+    trip.id = 'p12';
     trip.img = 'assets/images/pyramids.jpg';
     trip.description = 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.';
     trip.rating = 2;

@@ -22,9 +22,7 @@
         </div>
 
         <div class="card-back">
-          <div class="favorite">
-            <i class="far fa-heart favorite-event"></i>
-          </div>
+          <app-favorite [isFavorite]=true></app-favorite>
           <figure>
             <div class="img-bg"></div>
             <img src='{{trip.img}}' alt="{{trip.title}}">

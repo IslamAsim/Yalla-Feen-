@@ -1,11 +1,9 @@
 <div class="details">
   <div class="container">
     <div class="row mt-5">
-      <div class="col-md-4  border-right">
-        <h2>{{place.title}}
-          <span class="favorite pl-3">
-            <i class="far fa-heart favorite-event"></i>
-          </span>
+      <div class="col-md-4">
+        <h2 class="pr-3">{{place.title}}
+          <app-favorite [isFavorite]=true></app-favorite>
         </h2>
         <div class="d-flex justify-content-center overflow-hidden img-title">
           <img src="{{place.img}}" alt="">
