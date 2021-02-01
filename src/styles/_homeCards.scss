@@ -2,6 +2,7 @@
   .row-wrapper {
     height: $calc-height;
     overflow-y: scroll;
+
     .flip-card-container {
       --hue: 150;
       --primary: hsl(var(--hue), 50%, 50%);
@@ -12,10 +13,11 @@
       height: 450px;
       padding: 15px;
       margin-bottom: 30px;
-      @include medium-screen{
+      @include medium-screen {
         max-width: 350px;
         margin: 0 auto 30px auto;
       }
+
       .flip-card {
         width: inherit;
         height: inherit;
@@ -47,6 +49,7 @@
         justify-content: center;
         align-items: center;
       }
+
       /* .card-front */
       .card-front {
         transform: rotateY(0deg);
@@ -130,15 +133,18 @@
         transition: 0.3s;
         cursor: pointer;
       }
+
       button:hover,
       button:focus {
         color: $hover-color;
         background: hsla(var(--hue), 25%, 10%, 0.2);
         border-color: currentColor;
       }
+
       button:active {
         transform: translate(2px);
       }
+
       .design-container {
         --tr: 90;
         --op: 0.5;
@@ -253,6 +259,7 @@
         font-size: 16px;
         font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
       }
+
       .favorite {
         font-size: 36px;
         color: $hover-color;
@@ -262,9 +269,12 @@
         left: 50%;
         transform: translateX(-50%);
       }
+
       position: relative;
+
       .card-body {
         color: $light-color;
+
         .wrapper {
           position: absolute;
           bottom: 20px;
@@ -284,9 +294,15 @@
   display: flex;
   height: calc(100vh - 110px);
   justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
   align-items: center;
+  @include medium-screen {
+    display: block;
+  }
 
   .card {
+    max-width: 430px;
     cursor: pointer;
     position: relative;
     flex-basis: 40%;
@@ -295,7 +311,11 @@
     margin: 0 auto;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-
+    @include medium-screen {
+      display: block;
+      margin-bottom: 25px;
+      max-width: 400px;
+    }
     .imgBx {
       overflow: hidden;
 

@@ -14,7 +14,17 @@
       </span>
     </button>
     <div class="burger-menu-wrapper">
-      <a *ngIf="isLogged" class="green-button become-host-button">Become a host</a>
+      <div [hidden]="IsNavOpen" *ngIf="isLogged" class="dropdown user-menu">
+        <button class="dropbtn"><i class="fas fa-user"></i></button>
+        <div class="dropdown-content">
+          <a routerLink="/user/profile">Profile</a>
+          <a href="#">Favorites</a>
+          <hr class="p-0 m-0">
+          <a routerLink="/user/host-profile">Become a host</a>
+          <hr class="p-0 m-0">
+          <a (click)="logout()">Logout <i class="fas fa-sign-out-alt"></i></a>
+        </div>
+      </div>
       <div class="mobile-list-icon" [class.menu-open]="IsNavOpen" id="navIcon" (click)="OpenNav()" >
         <div class="a"></div>
         <div class="b"></div>
