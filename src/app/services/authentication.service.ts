@@ -24,6 +24,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('token');
     this.changeStatus(false);
+    console.log(this.status);
   }
   isLoggedCheck(){
     const token = localStorage.getItem('token');
