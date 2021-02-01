@@ -25,6 +25,7 @@
           <a (click)="logout()">Logout <i class="fas fa-sign-out-alt"></i></a>
         </div>
       </div>
+      <button [hidden]="IsNavOpen" *ngIf="!isLogged" routerLink="/user/login" class="btn btn-primary btn-style">Sign In<i class="fas fa-sign-in-alt ml-1"></i></button>
       <div class="mobile-list-icon" [class.menu-open]="IsNavOpen" id="navIcon" (click)="OpenNav()" >
         <div class="a"></div>
         <div class="b"></div>
@@ -38,7 +39,6 @@
     </a>
     <a class=" services item-style" routerLink="/top-rated" (click)="OpenNav()">Places</a>
     <a class=" faqs item-style" routerLink="/info/FAQs" (click)="OpenNav()">FAQS</a>
-    <a class=" blog item-style" routerLink="/user/login" (click)="OpenNav()">Login</a>
     <a class=" place-order item-style" routerLink="/info/about-us" (click)="OpenNav()">About Us</a>
     <a class="contact item-style" routerLink="/info/contact-us" (click)="OpenNav()">CONTACT US</a>
   </section>

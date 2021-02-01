@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
   form: FormGroup;
   confirm: boolean = false;
+  // tslint:disable-next-line:max-line-length
   cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) { }
   ngOnInit(): void {
@@ -69,6 +70,7 @@ export class SignUpComponent implements OnInit {
     password === confirmPassword ? this.confirm = true : this.confirm = false;
   }
   OnSubmit(){
+    console.log("d5lt al fun");
     const user = {
       username: this.form.controls.Username.value,
       firstname: this.form.controls.firstname.value,
@@ -77,14 +79,13 @@ export class SignUpComponent implements OnInit {
       email: this.form.controls.Email.value,
       password: this.form.controls.Password.value
     };
-    this._authentication.login(user).subscribe((response) => {
-      localStorage.setItem('token', response.token);
-      this._authentication.changeStatus(true);
-      this._router.navigateByUrl('/');
+    console.log(user);
+    this._authentication.signup(user).subscribe((response) => {
+      console.log(response);
+      this._router.navigateByUrl('/user/login');
     }, (error => {
-      alert('invalid username or password');
+      alert('invalid Email or Username');
       console.log(error);
     }));
   }
-
 }

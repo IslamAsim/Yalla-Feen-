@@ -24,6 +24,16 @@ nav {
     -moz-box-shadow: 0 8px 6px -6px $hover-color;
     box-shadow: 0 8px 6px -6px $hover-color;
   }
+  .btn-style{
+    margin-right: 20px;
+      border-radius: 25px;
+      color: white;
+      background-position: top;
+      background-repeat: no-repeat;
+      outline: none !important;
+      border: none !important;
+      width: 100px;
+  }
   .user-menu{
     .dropbtn {
       background-color: #4CAF50;

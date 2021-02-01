@@ -18,6 +18,9 @@ export class AuthenticationService {
   login(user: {email: string, password: string}){
     return this._apiService.post(`user/login`, user);
   }
+  signup(user: any){
+    return this._apiService.post(`user/signup`, user);
+  }
   logout() {
     localStorage.removeItem('token');
     this.changeStatus(false);
