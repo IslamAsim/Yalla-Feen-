@@ -24,7 +24,7 @@ body {
   z-index: -1000;
   height: 100%;
   width: 100%;
-  background-color: #bddaf4;
+  background-color: #a6c3dd;
   //background-image: url("../assets/images/33001465-fcf4-48ab-93b0-14577909acd5.jpg");
   background-size: cover;
   background-position: 50% 100%;
@@ -100,6 +100,7 @@ body {
   }
 }
 a{
+  cursor: pointer !important;
   color: inherit;
   text-decoration: none;
   &:hover{

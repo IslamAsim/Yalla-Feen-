@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Place} from '../../../models/place';
+import {PlaceService} from '../../../services/place.service';
 
 @Component({
   selector: 'app-top-rated',
@@ -9,21 +10,14 @@ import {Place} from '../../../models/place';
 export class TopRatedComponent implements OnInit {
   places: Place[] = [];
 
-  constructor() {
+  constructor(private _placeService: PlaceService) {
   }
-
   ngOnInit(): void {
-    // tslint:disable-next-line:label-position
-    const place: Place = new Place();
-    place.title = 'Pyramids';
-    place.rating = 4;
-    place.id = 'p17017';
-    place.img = 'assets/images/n.jpg';
-    place.description = 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.';
-    place.workingHours = '5pm to 8am';
-    for (let i = 0; i < 15; i++) {
-      // @ts-ignore
-      this.places.push(place);
-    }
+    this._placeService.get().subscribe((response: any) => {
+      console.log(response.data);
+      this.places = response.data;
+    } , error => {
+      console.log(error);
+    });
   }
 }

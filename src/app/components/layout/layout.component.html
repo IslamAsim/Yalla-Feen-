@@ -13,10 +13,13 @@
         <i class="fas fa-search"></i>
       </span>
     </button>
-    <div class="mobile-list-icon" [class.menu-open]="IsNavOpen" id="navIcon" (click)="OpenNav()" >
-      <div class="a"></div>
-      <div class="b"></div>
-      <div class="c"></div>
+    <div class="burger-menu-wrapper">
+      <a *ngIf="isLogged" class="green-button become-host-button">Become a host</a>
+      <div class="mobile-list-icon" [class.menu-open]="IsNavOpen" id="navIcon" (click)="OpenNav()" >
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+      </div>
     </div>
   </div>
   <section class="menu-mobile-list" id="navOpen" [class.active]="IsNavOpen">

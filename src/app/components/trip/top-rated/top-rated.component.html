@@ -5,7 +5,7 @@
         <div class="card-front">
           <figure>
             <div class="img-bg"></div>
-            <img src='{{trip.img}}' alt="{{trip.title}}">
+            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
             <figcaption>{{trip.title}}</figcaption>
           </figure>
           <div class="card-body">
@@ -25,10 +25,10 @@
           <app-favorite [isFavorite]=true></app-favorite>
           <figure>
             <div class="img-bg"></div>
-            <img src='{{trip.img}}' alt="{{trip.title}}">
+            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
           </figure>
 
-          <button routerLink="/trip/details/{{trip.id}}">Show Details</button>
+          <button routerLink="/trip/details/{{trip._id}}">Show Details</button>
 
           <div class="design-container">
             <span class="design design--1"></span>

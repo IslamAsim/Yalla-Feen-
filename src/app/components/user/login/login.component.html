@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()">
           <div class="mb-4">
             <div class="input-group form-group mb-0 pb-0">
               <div class="input-group-prepend">
@@ -21,28 +21,23 @@
                  *ngIf="
               form.controls['Email'].invalid &&
               (form.controls['Email'].touched || form.controls['Email'].dirty)
-            "
-            >
+            ">
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['Email'].hasError('required')"
-              >*required email</small
-              >
+              >*required email</small>
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['Email'].hasError('email')"
-              >*invalid email</small
-              >
+              >*invalid email</small>
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['Email'].hasError('minlength')"
-              >*min length is 5</small
-              >
+              >*min length is 5</small>
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['Email'].hasError('maxlength')"
-              >*max length is 30</small
-              >
+              >*max length is 30</small>
             </div>
           </div>
           <div class="mb-4">
@@ -71,11 +66,8 @@
               >
             </div>
           </div>
-          <div class="row align-items-center remember">
-            <input type="checkbox">Remember Me
-          </div>
-          <div class="form-group" routerLink="/">
-            <input type="submit" [disabled]="form.invalid" value="Login" class="btn float-right login_btn">
+          <div class="form-group" >
+            <input type="submit" [disabled]="form.invalid"  value="Login" class="btn float-right login_btn">
           </div>
         </form>
       </div>

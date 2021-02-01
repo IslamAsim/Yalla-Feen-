@@ -10,7 +10,22 @@ nav {
     align-items: center;
     width: 100%;
     z-index: 1100;
-
+.burger-menu-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .become-host-button{
+    margin-right: 20px !important;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    &:hover{
+      -webkit-box-shadow: 0 8px 6px -6px $hover-color;
+      -moz-box-shadow: 0 8px 6px -6px $hover-color;
+      box-shadow: 0 8px 6px -6px $hover-color;
+    }
+  }
+}
     .logo {
       width: 120px;
       transition: opacity 0.3s, visibility 0.3s 0.3s;
@@ -42,7 +57,14 @@ nav {
       transition: width 0.4s;
       background-color: $wheat-color !important;
       border: none;
-
+      @include mobile-screen{
+        left: 38%;
+      }
+      &:hover{
+        -webkit-box-shadow: 0 8px 6px -6px $hover-color;
+        -moz-box-shadow: 0 8px 6px -6px $hover-color;
+        box-shadow: 0 8px 6px -6px $hover-color;
+      }
       &.active {
         display: flex;
         justify-content: center;
