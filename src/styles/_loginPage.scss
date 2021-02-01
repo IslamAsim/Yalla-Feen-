@@ -1,7 +1,8 @@
 .login-form{
-  height: 100%;
+  //height: 100%;
   align-content: center;
-
+  height: calc(100vh - 110px);
+  overflow-y: scroll;
   .card{
     margin-top: auto;
     margin-bottom: auto;
@@ -73,5 +74,16 @@
   .links a{
     color: $menu-icon-color !important;
     margin-left: 4px;
+  }
+}
+.select-wrapper{
+  width: 100%;
+  display: inline-block;
+  .form-select{
+    width: 100%;
+    display: inline-block;
+    border: none !important;
+    color: grey;
+    border-radius: 2px;
   }
 }

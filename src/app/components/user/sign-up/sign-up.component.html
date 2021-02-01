@@ -1,46 +1,183 @@
-<section class="container sign-up-component">
-  <form action="" method="post">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="InputFirstName">First Name</label>
-          <input type="email" class="form-control" id="InputFirstName" placeholder="Enter your first name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-            else.</small>
-        </div>
-        <div class="form-group">
-          <label for="InputBirthDate">Birth Date</label>
-          <input type="date" class="form-control" id="InputBirthDate">
-        </div>
-        <div class="form-group">
-          <label for="InputPassword">Password</label>
-          <input type="password" class="form-control" id="InputPassword" placeholder="Enter your password">
-        </div>
-        <div class="form-group">
-          <label for="InputConfirmPassword">Confirm Password</label>
-          <input type="password" class="form-control" id="InputConfirmPassword" placeholder="Confirm your password">
+<div class="container login-form ">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="title-color">Sign Up</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control" formControlName="Username" placeholder="Username">
+            </div>
+            <div class="mt-0 pt-0"
+                 *ngIf="
+              form.controls['Username'].invalid &&
+              (form.controls['Username'].touched || form.controls['Username'].dirty)
+            ">
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Username'].hasError('required')"
+              >*you must write a username</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Username'].hasError('minlength')"
+              >*min length is 5</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+              </div>
+              <input type="text" class="form-control" formControlName="firstname" placeholder="First Name">
+            </div>
+            <div class="mt-0 pt-0"
+                 *ngIf="
+              form.controls['firstname'].invalid &&
+              (form.controls['firstname'].touched || form.controls['firstname'].dirty)
+            ">
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['firstname'].hasError('required')"
+              >*required first name</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['firstname'].hasError('minlength')"
+              >*min length is 2</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+              </div>
+              <input type="text" class="form-control" formControlName="lastname" placeholder="Last Name">
+            </div>
+            <div class="mt-0 pt-0"
+                 *ngIf="
+              form.controls['lastname'].invalid &&
+              (form.controls['lastname'].touched || form.controls['lastname'].dirty)
+            ">
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['lastname'].hasError('required')"
+              >*required email</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['lastname'].hasError('minlength')"
+              >*min length is 2</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope-open-text"></i></span>
+              </div>
+              <input type="text" class="form-control" formControlName="Email" placeholder="Email">
+            </div>
+            <div class="mt-0 pt-0"
+                 *ngIf="
+              form.controls['Email'].invalid &&
+              (form.controls['Email'].touched || form.controls['Email'].dirty)
+            ">
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('required')"
+              >*required email</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('email')"
+              >*invalid email</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('minlength')"
+              >*min length is 5</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+              </div>
+              <div class="select-wrapper form-control">
+                <select class="form-select " aria-label="Default select example">
+                  <option selected>Cairo</option>
+                  <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-0 pt-0"
+                 *ngIf="
+              form.controls['Email'].invalid &&
+              (form.controls['Email'].touched || form.controls['Email'].dirty)
+            ">
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('required')"
+              >*required email</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('email')"
+              >*invalid email</small>
+              <small
+                class="form-text text-danger m-0"
+                *ngIf="form.controls['Email'].hasError('minlength')"
+              >*min length is 5</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" class="form-control" formControlName="Password" placeholder="Password">
+            </div>
+            <div class="mt-0 pt-0" *ngIf="form.controls['Password'].invalid &&
+              (form.controls['Password'].touched || form.controls['Password'].dirty)">
+              <small class="form-text text-danger"
+                *ngIf="form.controls['Password'].hasError('required')"
+              >required password</small>
+              <small
+                class="form-text text-danger"
+                *ngIf="form.controls['Password'].hasError('minlength')"
+              >min length is 6</small>
+              <small
+                class="form-text text-danger"
+                *ngIf="form.controls['Password'].hasError('maxlength')"
+              >max length is 18</small>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group form-group mb-0 pb-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input (keyup)="checkPasswords()" type="password" class="form-control" formControlName="confirmpassword"
+                     placeholder="Confirm Password" >
+            </div>
+            <div class="mt-0 pt-0" *ngIf="(!confirm || form.controls['confirmpassword'].invalid ) &&
+              (form.controls['confirmpassword'].touched || form.controls['confirmpassword'].dirty)">
+              <small class="form-text text-danger"
+                     *ngIf="form.controls['confirmpassword'].hasError('required')">required password</small>
+              <small
+                class="form-text text-danger"
+                *ngIf="!confirm">Passwords do not match</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" [disabled]="form.invalid" value="Sign Up" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Already have an account?<a routerLink="/user/login">Sign In</a>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="InputLastName">Last Name</label>
-          <input type="email" class="form-control" id="InputLastName" placeholder="Enter your last name">
-        </div>
-        <div class="form-group">
-          <label for="InputPhoneNumber">Phone Number</label>
-          <input type="email" class="form-control" id="InputPhoneNumber" placeholder="Enter your phone number">
-        </div>
-      </div>
-      <div>
-        <small>By clicking Sign-up you agree to use <span><a href="">Terms</a></span>, data policy and cookie policy,<br>You maw recieve
-          SMS notification from us and opt out at any time </small>
-      </div>
-      <br><br>
     </div>
-    <button type="submit" class="d-block btn btn-primary">Sign Up</button>
-  </form>
-</section>
+  </div>
+</div>
