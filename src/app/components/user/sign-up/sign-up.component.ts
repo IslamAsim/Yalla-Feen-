@@ -10,9 +10,12 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
   form: FormGroup;
   confirm: boolean = false;
+  cito = null;
   // tslint:disable-next-line:max-line-length
   cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) { }
+  erro :string;
+ 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       Username: [
@@ -22,7 +25,7 @@ export class SignUpComponent implements OnInit {
           Validators.minLength(5),
         ],
       ],
-      city: [
+      cito: [
         '',
       ],
       firstname: [
@@ -43,7 +46,8 @@ export class SignUpComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.email,
+          Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        ,
           Validators.minLength(5),
         ],
       ],
@@ -75,17 +79,22 @@ export class SignUpComponent implements OnInit {
       username: this.form.controls.Username.value,
       firstname: this.form.controls.firstname.value,
       lastname: this.form.controls.lastname.value,
-      city: this.form.controls.city.value,
+      city: this.form.controls.cito.value,
       email: this.form.controls.Email.value,
       password: this.form.controls.Password.value
     };
-    console.log(user);
+   // console.log(user);
     this._authentication.signup(user).subscribe((response) => {
-      console.log(response);
+      console.log( response );
+      console.log("el ahtaal ahoo");
+      
       this._router.navigateByUrl('/user/login');
     }, (error => {
-      alert('invalid Email or Username');
-      console.log(error);
+      //alert('invalid Email or Username');
+      this.erro="this user already exist";
+      alert("this user already exist");
+      console.log(error + "hhhhhhhh el ahbaal ahoo");
+      this._router.navigateByUrl('/user/sign-up');
     }));
   }
 }

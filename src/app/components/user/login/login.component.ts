@@ -9,15 +9,18 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  
+  
   constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) {}
-
+erro :string;
   ngOnInit(): void {
+   
     this.form = this._formBuilder.group({
       Email: [
         '',
         [
           Validators.required,
-          Validators.email,
+          Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
           Validators.minLength(5),
           Validators.maxLength(30),
         ],
@@ -32,18 +35,23 @@ export class LoginComponent implements OnInit {
       ],
     });
   }
+ 
   OnSubmit(){
+    
     const user = {
       email: this.form.controls.Email.value,
       password: this.form.controls.Password.value
     };
     this._authentication.login(user).subscribe((response) => {
-      localStorage.setItem('token', response.token);
+      //localStorage.setItem('token', response.token);
       this._authentication.changeStatus(true);
       this._router.navigateByUrl('/');
     }, (error => {
-      alert('invalid username or password');
-      console.log(error);
+
+      
+      this.erro='invalid username or password'; // small text warning in html && signUp
+      
+     // console.log(error);
     }));
   }
 }
