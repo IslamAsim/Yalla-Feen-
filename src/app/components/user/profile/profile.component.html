@@ -1,1 +1,91 @@
-<h2>user profile</h2>
+<section class="profile">
+    <div class="container  fix-footer">
+      <div class="row pr-4 pl-4 p-5">
+        <div class="col-md-3">
+          <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png" style="width: 100%;" alt="">
+          <br>
+          <h5>Joined in Jan 2021</h5>
+          <h3>User name</h3>
+          <button class="btn btn-primary btn-style">Edit profile</button>
+          <br><br>
+        </div>
+        <div class="col-md-9">
+          <div class="tab">
+            <button class="tablinks"  (click)="showAboutMe()" mat-raised-button >About me</button>
+            <button class="tablinks"  (click)="showCustomForm()" mat-raised-button >Custom form</button>
+            <button class="tablinks"  (click)="showComments()" mat-raised-button >Comments</button>
+            <button class="tablinks"  (click)="showFavoritePlaces()" mat-raised-button >Favourites</button>
+          </div>
+          
+          <div [hidden]="aboutMe">
+              
+              <div class="row">
+                  <div class="col-8">
+                      <div>
+                      <h4>First name:</h4>
+                      <h4>Surname:</h4>
+                      <h4>Email: </h4>
+                      <h4>Phone number: </h4>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div>
+                      <h4>Location map</h4>
+                    <div class="map-responsive">
+                      <iframe
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+fayuim"
+                        width="100%"
+                        height="100%"
+                        style="border-radius: 30px"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+  
+          <div [hidden]="customForm">
+            <h4>Custom form :</h4>
+          </div>
+  
+          <div [hidden]="comments">
+            <div class="customDiv">
+            <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+            <h4 class="text-secondary">Title</h4>
+            <h6 class="text-secondary">Comment details</h6>
+          </div>
+            
+            <div class="customDiv">
+              <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+              <h4 class="text-secondary">Title</h4>
+              <h6 class="text-secondary">Comment details</h6>
+              <button class="btn btn-danger ">Deleate</button>
+              <button class="btn btn-primary">Edit</button>
+            </div>
+          </div>
+  
+          <div [hidden]="favoritePlaces">
+            <div class="customDiv">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png" style="width: 100%;" alt="">
+                    </div>
+                    <div class="col-7">
+                        <h4 class="text-secondary">Title</h4>
+                        <h6 class="text-secondary">Comment details</h6>
+                    </div>
+                    <div class="col-3">
+                        <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+                        <button class="btn btn-danger float-right">Deleate</button>
+                    </div>
+                </div>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  

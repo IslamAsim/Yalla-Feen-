@@ -1,45 +1,67 @@
-.agent-profile {
-  .card {
-    border-radius: 50px;
-  }
-
-  .user-card-full .user-profile {
-    border-radius: 50px 0 0 50px;
-  }
-  .bg-c-lite-green {
-    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #a32851, #c6f128)
-  }
-.ff{
-  background-color: rgba(255, 255, 255, 0.71) !important;
-}
-  .card-block {
-    padding: 1.25rem
-  }
-
-  .b-b-default {
-    border-bottom: 1px solid $hover-color
-  }
-
-  .card .card-block p {
-    line-height: 25px
-  }
-
-  .f-w-600 {
-    font-weight: 600
-  }
-
-  .add-btn {
-    border-radius: 50%;
-    position: absolute;
-    right: 0;
-  }
-  .wrapper-add{
+.hostProfile {
+    
+  
+  .fix-footer {
+    border-radius: 25px;
+    color: $hover-color;
+    height: calc(100vh - 110px);
+    background-image: $wheat !important;
     position: relative;
-  }
-  .user-profile {
-    @include medium-screen {
-      border-radius: 50px !important;
+
+    .profile-wrapper {
+      height: 100%;
+      overflow-y: scroll;
+
+        .ng-select-responsive {
+          width: 55%;
+          margin: 0 auto;
+          @include medium-screen {
+            width: 100%;
+          }
+        }
+          
+        }
+      }
     }
-  }
+    .customDiv{
+      border-style: ridge;
+    }
+   /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid $hover-color;
 }
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: $hover-color;
+  color: #f1f1f1;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+

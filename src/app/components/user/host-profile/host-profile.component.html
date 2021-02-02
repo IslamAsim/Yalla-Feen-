@@ -1,52 +1,36 @@
-<section class="agent-profile">
-  <div class="container ">
-    <div class="card user-card-full ff">
-      <div class="row">
-        <div class="col-sm-4 col-12 bg-c-lite-green user-profile">
-          <div class="card-block text-center text-white">
-            <div>
-              <img
-                src="https://img.icons8.com/bubbles/100/000000/user.png"
-                alt="User-Profile-Image"
-              />
-            </div>
-            <h6 class="f-w-600">Hembo Tingor</h6>
-            <p>Web Designer</p>
-          </div>
+<section class="hostProfile">
+  <div class="container  fix-footer">
+    <div class="row pr-4 pl-4 p-5">
+      <div class="col-md-3">
+        <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png" style="width: 100%;" alt="">
+        <br>
+        <h5>Joined in Jan 2021</h5>
+        <h3>User name</h3>
+        <button class="btn btn-primary btn-style">Edit profile</button>
+        <br><br>
+      </div>
+      <div class="col-md-9">
+        <div class="tab">
+          <button class="tablinks"  (click)="showInformation()" mat-raised-button >Information</button>
+          <button class="tablinks"  (click)="showComments()" mat-raised-button >Comments</button>
+          <button class="tablinks"  (click)="showHostPlaces()" mat-raised-button >Places</button>
         </div>
-        <div class="col-sm-8">
-          <div class="card-block">
-            <h6 class="b-b-default f-w-600 text-center">Information</h6>
+        
+        <div [hidden]="information">
+            
             <div class="row">
-              <div class="col-sm-6">
-                <p class="f-w-600">Email</p>
-                <h6 class="text-muted">rntng@gmail.com</h6>
+                <div class="col-8">
+                    <div>
+                    <h4>First name:</h4>
+                    <h4>Surname:</h4>
+                    <h4>Email: </h4>
+                    <h4>Phone number: </h4>
+                    <h4>Details: </h4>
+                  </div>
               </div>
-              <div class="col-sm-6">
-                <p class="f-w-600">Phone</p>
-                <h6 class="text-muted">98979989898</h6>
-              </div>
-            </div>
-            <h6 class="b-b-default f-w-600 text-center">Projects</h6>
-            <div class="row">
-              <div class="col-sm-6">
-                <p class="f-w-600">Recent</p>
-                <h6 class="text-muted">Sam Disuja</h6>
-              </div>
-              <div class="col-sm-6">
-                <p class="f-w-600">Most Viewed</p>
-                <h6 class="text-muted">Dinoter husainm</h6>
-              </div>
-            </div>
-            <h6 class="b-b-default f-w-600 text-center">Location</h6>
-            <div class="row">
-              <div class="col-sm-4">
-                <div>
-                  <p>Details</p>
-                </div>
-              </div>
-              <div class="col-sm-8">
-                <div>
+              <div class="col-4">
+                  <div>
+                    <h4>Location map</h4>
                   <div class="map-responsive">
                     <iframe
                       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+fayuim"
@@ -59,45 +43,43 @@
                 </div>
               </div>
             </div>
+        </div>
+        
 
-            <h6 class="b-b-default f-w-600 text-center wrapper-add">
-              <span>My places</span>
-              <button class="btn btn-info add-btn btn-lg">
-                <i class="fas fa-plus"></i>
-              </button>
-            </h6>
-            <ul class="list-unstyled">
-              <li class="media">
-                <img
-                  class="d-flex mr-3"
-                  src="https://mdbootstrap.com/img/Photos/Others/avatar-min1.jpg"
-                  alt="Generic placeholder image"
-                />
-                <div class="media-body">
-                  <h5 class="mt-0 mb-2 font-weight-bold">
-                    Anna Smith
-                  </h5>
-                  <!--Review-->
-                  <i class="fas fa-star blue-text"> </i>
-                  <i class="fas fa-star blue-text"> </i>
-                  <i class="fas fa-star blue-text"> </i>
-                  <i class="fas fa-star blue-text"> </i>
-                  <i class="fas fa-star blue-text"> </i>
-                  <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla
-                    vel metus scelerisque ante sollicitudin. Cras
-                    purus odio, vestibulum in vulputate at, tempus
-                    viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in
-                    faucibus.
-                  </p>
-                  <button class="btn btn-success">Edit</button>
-                  <button class="btn btn-danger">Remove</button>
-                </div>
-              </li>
-            </ul>
+        <div [hidden]="comments">
+          <div class="customDiv">
+          <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+          <h4 class="text-secondary">Title</h4>
+          <h6 class="text-secondary">Comment details</h6>
+        </div>
+          
+          <div class="customDiv">
+            <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+            <h4 class="text-secondary">Title</h4>
+            <h6 class="text-secondary">Comment details</h6>
+            <button class="btn btn-danger ">Deleate</button>
+            <button class="btn btn-primary">Edit</button>
           </div>
         </div>
+
+        <div [hidden]="hostPlaces">
+          <div class="customDiv">
+              <div class="row">
+                  <div class="col-2">
+                      <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png" style="width: 100%;" alt="">
+                  </div>
+                  <div class="col-7">
+                      <h4 class="text-secondary">Title</h4>
+                      <h6 class="text-secondary">Comment details</h6>
+                  </div>
+                  <div class="col-3">
+                      <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
+                      <button class="btn btn-danger float-right">Deleate</button>
+                  </div>
+              </div>
+            </div>
+        </div>
+        
       </div>
     </div>
   </div>
