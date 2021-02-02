@@ -6,9 +6,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';//
-
+ 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     LayoutComponent,
   ],
