@@ -65,7 +65,7 @@
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['lastname'].hasError('required')"
-              >*required email</small>
+              >*required lastname</small>
               <small
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['lastname'].hasError('minlength')"
@@ -90,7 +90,7 @@
               >*required email</small>
               <small
                 class="form-text text-danger m-0"
-                *ngIf="form.controls['Email'].hasError('email')"
+                *ngIf="form.controls['Email'].hasError('pattern')"
               >*invalid email</small>
               <small
                 class="form-text text-danger m-0"
@@ -104,13 +104,14 @@
                 <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
               </div>
               <div class="select-wrapper form-control">
-                <select formControlName="city" class="form-select" aria-label="Default select example">
-                  <option value="cairo" selected>Cairo</option>
+                <select  class="form-select"  [(ngModel)]="cito"  formControlName="cito" required>
+                  <!-- <option value="cairo" selected>Cairo</option> -->
+                  <option [ngValue]="null" [disabled]="true">City</option>
                   <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
                 </select>
               </div>
             </div>
-            <div class="mt-0 pt-0"
+            <!-- <div class="mt-0 pt-0"
                  *ngIf="
               form.controls['Email'].invalid &&
               (form.controls['Email'].touched || form.controls['Email'].dirty)
@@ -127,7 +128,7 @@
                 class="form-text text-danger m-0"
                 *ngIf="form.controls['Email'].hasError('minlength')"
               >*min length is 5</small>
-            </div>
+            </div> -->
           </div>
           <div class="mb-4">
             <div class="input-group form-group mb-0 pb-0">
@@ -171,6 +172,9 @@
           <div class="form-group">
             <input type="submit" [disabled]="form.invalid" value="Sign Up" class="btn float-right login_btn">
           </div>
+          <small
+                class="form-text text-danger"
+                >{{erro}}</small>
         </form>
       </div>
       <div class="card-footer">
