@@ -2,7 +2,7 @@ export class Place{
   // tslint:disable-next-line:variable-name
   _id: string;
   title: string;
-  placeImages: [];
+  placeImages:string [];
   description: string;
   rating: number;
   workingHours: string;

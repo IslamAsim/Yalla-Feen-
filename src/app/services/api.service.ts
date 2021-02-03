@@ -13,7 +13,7 @@ export class ApiService {
     return this._httpClient.get(`${environment.apiURL}${url}`);
   }
   // tslint:disable-next-line:max-line-length
-  getWithToken(url: string) {return this._httpClient.get(`${environment.apiURL}${url}`, {headers: new HttpHeaders({'authorization': localStorage.getItem('token')})});
+  getWithToken(url: string) {return this._httpClient.get(`${environment.apiURL}${url}`, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
   }
   // tslint:disable-next-line:typedef
   post(url: string, body: any) {
