@@ -2,10 +2,10 @@
     <div class="container  fix-footer">
       <div class="row pr-4 pl-4 p-5">
         <div class="col-md-3">
-          <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png" style="width: 100%;" alt="">
+          <img src="{{user.avatar}}" style="width: 100%;" alt="">
           <br>
           <h5>Joined in Jan 2021</h5>
-          <h3>User name</h3>
+          <h3>{{user.username}}</h3>
           <button class="btn btn-primary btn-style">Edit profile</button>
           <br><br>
         </div>
@@ -16,9 +16,9 @@
             <button class="tablinks"  (click)="showComments()" mat-raised-button >Comments</button>
             <button class="tablinks"  (click)="showFavoritePlaces()" mat-raised-button >Favourites</button>
           </div>
-          
+
           <div [hidden]="aboutMe">
-              
+
               <div class="row">
                   <div class="col-8">
                       <div>
@@ -44,19 +44,19 @@
                 </div>
               </div>
           </div>
-          
-  
+
+
           <div [hidden]="customForm">
             <h4>Custom form :</h4>
           </div>
-  
+
           <div [hidden]="comments">
             <div class="customDiv">
             <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
             <h4 class="text-secondary">Title</h4>
             <h6 class="text-secondary">Comment details</h6>
           </div>
-            
+
             <div class="customDiv">
               <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
               <h4 class="text-secondary">Title</h4>
@@ -65,7 +65,7 @@
               <button class="btn btn-primary">Edit</button>
             </div>
           </div>
-  
+
           <div [hidden]="favoritePlaces">
             <div class="customDiv">
                 <div class="row">
@@ -83,9 +83,8 @@
                 </div>
               </div>
           </div>
-          
+
         </div>
       </div>
     </div>
   </section>
-  

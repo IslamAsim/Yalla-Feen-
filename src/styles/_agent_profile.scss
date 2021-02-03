@@ -1,6 +1,7 @@
 .hostProfile {
-    
-  
+  height: $calc-height;
+  overflow-y: scroll;
+
   .fix-footer {
     border-radius: 25px;
     color: $hover-color;
@@ -19,7 +20,7 @@
             width: 100%;
           }
         }
-          
+
         }
       }
     }

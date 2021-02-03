@@ -12,13 +12,14 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import {AuthGuard} from '../../guards/auth.guard';
+import {ProfileGuard} from '../../guards/profile.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'sign-up', component: SignUpComponent, canActivate: [AuthGuard] },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'host-profile', component: HostProfileComponent },
-  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard]},
+  { path: 'host-profile', component: HostProfileComponent, canActivate: [ProfileGuard] },
+  { path: 'forget-password', component: ForgetPasswordComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -5,10 +5,9 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';//
- 
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     LayoutComponent,
   ],
@@ -22,4 +21,5 @@ import {HttpClientModule} from '@angular/common/http';//
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

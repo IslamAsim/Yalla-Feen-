@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../../../services/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,12 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  constructor(private _api: ApiService) {
+    // this.http = httpClient;
+  }
   aboutMe = false;
   customForm = true;
   comments = true;
   favoritePlaces = true;
+  user: {};
   ngOnInit(): void {
-    };
+    this._api.getWithToken('/user').subscribe((resp ) => {
+      console.log(resp);
+      // @ts-ignore
+      this.user = resp.profile;
+      console.log(this.user);
+    });
+    }
     showAboutMe(){
       this.aboutMe = !this.aboutMe;
       this.customForm = true;

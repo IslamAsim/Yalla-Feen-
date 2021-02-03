@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit {
   cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) { }
   erro :string;
- 
+
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       Username: [
@@ -74,7 +74,6 @@ export class SignUpComponent implements OnInit {
     password === confirmPassword ? this.confirm = true : this.confirm = false;
   }
   OnSubmit(){
-    console.log("d5lt al fun");
     const user = {
       username: this.form.controls.Username.value,
       firstname: this.form.controls.firstname.value,
@@ -83,18 +82,11 @@ export class SignUpComponent implements OnInit {
       email: this.form.controls.Email.value,
       password: this.form.controls.Password.value
     };
-   // console.log(user);
     this._authentication.signup(user).subscribe((response) => {
-      console.log( response );
-      console.log("el ahtaal ahoo");
-      
-      this._router.navigateByUrl('/user/login');
-    }, (error => {
-      //alert('invalid Email or Username');
-      this.erro="this user already exist";
-      alert("this user already exist");
-      console.log(error + "hhhhhhhh el ahbaal ahoo");
-      this._router.navigateByUrl('/user/sign-up');
+      console.log(response);
+      !response.errors ?  this._router.navigateByUrl('/user/login') : this.erro = 'this username or email already exist';
+    }, (() => {
+      this.erro = 'this username or email already exist';
     }));
   }
 }
