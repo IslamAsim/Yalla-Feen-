@@ -25,6 +25,6 @@ export class PlaceService {
   }
   delete(id: string)
   {
-   return this._apiService.delete('place/delete?id=' + id);
+   return this._apiService.delete(`place/${id}`);
   }
 }

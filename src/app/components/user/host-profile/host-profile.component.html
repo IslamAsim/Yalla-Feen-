@@ -12,7 +12,7 @@
       <div class="col-md-9 ">
         <div class="tab mb-3">
           <button class="tablinks" (click)="tabChanger(1)" mat-raised-button>Information</button>
-          <button class="tablinks" (click)="tabChanger(2)" mat-raised-button>Comments</button>
+          <button class="tablinks" (click)="tabChanger(2)" mat-raised-button>Add Place</button>
           <button class="tablinks" (click)="tabChanger(3)" mat-raised-button>Places</button>
         </div>
 
@@ -199,19 +199,19 @@
         </div>
 
         <div [hidden]="index!==3">
-          <div class="">
+          <div *ngFor="let place of places">
             <div class="row">
               <div class="col-2">
                 <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png"
                   style="width: 100%;" alt="">
               </div>
               <div class="col-7">
-                <h4 class="text-secondary">Title</h4>
-                <h6 class="text-secondary">Comment details</h6>
+                <h4 class="text-secondary">{{place.title}}</h4>
+                <h6 class="text-secondary">{{place.description}}</h6>
               </div>
               <div class="col-3">
-                <span class="float-right text-secondary">Sep 29, 2014, 9:12 PM</span>
-                <button class="btn btn-danger float-right">Delete</button>
+                <span class="float-right text-secondary">{{place.createdAt}}</span>
+                <button class="btn btn-danger float-right" (click)="deletePlace(place._id)">Delete</button>
               </div>
             </div>
           </div>

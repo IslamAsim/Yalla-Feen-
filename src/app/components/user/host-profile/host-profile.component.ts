@@ -25,13 +25,14 @@ export class HostProfileComponent implements OnInit {
   tag = null;
   tags = ['tag1','tag2','tag3','tag4','tag5']
 
-  
+  places:any=[];
   erro: string;
   user:User;
   index: number = 1;
   loc: string = "https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty";
 
-  constructor(private _api: ApiService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router) { }
+
+  constructor(private _api: ApiService,private _placeService:PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       console.log(resp);
@@ -40,6 +41,18 @@ export class HostProfileComponent implements OnInit {
      // this.loc += this.user.city;
       console.log(this.user);
     });
+
+    this._placeService.get().subscribe((res)=>{
+      console.log(res);
+      
+      this.places=res.data;
+      console.log(this.places);
+      
+    },(error)=>{
+        alert("yallahwyyy");
+    });
+
+
 
     this.form = this._formBuilder.group({
       title: [
@@ -89,11 +102,21 @@ export class HostProfileComponent implements OnInit {
   }
 
 
+  deletePlace(id:string){
 
+    this._placeService.delete(id).subscribe((res)=>{
+      console.log(res);
+      
+
+    },(error)=>{
+      alert("yallahwyy couldn't delete");
+    })
+
+  }
 
   OnSubmit() {
     
-    const place={
+    const place:any={
       title:this.form.controls.title,
       location:this.form.controls.location,
       category:this.form.controls.category,
