@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {Router} from '@angular/router';
-import { User } from './../../../models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,7 +41,7 @@ erro :string;
       email: this.form.controls.Email.value,
       password: this.form.controls.Password.value
     };
-    this._authentication.login(user).subscribe((response) => {
+    this._authentication.login(user).subscribe((response:any) => {
       localStorage.setItem('token', response.token);
       this._authentication.changeStatus(true);
       this._router.navigateByUrl('/');

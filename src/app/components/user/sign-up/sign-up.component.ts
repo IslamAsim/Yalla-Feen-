@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   form: FormGroup;
-  confirm: boolean = false;
   cito = null;
+  confirm: boolean = false;
   // tslint:disable-next-line:max-line-length
   cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) { }

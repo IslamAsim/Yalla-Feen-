@@ -19,6 +19,8 @@ export class ApiService {
   post(url: string, body: any) {
     return this._httpClient.post(`${environment.apiURL}${url}`, body);
   }
+  postWithToken(url: string,body:any) {return this._httpClient.post(`${environment.apiURL}${url}`,body, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
+  }
   // tslint:disable-next-line:typedef
   PUT(url: string, body: any) {
     return this._httpClient.put(`${environment.apiURL}${url}`, body);

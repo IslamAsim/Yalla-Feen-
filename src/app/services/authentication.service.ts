@@ -30,6 +30,8 @@ export class AuthenticationService {
     const token = localStorage.getItem('token');
     token ? this.changeStatus(true) : this.changeStatus(false);
   }
+
+ 
   //fain reset password ya ba4aaaaar!!!!
   resetPassword(password: any){
     alert(password);

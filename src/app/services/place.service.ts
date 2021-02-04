@@ -9,7 +9,7 @@ export class PlaceService {
   constructor(private _apiService: ApiService) { }
   create(place: Place)
   {
-   return this._apiService.post(`place`, place);
+   return this._apiService.postWithToken('place/create', place);
   }
   update(place: Place)
   {

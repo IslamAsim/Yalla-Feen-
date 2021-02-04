@@ -5,5 +5,6 @@ export class User {
   lastname: string;
   email: string;
   avatar: string;
-  favorite_places: [];
+  favorite_places: any;
+  token:any;
 }
