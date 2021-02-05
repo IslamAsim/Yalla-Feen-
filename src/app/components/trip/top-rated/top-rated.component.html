@@ -5,7 +5,7 @@
         <div class="card-front">
           <figure>
             <div class="img-bg"></div>
-            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
+            <img src='{{trip.images[0]}}' alt="{{trip.title}}">
             <figcaption>{{trip.title}}</figcaption>
           </figure>
           <div class="card-body">
@@ -15,17 +15,17 @@
             <br>
             <p class="card-text">{{trip.description}}</p>
             <div class="wrapper">
-             <app-rating [stars]='trip.rating'></app-rating>
-              <span>{{trip.workingHours}}</span>
+             <app-rating [stars]='trip.rating.length'></app-rating>
+              <span>{{trip.createdAt}}</span>
             </div>
           </div>
         </div>
 
         <div class="card-back">
-          <app-favorite [isFavorite]=true></app-favorite>
+          <app-favorite [isFavorite]="" (change)="changeFavorite(trip._id)"  ></app-favorite>
           <figure>
             <div class="img-bg"></div>
-            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
+            <img src='{{trip.images[0]}}' alt="{{trip.title}}">
           </figure>
 
           <button routerLink="/trip/details/{{trip._id}}">Show Details</button>

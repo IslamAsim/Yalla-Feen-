@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Place} from '../../../models/place';
 import {PlaceService} from '../../../services/place.service';
+import { FavoriteService } from './../../../services/favorite.service';
 
 @Component({
   selector: 'app-top-rated',
@@ -9,8 +10,9 @@ import {PlaceService} from '../../../services/place.service';
 })
 export class TopRatedComponent implements OnInit {
   places: Place[] = [];
+  
 
-  constructor(private _placeService: PlaceService) {
+  constructor(private _placeService: PlaceService,private _favoriteService:FavoriteService) {
   }
   ngOnInit(): void {
     this._placeService.get().subscribe((response: any) => {
@@ -20,4 +22,8 @@ export class TopRatedComponent implements OnInit {
       console.log(error);
     });
   }
+ 
+    
+  
+  
 }

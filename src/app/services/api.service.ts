@@ -29,5 +29,7 @@ export class ApiService {
   delete(url: string) {
     return this._httpClient.delete(`${environment.apiURL}${url}`);
   }
+  deleteWithToken(url: string) {return this._httpClient.delete(`${environment.apiURL}${url}`, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
+}
 
 }

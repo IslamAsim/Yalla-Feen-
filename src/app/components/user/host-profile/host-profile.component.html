@@ -14,6 +14,8 @@
           <button class="tablinks" (click)="tabChanger(1)" mat-raised-button>Information</button>
           <button class="tablinks" (click)="tabChanger(2)" mat-raised-button>Add Place</button>
           <button class="tablinks" (click)="tabChanger(3)" mat-raised-button>Places</button>
+          <button class="tablinks" (click)="tabChanger(4)" mat-raised-button>Favorite places</button>
+
         </div>
 
         <div [hidden]="index!==1">
@@ -212,6 +214,24 @@
               <div class="col-3">
                 <span class="float-right text-secondary">{{place.createdAt}}</span>
                 <button class="btn btn-danger float-right" (click)="deletePlace(place._id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="index!==4">
+          <div *ngFor="let favorite of favorites">
+            <div class="row">
+              <div class="col-2">
+                <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png"
+                  style="width: 100%;" alt="">
+              </div>
+              <div class="col-7">
+                <h4 class="text-secondary">{{favorite.title}}</h4>
+              </div>
+              <div class="col-3">
+               
+                <button class="btn btn-danger float-right" (click)="deleteFavorite(favorite._id)">Delete</button>
               </div>
             </div>
           </div>

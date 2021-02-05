@@ -80,13 +80,15 @@ export class SignUpComponent implements OnInit {
       lastname: this.form.controls.lastname.value,
       city: this.form.controls.cito.value,
       email: this.form.controls.Email.value,
-      password: this.form.controls.Password.value
+      password: this.form.controls.Password.value,
+      confirmPassword: this.form.controls.confirmpassword.value
     };
     this._authentication.signup(user).subscribe((response) => {
       console.log(response);
       !response.errors ?  this._router.navigateByUrl('/user/login') : this.erro = 'this username or email already exist';
-    }, (() => {
+    }, ((e) => {
       this.erro = 'this username or email already exist';
+      alert("yallahwyyy" );
     }));
   }
 }

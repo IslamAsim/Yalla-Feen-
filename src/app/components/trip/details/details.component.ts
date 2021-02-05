@@ -15,13 +15,15 @@ export class DetailsComponent implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute, private _placeService: PlaceService) { }
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
+      console.log(params.get('id'));
+      
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
       console.log(response);
       this.place = response;
     } , error => {
-      console.log(error);
+     alert("yallahwyyy");
     });
   }
 }

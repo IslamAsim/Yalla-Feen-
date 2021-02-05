@@ -7,6 +7,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PlaceService } from 'src/app/services/place.service';
 import { User } from './../../../models/user';
+import { FavoriteService } from './../../../services/favorite.service';
+
 
 @Component({
   selector: 'app-host-profile',
@@ -20,11 +22,11 @@ export class HostProfileComponent implements OnInit {
   locations = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
 
   category = null;
-  categories = ['workspace','cafe','cat3','cat4','cat5']
+  categories = ['workspace','cafe','Coffee & Restaurants','cat4','cat5']
 
   tag = null;
   tags = ['tag1','tag2','tag3','tag4','tag5']
-
+  favorites:any=[];
   places:any=[];
   erro: string;
   user:User;
@@ -32,7 +34,7 @@ export class HostProfileComponent implements OnInit {
   loc: string = "https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty";
 
 
-  constructor(private _api: ApiService,private _placeService:PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router) { }
+  constructor(private _api: ApiService,private _placeService:PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router,private _favoriteService:FavoriteService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       console.log(resp);
@@ -42,7 +44,7 @@ export class HostProfileComponent implements OnInit {
       console.log(this.user);
     });
 
-    this._placeService.get().subscribe((res)=>{
+    this._placeService.getWithToken().subscribe((res)=>{
       console.log(res);
       
       this.places=res.data;
@@ -52,7 +54,15 @@ export class HostProfileComponent implements OnInit {
         alert("yallahwyyy");
     });
 
+    this._favoriteService.getUserFavorites().subscribe((res=>{
+      console.log(res.favorites_places);
+      this.favorites=res.favorites_places;
+      
+    }),(error)=>{
+      alert("yallahwyyy");
+    })
 
+    
 
     this.form = this._formBuilder.group({
       title: [
@@ -94,6 +104,7 @@ export class HostProfileComponent implements OnInit {
         ],
       ],
 
+      
     });
   };
 
@@ -114,16 +125,29 @@ export class HostProfileComponent implements OnInit {
 
   }
 
+
+  deleteFavorite(id:string){
+
+    this._favoriteService.deletewithToken(id).subscribe((res)=>{
+      console.log(res);
+      
+
+    },(error)=>{
+      alert("yallahwyy couldn't delete");
+    })
+
+  }
+
   OnSubmit() {
     
     const place:any={
-      title:this.form.controls.title,
-      location:this.form.controls.location,
-      category:this.form.controls.category,
-      tag:this.form.controls.tag,
-      description:this.form.controls.description,
-      phone:this.form.controls.phone,
-      type:this.form.controls.type,
+      title:this.form.controls.title.value,
+      location:this.form.controls.location.value,
+      category:this.form.controls.category.value,
+      tag:this.form.controls.tag.value,
+      description:this.form.controls.description.value,
+      phone:this.form.controls.phone.value,
+      type:this.form.controls.type.value,
       
 
 

@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Place } from '../models/place';
-import { ApiService } from './api.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlaceService {
-  constructor(private _apiService: ApiService) { }
-  create(place: Place)
+export class CommentService {
+
+  constructor(private _apiService:ApiService) { }
+
+
+  addComment(comment: any)
   {
-   return this._apiService.postWithToken('place/create', place);
+   return this._apiService.postWithToken('place/create', comment);
   }
-  update(place: Place)
+  updateComment(comment: any)
   {
-   return this._apiService.PUT('place', place);
+   return this._apiService.PUT('place', comment);
   }
-  get()
+  getAllComments()
   {
    return this._apiService.get('place');
   }
-  getWithToken()
+  getUserComment()
   {
    return this._apiService.getWithToken('place');
   }
@@ -31,6 +33,4 @@ export class PlaceService {
   {
    return this._apiService.delete(`place/delete/${id}`);
   }
-
-  
 }
