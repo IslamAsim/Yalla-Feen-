@@ -20,21 +20,17 @@ export class HostProfileComponent implements OnInit {
   form: FormGroup;
   location = null;
   locations = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
-
   category = null;
-  categories = ['workspace','cafe','Coffee & Restaurants','cat4','cat5']
-
+  categories = ['workspace', 'cafe', 'Coffee & Restaurants', 'cat4', 'cat5'];
   tag = null;
-  tags = ['tag1','tag2','tag3','tag4','tag5']
-  favorites:any=[];
-  places:any=[];
+  tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
+  favorites: any = [];
+  places: any = [];
   erro: string;
-  user:User;
-  index: number = 1;
-  loc: string = "https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty";
-
-
-  constructor(private _api: ApiService,private _placeService:PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router,private _favoriteService:FavoriteService) { }
+  user: User;
+  index = 1;
+  loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
+  constructor(private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router, private _favoriteService: FavoriteService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       console.log(resp);
@@ -44,26 +40,20 @@ export class HostProfileComponent implements OnInit {
       console.log(this.user);
     });
 
-    this._placeService.getWithToken().subscribe((res)=>{
+    this._placeService.getWithToken().subscribe((res) => {
       console.log(res);
-      
-      this.places=res.data;
+      this.places = res.data;
       console.log(this.places);
-      
-    },(error)=>{
-        alert("yallahwyyy");
+    }, (error) => {
+        alert('yallahwyyy');
     });
 
-    this._favoriteService.getUserFavorites().subscribe((res=>{
+    this._favoriteService.getUserFavorites().subscribe((res => {
       console.log(res.favorites_places);
-      this.favorites=res.favorites_places;
-      
-    }),(error)=>{
-      alert("yallahwyyy");
-    })
-
-    
-
+      this.favorites = res.favorites_places;
+    }), (error) => {
+      alert('yallahwyyy');
+    });
     this.form = this._formBuilder.group({
       title: [
         '',
@@ -75,7 +65,6 @@ export class HostProfileComponent implements OnInit {
       location: [
         '',
       ],
-      
       category: [
         '',
       ],
@@ -103,59 +92,50 @@ export class HostProfileComponent implements OnInit {
           Validators.minLength(5),
         ],
       ],
-
-      
+      image: [
+        '',
+        [
+          Validators.required,
+        ],
+      ],
     });
-  };
-
+  }
   tabChanger(index: number) {
     this.index = index;
   }
-
-
-  deletePlace(id:string){
-
-    this._placeService.delete(id).subscribe((res)=>{
+  deletePlace(id: string){
+    this._placeService.delete(id).subscribe((res) => {
       console.log(res);
-      
-
-    },(error)=>{
-      alert("yallahwyy couldn't delete");
-    })
+    }, (error) => {
+      alert('yallahwyy couldn\'t delete');
+    });
 
   }
 
 
-  deleteFavorite(id:string){
+  deleteFavorite(id: string){
 
-    this._favoriteService.deletewithToken(id).subscribe((res)=>{
+    this._favoriteService.deletewithToken(id).subscribe((res) => {
       console.log(res);
-      
-
-    },(error)=>{
-      alert("yallahwyy couldn't delete");
-    })
+    }, (error) => {
+      alert('yallahwyy couldn\'t delete');
+    });
 
   }
 
   OnSubmit() {
-    
-    const place:any={
-      title:this.form.controls.title.value,
-      location:this.form.controls.location.value,
-      category:this.form.controls.category.value,
-      tag:this.form.controls.tag.value,
-      description:this.form.controls.description.value,
-      phone:this.form.controls.phone.value,
-      type:this.form.controls.type.value,
-      
-
-
-    }
-    
+    const place: any = {
+      title: this.form.controls.title.value,
+      location: this.form.controls.location.value,
+      category: this.form.controls.category.value,
+      tag: this.form.controls.tag.value,
+      description: this.form.controls.description.value,
+      phone: this.form.controls.phone.value,
+      type: this.form.controls.type.value,
+      images: this.form.controls.image.value
+    };
     this._place.create(place).subscribe((response) => {
-      console.log(response ," hhhhhhhhhhhhhhhhhhhhhhh");
-      
+      console.log(response , ' hhhhhhhhhhhhhhhhhhhhhhh');
     }, ((error) => {
       // this.erro = 'this username or email already exist';
      console.log(error);

@@ -15,7 +15,7 @@
             <br>
             <p class="card-text">{{trip.description}}</p>
             <div class="wrapper">
-             <app-rating [stars]='trip.rating.length'></app-rating>
+             <app-rating [stars]='trip.rating[0]'></app-rating>
               <span>{{trip.createdAt}}</span>
             </div>
           </div>

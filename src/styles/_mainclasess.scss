@@ -108,3 +108,35 @@ a{
     text-decoration: none;
   }
 }
+.custom-file-input input {
+  visibility: hidden;
+  width: 100px;
+}
+.custom-file-input {
+  display: inline-block;
+  position: relative;
+  color: #533e00;
+}
+.file-blue:before {
+  content: 'upload images';
+  background: -webkit-linear-gradient( -180deg, $hover-color, $hover-color);
+  background: -o-linear-gradient( -180deg, $hover-color, $hover-color);
+  background: -moz-linear-gradient( -180deg, $hover-color, $hover-color);
+  background: linear-gradient( -180deg, $hover-color, $hover-color);
+  border-color: $hover-color;
+  color: #FFF;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 6px 5px 3px;
+  text-shadow: 1px 1px rgba(000,000,000,0.5);
+}
+.file-blue:hover:before {
+  border-color: #02b0e6;
+}
+.file-blue:before{
+  display: inherit;
+}
+.file-blue:active:before {
+  background: #02b0e6;
+}

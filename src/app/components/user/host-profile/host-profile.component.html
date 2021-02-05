@@ -35,7 +35,7 @@
               <div>
                 <h4>Location map</h4>
                 <div class="map-responsive">
-                  <iframe 
+                  <iframe
                     src={{loc}}
                     width="100%" height="100%" style="border-radius: 30px" allowfullscreen></iframe>
                 </div>
@@ -48,12 +48,13 @@
         <div [hidden]="index!==2">
           <div class="customDiv">
             <div class="row">
-              <div class="card-body login-form">
+              <div class="card-body login-form form-flow">
                 <form [formGroup]="form" (ngSubmit)="OnSubmit()">
                   <div class="mb-4">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"> <svg fill="white" width="15px" height="auto"
+                        <span class="input-group-text">
+                          <svg fill="white" width="15px" height="auto"
                             viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z" />
@@ -135,7 +136,26 @@
                         length is 11</small>
                     </div>
                   </div>
-                
+                  <div class="mb-4">
+                    <div class="input-group form-group mb-0 pb-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <svg width="15px" height="auto" fill="white"
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z" />
+                          </svg>
+                        </span>
+                      </div>
+                      <input class="form-control file-blue" type="file" id="img" name="img" accept="image/*" formControlName="image" placeholder="image" multiple>
+                    </div>
+                    <div class="mt-0 pt-0" *ngIf="
+                    form.controls['image'].invalid &&
+                    (form.controls['image'].touched || form.controls['image'].dirty)">
+                      <small class="form-text text-danger m-0"
+                             *ngIf="form.controls['image'].hasError('required')">*required images</small>
+                    </div>
+                  </div>
                   <div class="mb-4">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
@@ -165,7 +185,7 @@
                       </div>
                       <div class="select-wrapper form-control ">
                         <select class="form-select form-group"   [(ngModel)]="category" formControlName="category" required>
-                        
+
                           <option [ngValue]="null" [disabled]="true">category</option>
                           <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
                         </select>
@@ -183,7 +203,7 @@
                       </div>
                       <div class="select-wrapper form-control ">
                         <select class="form-select form-group"   [(ngModel)]="tag" formControlName="tag" required>
-                        
+
                           <option [ngValue]="null" [disabled]="true">tag</option>
                           <option *ngFor="let tag of tags" value="{{tag}}">{{tag}}</option>
                         </select>
@@ -230,7 +250,7 @@
                 <h4 class="text-secondary">{{favorite.title}}</h4>
               </div>
               <div class="col-3">
-               
+
                 <button class="btn btn-danger float-right" (click)="deleteFavorite(favorite._id)">Delete</button>
               </div>
             </div>

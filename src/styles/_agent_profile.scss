@@ -8,26 +8,30 @@
     height: calc(100vh - 110px);
     background-image: $wheat !important;
     position: relative;
+    overflow-y: scroll;
+    .form-flow {
+      height: 100%;
 
+    }
     .profile-wrapper {
       height: 100%;
       overflow-y: scroll;
 
-        .ng-select-responsive {
-          width: 55%;
-          margin: 0 auto;
-          @include medium-screen {
-            width: 100%;
-          }
-        }
-
+      .ng-select-responsive {
+        width: 55%;
+        margin: 0 auto;
+        @include medium-screen {
+          width: 100%;
         }
       }
+
     }
-    .customDiv{
-      border-style: ridge;
-    }
-   /* Style the tab */
+  }
+}
+.customDiv {
+  border-style: ridge;
+}
+/* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid $hover-color;
