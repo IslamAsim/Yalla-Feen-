@@ -32,5 +32,9 @@ export class PlaceService {
    return this._apiService.delete(`place/delete/${id}`);
   }
 
+  addComment(place_id:any,comment:any){
+    return this._apiService.postWithToken(`place/create-comment/${place_id}`,comment);
+  }
+
   
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Place} from '../../../models/place';
 import {ActivatedRoute} from '@angular/router';
 import {PlaceService} from '../../../services/place.service';
+import { CommentService } from './../../../services/comment.service';
 
 @Component({
   selector: 'app-details',
@@ -10,9 +11,11 @@ import {PlaceService} from '../../../services/place.service';
 })
 export class DetailsComponent implements OnInit {
   place: Place = new Place();
-  id: string;
+  id: any;
+  addedComment:string="";
   // tslint:disable-next-line:variable-name
-  constructor(private _activatedRoute: ActivatedRoute, private _placeService: PlaceService) { }
+  constructor(private _activatedRoute: ActivatedRoute, private _placeService: PlaceService,private _commentService:CommentService) { }
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
       console.log(params.get('id'));
@@ -24,6 +27,22 @@ export class DetailsComponent implements OnInit {
       this.place = response;
     } , error => {
      alert("yallahwyyy");
+    });
+  }
+
+  addComment(){
+    const comment:any={
+      text:this.addedComment,
+    }
+    console.log(this.place._id);
+    console.log(this.addedComment);
+    
+    this._placeService.addComment(this.place._id,comment).subscribe((res)=>{
+        console.log(res);
+        
+    },(error)=>{
+      console.log(error);
+      
     });
   }
 }
