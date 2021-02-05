@@ -40,20 +40,19 @@ export class HostProfileComponent implements OnInit {
       console.log(this.user);
     });
 
-    this._placeService.getWithToken().subscribe((res) => {
-      console.log(res);
-      this.places = res.data;
+    this._placeService.getUserPlaces().subscribe((res) => {
+      console.log("my placeeees");
+      console.log(res.places );
+      this.places = res.places;
       console.log(this.places);
     }, (error) => {
+
         alert('yallahwyyy');
     });
 
-    this._favoriteService.getUserFavorites().subscribe((res => {
-      console.log(res.favorites_places);
-      this.favorites = res.favorites_places;
-    }), (error) => {
-      alert('yallahwyyy');
-    });
+   
+
+
     this.form = this._formBuilder.group({
       title: [
         '',
@@ -135,11 +134,35 @@ export class HostProfileComponent implements OnInit {
       images: this.form.controls.image.value
     };
     this._place.create(place).subscribe((response) => {
-      console.log(response , ' hhhhhhhhhhhhhhhhhhhhhhh');
+      //console.log(response , ' hhhhhhhhhhhhhhhhhhhhhhh');
     }, ((error) => {
       // this.erro = 'this username or email already exist';
      console.log(error);
     }));
+  }
+
+  editPlace(place:any){
+
+
+    this.index=2;
+    
+    this.form.patchValue({
+      title: place.title ,
+      description: place.description,
+      phone:place.phone,
+      type:place.type,
+      location:place.location,
+      
+      Add:"Edit"
+    });
+
+
+
+//this.OnSubmit("")
+
+
+
+    
   }
 }
 

@@ -9,7 +9,7 @@
           <img src="{{place.images[0]}}" alt="">
         </div>
         <p class="mt-3">
-          <app-rating [stars]='place.rating.length'></app-rating> islam
+          <app-rating [stars]='3'></app-rating> islam
         </p>
         <p>
           <span class="secondary-title mr-1 title-color">Working Hours </span><span
@@ -51,6 +51,7 @@
         <!-- place description -->
         <p class="description title-color">Place Description</p>
         <p class="description-text">{{place.description}}</p>
+        
         <!-- End Place Description -->
       </div>
     </div>
@@ -59,10 +60,10 @@
     <div class="wrapper comment-form card">
       <h3 class="title-color card-header">Feedback's</h3>
       <div *ngFor="let feedback of place.comments" class="media feedback m-0 p-2 m-1 card-body">
-        <img class="d-flex mr-3 rounded-circle circle-img" src="{{place.images[0]}}" alt="">
+        <img class="d-flex mr-3 rounded-circle circle-img" src="{{feedback.user.avatar}}" alt="">
         <div class="media-body">
-          <h5 class="mb-0 title-color">{{feedback}}</h5>
-          {{feedback.feedback}}
+          <h5 class="mb-0 title-color">{{feedback.user.username}} </h5>
+          {{feedback.text}} 
         </div>
       </div>
     </div>

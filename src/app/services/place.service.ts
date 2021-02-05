@@ -19,9 +19,9 @@ export class PlaceService {
   {
    return this._apiService.get('place');
   }
-  getWithToken()
+  getUserPlaces()
   {
-   return this._apiService.getWithToken('place');
+   return this._apiService.getWithToken('place/my-places');
   }
   getDetails(id: string)
   {
@@ -29,12 +29,14 @@ export class PlaceService {
   }
   delete(id: string)
   {
-   return this._apiService.delete(`place/delete/${id}`);
+   return this._apiService.deleteWithToken(`place/delete/${id}`);
   }
+  
 
   addComment(place_id:any,comment:any){
     return this._apiService.postWithToken(`place/create-comment/${place_id}`,comment);
   }
+
 
   
 }

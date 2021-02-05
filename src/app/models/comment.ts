@@ -3,4 +3,5 @@ export class Comment {
 
     user:User;
     text:string;
+    
   }
