@@ -11,9 +11,9 @@ export class PlaceService {
   {
    return this._apiService.postWithToken('place/create', place);
   }
-  update(place: Place)
+  update(place: Place, id: string)
   {
-   return this._apiService.PUT('place', place);
+   return this._apiService.putWithToken(`place/update/${id}`, place);
   }
   get()
   {
@@ -31,12 +31,12 @@ export class PlaceService {
   {
    return this._apiService.deleteWithToken(`place/delete/${id}`);
   }
-  
+
 
   addComment(place_id:any,comment:any){
     return this._apiService.postWithToken(`place/create-comment/${place_id}`,comment);
   }
 
 
-  
+
 }

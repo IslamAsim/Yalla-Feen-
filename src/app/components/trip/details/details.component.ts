@@ -19,14 +19,13 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
       console.log(params.get('id'));
-      
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
       console.log(response);
       this.place = response;
     } , error => {
-     alert("yallahwyyy");
+     alert('yallahwyyy');
     });
   }
 
@@ -36,13 +35,13 @@ export class DetailsComponent implements OnInit {
     }
     console.log(this.place._id);
     console.log(this.addedComment);
-    
+
     this._placeService.addComment(this.place._id,comment).subscribe((res)=>{
         console.log(res);
-        
+
     },(error)=>{
       console.log(error);
-      
+
     });
   }
 }

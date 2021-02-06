@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Place } from 'src/app/models/place';
 import { ApiService } from 'src/app/services/api.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PlaceService } from 'src/app/services/place.service';
-import { User } from './../../../models/user';
-import { FavoriteService } from './../../../services/favorite.service';
+import { User } from '../../../models/user';
+import { FavoriteService } from '../../../services/favorite.service';
 
 
 @Component({
@@ -29,30 +26,22 @@ export class HostProfileComponent implements OnInit {
   erro: string;
   user: User;
   index = 1;
+  isEdit: boolean = false;
+  placeID: string;
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
-  constructor(private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _place: PlaceService, private _router: Router, private _favoriteService: FavoriteService) { }
+  constructor(private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _router: Router, private _favoriteService: FavoriteService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
-      console.log(resp);
       // @ts-ignore
       this.user = resp.profile;
      // this.loc += this.user.city;
-      console.log(this.user);
     });
 
     this._placeService.getUserPlaces().subscribe((res) => {
-      console.log("my placeeees");
-      console.log(res.places );
       this.places = res.places;
-      console.log(this.places);
     }, (error) => {
-
         alert('yallahwyyy');
     });
-
-   
-
-
     this.form = this._formBuilder.group({
       title: [
         '',
@@ -133,36 +122,33 @@ export class HostProfileComponent implements OnInit {
       type: this.form.controls.type.value,
       images: this.form.controls.image.value
     };
-    this._place.create(place).subscribe((response) => {
-      //console.log(response , ' hhhhhhhhhhhhhhhhhhhhhhh');
-    }, ((error) => {
-      // this.erro = 'this username or email already exist';
-     console.log(error);
-    }));
+    if (!this.isEdit){
+      this._placeService.create(place).subscribe((response) => {
+      }, ((error) => {
+        // this.erro = 'this username or email already exist';
+        console.log(error);
+      }));
+    }else {
+      this._placeService.update(place, this.placeID).subscribe((response) => {
+        this._router.navigateByUrl(`trip/details/${this.placeID}`);
+      }, ((error) => {
+        // this.erro = 'this username or email already exist';
+        console.log(error);
+      }));
+    }
   }
 
-  editPlace(place:any){
-
-
-    this.index=2;
-    
+  editPlace(place: any){
+    this.index = 2;
+    this.isEdit = true;
+    this.placeID = place._id;
     this.form.patchValue({
       title: place.title ,
       description: place.description,
-      phone:place.phone,
-      type:place.type,
-      location:place.location,
-      
-      Add:"Edit"
+      phone: place.phone,
+      type: place.type,
+      location: place.location,
     });
-
-
-
-//this.OnSubmit("")
-
-
-
-    
   }
 }
 

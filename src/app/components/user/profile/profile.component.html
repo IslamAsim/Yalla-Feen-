@@ -12,7 +12,7 @@
       <div class="col-md-9 ">
         <div class="tab mb-3">
           <button class="tablinks" (click)="tabChanger(1)" mat-raised-button>Information</button>
-      
+
           <button class="tablinks" (click)="tabChanger(2)" mat-raised-button>Favorite places</button>
 
         </div>
@@ -44,7 +44,7 @@
         </div>
 
 
-        
+
 
         <div [hidden]="index!==2">
           <div *ngFor="let favorite of favorites">
@@ -57,14 +57,10 @@
                 <h4 class="text-secondary">{{favorite.title}}</h4>
               </div>
               <div class="col-3">
-
-                <button class="btn btn-primary float-right" routerLink="/trip/details/{{favorite._id}}">Details</button>
+                <button class="btn btn-primary mr-3" routerLink="/trip/details/{{favorite._id}}">Details</button>
+                <button class="btn btn-danger" (click)="deleteFavorite(favorite._id)">Delete</button>
               </div>
-              <div class="col-3">
 
-                <button class="btn btn-danger float-right" (click)="deleteFavorite(favorite._id)">Delete</button>
-              </div>
-              
             </div>
           </div>
         </div>

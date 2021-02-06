@@ -16,7 +16,7 @@
           <button class="tablinks" (click)="tabChanger(3)" mat-raised-button>Places</button>
 
         </div>
-<!-- host information -->
+        <!-- host information -->
         <div [hidden]="index!==1">
 
           <div class="row">
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-<!-- add places -->
+        <!-- add places -->
         <div [hidden]="index!==2">
           <div class="customDiv">
             <div class="row">
@@ -54,12 +54,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <svg fill="white" width="15px" height="auto"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                               viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z" />
+                              d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/>
                           </svg></span>
                       </div>
-                      <input type="text" class="form-control" formControlName="title"  placeholder="Title">
+                      <input type="text" class="form-control" formControlName="title" placeholder="Title">
                     </div>
                     <div class="mt-0 pt-0" *ngIf="
                     form.controls['title'].invalid &&
@@ -75,9 +75,9 @@
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z" />
+                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z"/>
                           </svg>
                         </span>
                       </div>
@@ -88,18 +88,18 @@
                     (form.controls['description'].touched || form.controls['description'].dirty)
                   ">
                       <small class="form-text text-danger m-0"
-                        *ngIf="form.controls['description'].hasError('required')">*required description</small>
+                             *ngIf="form.controls['description'].hasError('required')">*required description</small>
                       <small class="form-text text-danger m-0"
-                        *ngIf="form.controls['description'].hasError('minlength')">*min length is 2</small>
+                             *ngIf="form.controls['description'].hasError('minlength')">*min length is 2</small>
                     </div>
                   </div>
                   <div class="mb-4">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z" />
+                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z"/>
                           </svg></span>
                       </div>
                       <input type="text" class="form-control" formControlName="phone" placeholder="phone">
@@ -109,7 +109,7 @@
                     (form.controls['phone'].touched || form.controls['phone'].dirty)
                   ">
                       <small class="form-text text-danger m-0"
-                        *ngIf="form.controls['phone'].hasError('required')">*required phone</small>
+                             *ngIf="form.controls['phone'].hasError('required')">*required phone</small>
                       <small class="form-text text-danger m-0" *ngIf="form.controls['phone'].hasError('minlength')">*min
                         length is 11</small>
                     </div>
@@ -118,9 +118,9 @@
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z" />
+                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z"/>
                           </svg></span>
                       </div>
                       <input type="text" class="form-control" formControlName="type" placeholder="type">
@@ -130,7 +130,7 @@
                     (form.controls['type'].touched || form.controls['type'].dirty)
                   ">
                       <small class="form-text text-danger m-0"
-                        *ngIf="form.controls['type'].hasError('required')">*required type</small>
+                             *ngIf="form.controls['type'].hasError('required')">*required type</small>
                       <small class="form-text text-danger m-0" *ngIf="form.controls['type'].hasError('minlength')">*min
                         length is 11</small>
                     </div>
@@ -140,13 +140,14 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <svg width="15px" height="auto" fill="white"
-                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                               viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z" />
+                              d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z"/>
                           </svg>
                         </span>
                       </div>
-                      <input class="form-control file-blue" type="file" id="img" name="img" accept="image/*" formControlName="image" placeholder="image" multiple>
+                      <input class="form-control file-blue" type="file" id="img" name="img" accept="image/*"
+                             formControlName="image" placeholder="image" multiple>
                     </div>
                     <div class="mt-0 pt-0" *ngIf="
                     form.controls['image'].invalid &&
@@ -159,9 +160,9 @@
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z" />
+                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z"/>
                           </svg></span>
                       </div>
                       <div class="select-wrapper form-control">
@@ -173,35 +174,36 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-4" *ngIf="!isEdit">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z" />
+                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z"/>
                           </svg></span>
                       </div>
                       <div class="select-wrapper form-control ">
-                        <select class="form-select form-group"   [(ngModel)]="category" formControlName="category" required>
+                        <select class="form-select form-group" [(ngModel)]="category" formControlName="category"
+                                required>
 
                           <option [ngValue]="null" [disabled]="true">category</option>
-                          <option *ngFor="let category of categories"  value="{{category}}">{{category}}</option>
+                          <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-4" *ngIf="!isEdit">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path
-                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z" />
+                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z"/>
                           </svg></span>
                       </div>
                       <div class="select-wrapper form-control ">
-                        <select class="form-select form-group"  [(ngModel)]="tag"  formControlName="tag" required>
+                        <select class="form-select form-group" [(ngModel)]="tag" formControlName="tag" required>
 
                           <option [ngValue]="null" [disabled]="true">tag</option>
                           <option *ngFor="let tag of tags" value="{{tag}}">{{tag}}</option>
@@ -210,7 +212,8 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="submit" [disabled]="form.invalid" formControlName="Add" value="Add" class="btn float-right login_btn">
+                    <input type="submit" [disabled]="form.invalid" formControlName="Add" value="{{isEdit? 'Update':'Add'}}"
+                           class="btn float-right login_btn">
                   </div>
                   <small class="form-text text-danger">{{erro}}</small>
                 </form>
@@ -225,26 +228,22 @@
             <div class="row">
               <div class="col-2">
                 <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png"
-                  style="width: 100%;" alt="">
+                     style="width: 100%;" alt="">
               </div>
-              <div class="col-7">
+              <div class="col-6">
                 <h4 class="text-secondary">{{place.title}}</h4>
                 <h6 class="text-secondary">{{place.description}}</h6>
               </div>
-              <div class="col-3">
-                <span class="float-right text-secondary">{{place.createdAt}}</span>
-                <button class="btn btn-success float-right" (click)="editPlace(place)">Edit</button>
-              </div>s
-              <div class="col-3">
-                <span class="float-right text-secondary">{{place.createdAt}}</span>
-                <button class="btn btn-danger float-right" (click)="deletePlace(place._id)">Delete</button>
+              <div class="col-4">
+                <div class="btn-wrapper d-flex justify-content-end">
+                  <button class="btn btn-success mr-2 p-1" (click)="editPlace(place)">Edit</button>
+                  <button class="btn btn-info mr-2 p-1" routerLink="/trip/details/{{place._id}}">Details</button>
+                  <button class="btn btn-danger p-1" (click)="deletePlace(place._id)">Delete</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-       
-
       </div>
     </div>
   </div>

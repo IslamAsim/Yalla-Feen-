@@ -25,6 +25,8 @@ export class ApiService {
   PUT(url: string, body: any) {
     return this._httpClient.put(`${environment.apiURL}${url}`, body);
   }
+  putWithToken(url: string,body:any) {return this._httpClient.put(`${environment.apiURL}${url}`,body, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
+  }
   // tslint:disable-next-line:typedef
   delete(url: string) {
     return this._httpClient.delete(`${environment.apiURL}${url}`);

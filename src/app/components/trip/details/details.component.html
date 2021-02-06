@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-4">
-        <h2 class="pr-3">{{place.title}} {{place.location}}{{place.rating.length}} 
+        <h2 class="pr-3">{{place.title}} {{place.location}}{{place.rating.length}}
           <app-favorite [isFavorite]=true></app-favorite>
         </h2>
         <div class="d-flex justify-content-center overflow-hidden img-title">
@@ -18,7 +18,7 @@
         <h1> {{place.location}} </h1>
         <p>
           <span class="secondary-title mr-1 title-color">Location </span>
-          {{place.location}} 
+          {{place.location}}
         </p>
         <p>
           <span class="secondary-title mr-1 title-color">Description </span><span>{{place.description}}</span>
@@ -51,7 +51,6 @@
         <!-- place description -->
         <p class="description title-color">Place Description</p>
         <p class="description-text">{{place.description}}</p>
-        
         <!-- End Place Description -->
       </div>
     </div>
@@ -63,7 +62,7 @@
         <img class="d-flex mr-3 rounded-circle circle-img" src="{{feedback.user.avatar}}" alt="">
         <div class="media-body">
           <h5 class="mb-0 title-color">{{feedback.user.username}} </h5>
-          {{feedback.text}} 
+          {{feedback.text}}
         </div>
       </div>
     </div>
@@ -73,7 +72,7 @@
       <div class="card-body comment-body">
         <form >
           <div class="form-group">
-            <textarea class="form-control"name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
+            <textarea class="form-control" name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
           </div>
           <button type="submit" (click)="addComment()" class="btn btn-primary">Submit</button>
         </form >
