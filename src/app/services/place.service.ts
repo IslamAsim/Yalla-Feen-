@@ -7,11 +7,11 @@ import { ApiService } from './api.service';
 })
 export class PlaceService {
   constructor(private _apiService: ApiService) { }
-  create(place: Place)
+  create(place: any)
   {
    return this._apiService.postWithToken('place/create', place);
   }
-  update(place: Place, id: string)
+  update(place: any, id: string)
   {
    return this._apiService.putWithToken(`place/update/${id}`, place);
   }

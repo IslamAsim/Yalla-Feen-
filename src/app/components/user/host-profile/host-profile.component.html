@@ -146,8 +146,8 @@
                           </svg>
                         </span>
                       </div>
-                      <input class="form-control file-blue" type="file" id="img" name="img" accept="image/*"
-                             formControlName="image" placeholder="image" multiple>
+                      <input class="form-control"  type="file" #fileInput accept="image/*" multiple />
+                            
                     </div>
                     <div class="mt-0 pt-0" *ngIf="
                     form.controls['image'].invalid &&
