@@ -23,7 +23,7 @@
             <div class="col-8">
               <div>
 
-                <h4>First name: {{user.firstname}} {{souad}}</h4>
+                <h4>First name: {{user.firstname}}</h4>
                 <h4>Surname: {{user.lastname}}</h4>
                 <h4>Email: {{user.email}} </h4>
                 <h4>Phone number: </h4>
@@ -147,7 +147,7 @@
                         </span>
                       </div>
                       <input class="form-control"  type="file" #fileInput accept="image/*" multiple />
-                            
+
                     </div>
                     <div class="mt-0 pt-0" *ngIf="
                     form.controls['image'].invalid &&
@@ -186,9 +186,8 @@
                       <div class="select-wrapper form-control ">
                         <select class="form-select form-group" [(ngModel)]="category" formControlName="category"
                                 required>
-
                           <option [ngValue]="null" [disabled]="true">category</option>
-                          <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+                          <option *ngFor="let category of categories" value="{{category}}">{{category.title}}</option>
                         </select>
                       </div>
                     </div>
@@ -221,7 +220,6 @@
             </div>
           </div>
         </div>
-
         <!-- host places -->
         <div [hidden]="index!==3">
           <div *ngFor="let place of places">

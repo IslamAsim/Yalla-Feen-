@@ -15,14 +15,14 @@
             <br>
             <p class="card-text">{{trip.description}}</p>
             <div class="wrapper">
-             <app-rating [stars]='trip.rating[0]'></app-rating>
+             <app-rating [placeID]="trip._id" [stars]='trip.rates'></app-rating>
               <span>{{trip.createdAt}}</span>
             </div>
           </div>
         </div>
 
         <div class="card-back">
-          <app-favorite [isFavorite]="" (change)="changeFavorite(trip._id)"  ></app-favorite>
+          <app-favorite [placeID]="trip._id" ></app-favorite>
           <figure>
             <div class="img-bg"></div>
             <img src='{{trip.images[0]}}' alt="{{trip.title}}">

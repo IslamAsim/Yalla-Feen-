@@ -10,8 +10,7 @@ import { FavoriteService } from './../../../services/favorite.service';
 })
 export class TopRatedComponent implements OnInit {
   places: Place[] = [];
-  
-
+  isFav: boolean;
   constructor(private _placeService: PlaceService,private _favoriteService:FavoriteService) {
   }
   ngOnInit(): void {
@@ -22,8 +21,4 @@ export class TopRatedComponent implements OnInit {
       console.log(error);
     });
   }
- 
-    
-  
-  
 }

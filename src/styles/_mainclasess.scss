@@ -140,3 +140,11 @@ a{
 .file-blue:active:before {
   background: #02b0e6;
 }
+.edit-delete-style{
+  cursor: pointer;
+}
+.svg-decoration{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

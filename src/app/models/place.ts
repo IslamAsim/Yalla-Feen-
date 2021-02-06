@@ -5,7 +5,7 @@ import { Category } from './category';
 
 export class Place{
   // tslint:disable-next-line:variable-name
-  _id: string;  
+  _id: string;
   title: string;
   description: string;
   location: string;
@@ -23,6 +23,4 @@ export class Place{
   images:string [];
   rating: any;
   workingHours: string;
- 
-  
 }

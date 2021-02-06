@@ -33,10 +33,11 @@ export class PlaceService {
   }
 
 
-  addComment(place_id:any,comment:any){
-    return this._apiService.postWithToken(`place/create-comment/${place_id}`,comment);
+  addComment( place_id: string, comment: any){
+    return this._apiService.postWithToken(`place/create-comment/${place_id}`, comment);
   }
-
-
+  addRating( placeID: string, rating: number){
+    return this._apiService.postWithToken(`place/add-rating/${placeID}`, rating);
+  }
 
 }

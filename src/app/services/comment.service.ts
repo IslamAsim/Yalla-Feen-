@@ -31,6 +31,6 @@ export class CommentService {
   }
   delete(id: string)
   {
-   return this._apiService.delete(`place/delete/${id}`);
+   return this._apiService.deleteWithToken(`comment/delete/${id}`);
   }
 }
