@@ -33,7 +33,7 @@ export class HostProfileComponent implements OnInit {
   index = 1;
   isEdit: boolean = false;
   placeID: string;
-  listOfFiles: any[] = [];s
+  listOfFiles: any[] = [];
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
   constructor(private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _router: Router, private _favoriteService: FavoriteService) { }
   ngOnInit(): void {
@@ -125,13 +125,15 @@ export class HostProfileComponent implements OnInit {
      this.listOfFiles.push(filo);
      
     }
+
+    
       
       
     console.log("jhhhsjsjssj");
     
     console.log(this.listOfFiles);
     
-    this.file.append('images',this.fileInput.nativeElement.files[0]);
+    //this.file.append('images',this.listOfFiles.toString);
 
     this.file.append('title',this.form.controls.title.value);
     this.file.append('category',this.form.controls.category.value);
@@ -141,6 +143,9 @@ export class HostProfileComponent implements OnInit {
     this.file.append('type',this.form.controls.type.value);
     this.file.append('location',this.form.controls.location.value);
     console.log(this.file);
+    for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
+      this.file.append('images', this.fileInput.nativeElement.files[index]);
+  }
     
     // const place: any = {
     //   title: this.form.controls.title.value,
@@ -156,7 +161,9 @@ export class HostProfileComponent implements OnInit {
       this._placeService.create(this.file).subscribe((response) => {
         console.log(response);
         this.listOfFiles=[];
-        
+        if (response.success){
+          this.index = 3;
+        }
         
       }, ((error) => {
         // this.erro = 'this username or email already exist';
