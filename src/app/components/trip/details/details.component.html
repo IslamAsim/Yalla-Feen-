@@ -15,14 +15,14 @@
           <span class="secondary-title mr-1 title-color">Working Hours </span><span
           class="badge badge-success">{{place.createdAt}}</span>
         </p>
-        <h1> {{place.location}} </h1>
-        <p>
-          <span class="secondary-title mr-1 title-color">Location </span>
-          {{place.location}}
-        </p>
-        <p>
-          <span class="secondary-title mr-1 title-color">Description </span><span>{{place.description}}</span>
-        </p>
+<!--        <h1> {{place.location}} </h1>-->
+<!--        <p>-->
+<!--          <span class="secondary-title mr-1 title-color">Location </span>-->
+<!--          {{place.location}}-->
+<!--        </p>-->
+<!--        <p>-->
+<!--          <span class="secondary-title mr-1 title-color">Description </span><span>{{place.description}}</span>-->
+<!--        </p>-->
       </div>
       <div class="col-md-8">
         <!-- BootStrap Slider -->
@@ -78,9 +78,9 @@
       <div class="card-body comment-body">
         <form >
           <div class="form-group">
-            <textarea class="form-control" name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
+            <textarea #textarea class="form-control" name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
           </div>
-          <button type="submit" (click)="addComment()" class="btn btn-primary">Submit</button>
+          <button type="submit" (click)="addComment(textarea)" class="btn btn-primary">Submit</button>
         </form >
       </div>
     </div>

@@ -9,16 +9,12 @@ export class FavoriteService {
   constructor(private _apiService:ApiService) { }
   add_favorite(place_id: string)
   {
-    
-   return this._apiService.postWithToken('favorite/add/', place_id);
+   return this._apiService.postWithTokenFav( `favorite/add/${place_id}` );
   }
- 
- 
   getUserFavorites()
   {
    return this._apiService.getWithToken('favorite/list');
   }
- 
   deletewithToken(place_id: string)
   {
    return this._apiService.deleteWithToken(`favorite/remove/${place_id}`);

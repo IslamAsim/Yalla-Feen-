@@ -16,7 +16,8 @@ export class FavoriteComponent implements OnInit {
   }
   changeFavorite(placeID: string) {
     this.isFavorite = !this.isFavorite;
-    this.isFavorite ? this._favoriteService.add_favorite(placeID) : this._favoriteService.deletewithToken(placeID);
-    // this.change.emit(this.isFavorite);
+    this.isFavorite ? this._favoriteService.add_favorite(placeID).subscribe((res) => {
+      console.log(res); }) : this._favoriteService.deletewithToken(placeID).subscribe((res) => {
+      console.log(res); });
   }
 }

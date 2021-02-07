@@ -156,24 +156,6 @@
                              *ngIf="form.controls['image'].hasError('required')">*required images</small>
                     </div>
                   </div>
-                  <div class="mb-4">
-                    <div class="input-group form-group mb-0 pb-0">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><svg width="15px" height="auto" fill="white"
-                                                            viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M1593 349l-640 1280q-17 35-57 35-5 0-15-2-22-5-35.5-22.5t-13.5-39.5v-576h-576q-22 0-39.5-13.5t-22.5-35.5 4-42 29-30l1280-640q13-7 29-7 27 0 45 19 15 14 18.5 34.5t-6.5 39.5z"/>
-                          </svg></span>
-                      </div>
-                      <div class="select-wrapper form-control">
-                        <select class="form-select" [(ngModel)]="location" formControlName="location" required>
-                          <!-- <option value="cairo" selected>Cairo</option> -->
-                          <option [ngValue]="null" [disabled]="true">location</option>
-                          <option *ngFor="let location of locations" value="{{location}}">{{location}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
                   <div class="mb-4" *ngIf="!isEdit">
                     <div class="input-group form-group mb-0 pb-0">
                       <div class="input-group-prepend">
@@ -187,7 +169,7 @@
                         <select class="form-select form-group" [(ngModel)]="category" formControlName="category"
                                 required>
                           <option [ngValue]="null" [disabled]="true">category</option>
-                          <option *ngFor="let category of categories" value="{{category}}">{{category.title}}</option>
+                          <option *ngFor="let category of categories" value="{{category.title}}">{{category.title}}</option>
                         </select>
                       </div>
                     </div>

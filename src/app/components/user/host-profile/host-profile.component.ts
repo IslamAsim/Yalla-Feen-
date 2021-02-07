@@ -40,7 +40,7 @@ export class HostProfileComponent implements OnInit {
       // @ts-ignore
       this.user = resp.profile;
      // this.loc += this.user.city;
-      this._api.get('category').subscribe((res) => {
+      this._api.get('category/list').subscribe((res) => {
         this.categories = res.data;
       });
     });
@@ -57,9 +57,6 @@ export class HostProfileComponent implements OnInit {
           Validators.required,
           Validators.minLength(5),
         ],
-      ],
-      location: [
-        '',
       ],
       category: [
         '',
@@ -132,7 +129,6 @@ export class HostProfileComponent implements OnInit {
      this.file.append('description', this.form.controls.description.value);
      this.file.append('phone', this.form.controls.phone.value);
      this.file.append('type', this.form.controls.type.value);
-     this.file.append('location', this.form.controls.location.value);
      console.log(this.file);
     // tslint:disable-next-line:prefer-for-of
      for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
@@ -140,7 +136,6 @@ export class HostProfileComponent implements OnInit {
   }
     const place: any = {
       title: this.form.controls.title.value,
-      location: this.form.controls.location.value,
       category: this.form.controls.category.value,
       tag: this.form.controls.tag.value,
       description: this.form.controls.description.value,
