@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FavoriteService} from '../../services/favorite.service';
-import { PlaceService } from 'src/app/services/place.service';
 
 @Component({
   selector: 'app-favorite',
@@ -8,20 +7,25 @@ import { PlaceService } from 'src/app/services/place.service';
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit {
-  isFavorite: boolean = false;
+  @Input() isFavorite: boolean;
   @Input() placeID: string;
+
   // @Output() change = new EventEmitter<boolean>();
-  constructor(private _favoriteService: FavoriteService ,private placeService:PlaceService ){
+  constructor(private _favoriteService: FavoriteService) {
   }
+
   ngOnInit(): void {
   }
-  changeFavorite(placeID: string) {
-   console.log(localStorage.getItem("token"));
-   
-    this.isFavorite ? this.placeService.addFavorite(placeID).subscribe((res) => {
-      console.log(res); }) : this._favoriteService.deletewithToken(placeID).subscribe((res) => {
-      console.log(res); });
-
-      this.isFavorite = !this.isFavorite;
+  deleteFavorite(placeID){
+    this._favoriteService.deletewithToken(placeID).subscribe((res) => {
+      console.log(res);
+      this.isFavorite = false;
+    });
+  }
+  addFavorite(placeID){
+    this._favoriteService.addFavorite(placeID).subscribe((res) => {
+      this.isFavorite = true;
+      console.log(res);
+    });
   }
 }

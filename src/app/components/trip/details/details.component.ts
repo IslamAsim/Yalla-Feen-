@@ -5,6 +5,7 @@ import {PlaceService} from '../../../services/place.service';
 import { CommentService } from '../../../services/comment.service';
 import {Comment} from '../../../models/comment';
 import {ApiService} from '../../../services/api.service';
+import {FavoriteService} from '../../../services/favorite.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -12,13 +13,14 @@ import {ApiService} from '../../../services/api.service';
 })
 export class DetailsComponent implements OnInit {
   place: Place = new Place();
-  editComment:string='';
+  editComment: string = '';
   id: any;
   addedComment: string = '';
-  isEditEnable : boolean = false;
-  ido:string;
+  isEditEnable: boolean = false;
+  ido: string;
+  isFavorite: boolean;
   // tslint:disable-next-line:variable-name
-  constructor(private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService,private _commentService:CommentService) { }
+  constructor(private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService,private _commentService:CommentService) { }
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
@@ -26,6 +28,9 @@ export class DetailsComponent implements OnInit {
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
+      this._favoriteService.isFav(this.id).subscribe((res) => {
+        this.isFavorite = res.success;
+      });
       console.log(response);
       this.place = response;
     } , error => {
@@ -48,16 +53,16 @@ export class DetailsComponent implements OnInit {
     console.log(this.ido);
     console.log(this.addedComment);
 
-    
+
     this._commentService.updateComment(this.ido,{"text":this.addedComment}).subscribe((res)=>{
     console.log("succceeeeessss");
-    
+
       console.log(res);
-        
+
       },(error=>{
         alert("yllahwyyyyyyy");
         console.log(error);
-        
+
       }));
   }
   edit(id:string,text:string){
@@ -65,8 +70,8 @@ export class DetailsComponent implements OnInit {
     this.ido=id;
     this.addedComment=text;
     console.log(("idooooooo"+this.ido));
-    
-  
+
+
   }
   addComment(e: any){
     const comment: Comment = {
@@ -86,5 +91,5 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  
+
 }

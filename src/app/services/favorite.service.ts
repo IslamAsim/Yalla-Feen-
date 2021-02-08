@@ -7,11 +7,9 @@ import { ApiService } from './api.service';
 export class FavoriteService {
 
   constructor(private _apiService:ApiService) { }
-  add_favorite(place_id: string)
+  addFavorite( place_id: string)
   {
-    console.log("place_ID : ",place_id);
-    
-   return this._apiService.postWithTokenFav( `favorite/add/${place_id}` );
+   return this._apiService.postWithTokenFav( `favorite/add/${place_id}`);
   }
   getUserFavorites()
   {
@@ -21,5 +19,8 @@ export class FavoriteService {
   {
    return this._apiService.deleteWithToken(`favorite/remove/${place_id}`);
   }
-
+  isFav(place_id: string)
+  {
+    return this._apiService.getWithToken(`favorite/isfavorite/${place_id}`);
+  }
 }

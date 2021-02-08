@@ -3,7 +3,7 @@
     <div class="row mt-5">
       <div class="col-md-4">
         <h2 class="pr-3">{{place.title}}
-          <app-favorite [placeID]="place._id"></app-favorite>
+          <app-favorite [isFavorite]="isFavorite"  [placeID]="place._id"></app-favorite>
         </h2>
         <div class="d-flex justify-content-center overflow-hidden img-title">
           <img src="{{place.images[0]}}" alt="">

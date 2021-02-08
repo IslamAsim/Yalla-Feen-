@@ -21,7 +21,7 @@ export class ApiService {
   }
   postWithToken(url: string,body:any) {return this._httpClient.post(`${environment.apiURL}${url}`,body, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
   }
-  postWithTokenFav(url: string) {return this._httpClient.post(`${environment.apiURL}${url}`, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
+  postWithTokenFav(url: string) {return this._httpClient.post(`${environment.apiURL}${url}`, {}, {headers: new HttpHeaders({'x-access-token': localStorage.getItem('token')||""})});
   }
   // tslint:disable-next-line:typedef
   PUT(url: string, body: any) {

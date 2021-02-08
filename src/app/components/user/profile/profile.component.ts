@@ -44,13 +44,12 @@ export class ProfileComponent implements OnInit {
 
     this._favoriteService.getUserFavorites().subscribe((res => {
       console.log("aybtngaaaaan");
-      
       console.log(res.favorites_places);
       this.favorites = res.favorites_places;
     }), (error) => {
       alert('yallahwyyy');
     });
-    
+
   }
   tabChanger(index: number) {
     this.index = index;
@@ -76,7 +75,7 @@ export class ProfileComponent implements OnInit {
   }
 
   showFavoriteDetails(){
-    
+
   }
 
   OnSubmit() {
