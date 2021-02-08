@@ -13,7 +13,6 @@ import {FavoriteService} from '../../../services/favorite.service';
 })
 export class DetailsComponent implements OnInit {
   place: Place = new Place();
-  editComment: string = '';
   id: any;
   addedComment: string = '';
   isEditEnable: boolean = false;

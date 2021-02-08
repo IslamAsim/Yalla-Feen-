@@ -1,7 +1,10 @@
 <div class="details">
-  <div class="container">
+  <div class="container text-center mt-5 font-weight-bolder" *ngIf="id ==='404'">
+    <h2>Place Not Found...</h2>
+  </div>
+  <div class="container" *ngIf="id !== '404'">
     <div class="row mt-5">
-      <div class="col-md-4">
+      <div class="col-md-4" >
         <h2 class="pr-3">{{place.title}}
           <app-favorite [isFavorite]="isFavorite"  [placeID]="place._id"></app-favorite>
         </h2>

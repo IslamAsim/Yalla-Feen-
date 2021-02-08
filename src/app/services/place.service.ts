@@ -31,12 +31,13 @@ export class PlaceService {
   {
    return this._apiService.deleteWithToken(`place/delete/${id}`);
   }
-
-
   addComment( place_id: string, comment: any){
     return this._apiService.postWithToken(`place/create-comment/${place_id}`, comment);
   }
   addRating( placeID: string, rating: any){
     return this._apiService.postWithToken(`place/add-rating/${placeID}`, rating);
+  }
+  getPlaceByTitle(title: string){
+    return this._apiService.get(`place/place-title/${title}`);
   }
 }

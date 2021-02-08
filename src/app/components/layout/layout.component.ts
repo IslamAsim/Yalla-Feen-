@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {PlaceService} from '../../services/place.service';
 
 // @ts-ignore
 @Component({
@@ -22,7 +23,7 @@ export class LayoutComponent implements OnInit {
     e.isCustom ? this.isCustom = true : this.isCustom = false ;
   }
   // tslint:disable-next-line:variable-name
-  constructor( private _authentication: AuthenticationService, private _router: Router) {
+  constructor( private _authentication: AuthenticationService, private _router: Router, private _place: PlaceService) {
   }
   ngOnInit(): void {
     this.subscription = this._authentication.status.subscribe(e => this.isLogged = e);
@@ -48,5 +49,14 @@ export class LayoutComponent implements OnInit {
   logout(){
     this._authentication.logout();
     this._router.navigateByUrl('/');
+  }
+  titleSearch(title: object){
+    this._place.getPlaceByTitle(title.value).subscribe((res) => {
+        this._router.navigateByUrl(`trip/details/${res.id}`);
+        title.value = '';
+    }, (err) => {
+      this._router.navigateByUrl(`trip/details/404`);
+      title.value = '';
+    });
   }
 }
