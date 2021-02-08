@@ -185,7 +185,6 @@
                       </div>
                       <div class="select-wrapper form-control ">
                         <select class="form-select form-group" [(ngModel)]="tag" formControlName="tag" required>
-
                           <option [ngValue]="null" [disabled]="true">tag</option>
                           <option *ngFor="let tag of tags" value="{{tag}}">{{tag}}</option>
                         </select>

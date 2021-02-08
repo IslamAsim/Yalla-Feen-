@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Place} from '../../../models/place';
 import {PlaceService} from '../../../services/place.service';
-import { FavoriteService } from './../../../services/favorite.service';
+import { FavoriteService } from '../../../services/favorite.service';
 
 @Component({
   selector: 'app-top-rated',
@@ -10,13 +10,19 @@ import { FavoriteService } from './../../../services/favorite.service';
 })
 export class TopRatedComponent implements OnInit {
   places: Place[] = [];
-  isFav: boolean;
+  isFavorite: boolean[] = [];
   constructor(private _placeService: PlaceService, private _favoriteService: FavoriteService) {
   }
   ngOnInit(): void {
     this._placeService.get().subscribe((response: any) => {
-      console.log(response.data);
       this.places = response.data;
+      for (const place of this.places){
+        this._favoriteService.isFav(place._id).subscribe(() => {
+          this.isFavorite.push(true);
+        }, () => {
+          this.isFavorite.push(false);
+        });
+      }
     } , error => {
       console.log(error);
     });

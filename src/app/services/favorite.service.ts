@@ -19,7 +19,7 @@ export class FavoriteService {
   {
    return this._apiService.deleteWithToken(`favorite/remove/${place_id}`);
   }
-  isFav(place_id: string)
+  isFav( place_id: string)
   {
     return this._apiService.getWithToken(`favorite/isfavorite/${place_id}`);
   }

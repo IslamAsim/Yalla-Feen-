@@ -98,7 +98,7 @@ export class HostProfileComponent implements OnInit {
   }
   deletePlace(id: string){
     this._placeService.delete(id).subscribe((res) => {
-      console.log(res);
+      this.ngOnInit();
     }, (error) => {
       alert('yallahwyy couldn\'t delete');
     });
@@ -107,7 +107,6 @@ export class HostProfileComponent implements OnInit {
 
 
   deleteFavorite(id: string){
-
     this._favoriteService.deletewithToken(id).subscribe((res) => {
       console.log(res);
     }, (error) => {
@@ -134,7 +133,6 @@ export class HostProfileComponent implements OnInit {
      for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
       this.file.append('images', this.fileInput.nativeElement.files[index]);
   }
-  
     const place: any = {
       title: this.form.controls.title.value,
       category: this.form.controls.category.value,
@@ -149,6 +147,7 @@ export class HostProfileComponent implements OnInit {
         console.log(response);
         this.listOfFiles = [];
         if (response.success){
+          this.ngOnInit();
           this.index = 3;
         }
       }, ((error) => {

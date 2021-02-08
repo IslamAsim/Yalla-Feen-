@@ -12,20 +12,12 @@
           <img src="{{place.images[0]}}" alt="">
         </div>
         <p class="mt-3">
-          <app-rating [placeID]="place._id" [stars]='place.rates'></app-rating>
+          <app-rating (click)="Render()" [placeID]="place._id" [stars]='place.rates'></app-rating>
         </p>
         <p>
           <span class="secondary-title mr-1 title-color">Working Hours </span><span
           class="badge badge-success">{{place.createdAt}}</span>
         </p>
-<!--        <h1> {{place.location}} </h1>-->
-<!--        <p>-->
-<!--          <span class="secondary-title mr-1 title-color">Location </span>-->
-<!--          {{place.location}}-->
-<!--        </p>-->
-<!--        <p>-->
-<!--          <span class="secondary-title mr-1 title-color">Description </span><span>{{place.description}}</span>-->
-<!--        </p>-->
       </div>
       <div class="col-md-8">
         <!-- BootStrap Slider -->
@@ -84,7 +76,7 @@
             <textarea #textarea class="form-control" name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
           </div>
           <button *ngIf="!isEditEnable" type="submit" (click)="addComment(textarea)" class="btn btn-primary">Submit</button>
-          <button *ngIf="isEditEnable"  type="submit" (click)="update()" class="btn btn-danger">Update</button>
+          <button *ngIf="isEditEnable"  type="submit" (click)="update(textarea)" class="btn btn-danger">Update</button>
 
         </form >
       </div>
