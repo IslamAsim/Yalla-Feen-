@@ -9,6 +9,8 @@ export class FavoriteService {
   constructor(private _apiService:ApiService) { }
   add_favorite(place_id: string)
   {
+    console.log("place_ID : ",place_id);
+    
    return this._apiService.postWithTokenFav( `favorite/add/${place_id}` );
   }
   getUserFavorites()

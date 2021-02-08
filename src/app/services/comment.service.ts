@@ -13,9 +13,9 @@ export class CommentService {
   {
    return this._apiService.postWithToken('place/create', comment);
   }
-  updateComment(comment: any)
+  updateComment(id:string,comment: any)
   {
-   return this._apiService.PUT('place', comment);
+   return this._apiService.putWithToken(`comment/update/${id}`, comment);
   }
   getAllComments()
   {

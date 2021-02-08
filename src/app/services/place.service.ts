@@ -40,4 +40,11 @@ export class PlaceService {
     return this._apiService.postWithToken(`place/add-rating/${placeID}`, rating);
   }
 
+  addFavorite(placeID:string){
+    console.log(placeID);
+    
+    return this._apiService.postWithTokenFav(`favorite/add/${placeID}`);
+  
+  }
+
 }

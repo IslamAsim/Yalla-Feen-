@@ -12,8 +12,11 @@ import {ApiService} from '../../../services/api.service';
 })
 export class DetailsComponent implements OnInit {
   place: Place = new Place();
+  editComment:string='';
   id: any;
   addedComment: string = '';
+  isEditEnable : boolean = false;
+  ido:string;
   // tslint:disable-next-line:variable-name
   constructor(private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService,private _commentService:CommentService) { }
 
@@ -39,6 +42,32 @@ export class DetailsComponent implements OnInit {
       });
     });
   }
+
+
+  update(){
+    console.log(this.ido);
+    console.log(this.addedComment);
+
+    
+    this._commentService.updateComment(this.ido,{"text":this.addedComment}).subscribe((res)=>{
+    console.log("succceeeeessss");
+    
+      console.log(res);
+        
+      },(error=>{
+        alert("yllahwyyyyyyy");
+        console.log(error);
+        
+      }));
+  }
+  edit(id:string,text:string){
+    this.isEditEnable =!this.isEditEnable;
+    this.ido=id;
+    this.addedComment=text;
+    console.log(("idooooooo"+this.ido));
+    
+  
+  }
   addComment(e: any){
     const comment: Comment = {
       text: this.addedComment,
@@ -56,4 +85,6 @@ export class DetailsComponent implements OnInit {
 
     });
   }
+
+  
 }

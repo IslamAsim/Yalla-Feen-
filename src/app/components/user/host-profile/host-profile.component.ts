@@ -134,6 +134,7 @@ export class HostProfileComponent implements OnInit {
      for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
       this.file.append('images', this.fileInput.nativeElement.files[index]);
   }
+  
     const place: any = {
       title: this.form.controls.title.value,
       category: this.form.controls.category.value,

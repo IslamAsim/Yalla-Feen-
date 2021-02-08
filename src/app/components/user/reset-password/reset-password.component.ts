@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -9,12 +9,19 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  token:any;
+  email:any;
   form: FormGroup;
   confirm: boolean = false;
+  
 
-  constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router) { }
+  constructor(private _formBuilder: FormBuilder, private _authentication: AuthenticationService, private _router: Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe( paramMap => {
+      this.email = paramMap.get('email');
+      this.token=paramMap.get('reset-token')
+  })
     this.form = this._formBuilder.group({
       Password: [
         '',
@@ -41,8 +48,17 @@ export class ResetPasswordComponent implements OnInit {
 
 
 OnSubmit(){
- const password= this.form.controls.Password.value;
- this._authentication.resetPassword(password);
+  const password= this.form.controls.Password.value;
+  console.log(this.email,this.token,password);
+ 
+ this._authentication.resetPassword(this.email,this.token,password).subscribe((res)=>{
+   console.log(res);
+   
+ },(error)=>{
+  alert("yallahwyyyy");
+  console.log(error);
+  
+ });
  this._router.navigateByUrl('/user/login');
   // this._authentication.resetPassword(password).subscribe((response) => {
   //   console.log(response);
