@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Place} from '../../../models/place';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PlaceService} from '../../../services/place.service';
 import {CommentService} from '../../../services/comment.service';
 import {Comment} from '../../../models/comment';
 import {ApiService} from '../../../services/api.service';
 import {FavoriteService} from '../../../services/favorite.service';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-details',
@@ -19,16 +20,13 @@ export class DetailsComponent implements OnInit {
   isEditEnable: boolean = false;
   ido: string;
   isFavorite: boolean;
-
+  isLogged: boolean;
   // tslint:disable-next-line:variable-name
-  constructor(private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
+  constructor(private _router: Router, private _authentication: AuthenticationService, private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
   }
-
-  
-
   ngOnInit(): void {
+    this._authentication.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.paramMap.subscribe(params => {
-      console.log(params.get('id'));
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
@@ -65,6 +63,9 @@ export class DetailsComponent implements OnInit {
   }
 
   addComment(e: any) {
+    if (!this.isLogged){
+      this._router.navigateByUrl('user/login');
+    }
     const comment: Comment = {
       text: this.addedComment,
     };
@@ -78,6 +79,6 @@ export class DetailsComponent implements OnInit {
   Render() {
     setTimeout(() => {
       this.ngOnInit();
-    }, 1000);
+    }, 4000);
   }
 }

@@ -12,12 +12,8 @@ export class AuthenticationService {
     const token = localStorage.getItem('token');
     token ? this.changeStatus(true) : this.changeStatus(false);
   }
-
   editProfile(user:any){
-    console.log(user);
-    
     return this._apiService.putWithToken('user/edit-profile', user);
-
   }
   changeStatus(isLogged: boolean) {
     this.isLoggedSource.next(isLogged);
@@ -38,22 +34,14 @@ export class AuthenticationService {
     token ? this.changeStatus(true) : this.changeStatus(false);
   }
 
- forgetpassword(email:string){
+ forgetpassword(email: string){
   return this._apiService.post('user/forget-password',{"email":email});
  }
- check_token(email:string,token:string){
-   console.log("hhhhhhhhhhh");
-   
-  console.log(email);
-  console.log(token);
-  
-  
-  
+ check_token(email: string, token: string){
   return this._apiService.post('user/check-token',{"email":email,"reset_token":token});
  }
   //fain reset password ya ba4aaaaar!!!!
-  resetPassword(email:string,token:string,password: any){
+  resetPassword(email: string, token: string, password: any){
     return this._apiService.post('user/reset-password-token',{"email":email,"reset_token":token,"newPassword":password});
-    
   }
 }

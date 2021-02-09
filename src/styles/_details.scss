@@ -3,6 +3,10 @@
   width: 100%;
   overflow-y: scroll;
   color: $hover-color;
+  #carouselExampleControls{
+    border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
 .secondary-title{
   color: $menu-icon-color;
 }
@@ -10,6 +14,7 @@
     width: 200px;
     height: 200px;
     border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     @include medium-screen {
       width: 100%;
     }
