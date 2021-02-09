@@ -58,6 +58,9 @@ export class ForgetPasswordComponent implements OnInit {
         this.isSubmit = true;
          
       
+
+        
+
       
       break;
       case 'verify':

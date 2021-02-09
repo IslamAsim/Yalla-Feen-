@@ -12,6 +12,13 @@ export class AuthenticationService {
     const token = localStorage.getItem('token');
     token ? this.changeStatus(true) : this.changeStatus(false);
   }
+
+  editProfile(user:any){
+    console.log(user);
+    
+    return this._apiService.putWithToken('user/edit-profile', user);
+
+  }
   changeStatus(isLogged: boolean) {
     this.isLoggedSource.next(isLogged);
   }
@@ -39,6 +46,7 @@ export class AuthenticationService {
    
   console.log(email);
   console.log(token);
+  
   
   
   return this._apiService.post('user/check-token',{"email":email,"reset_token":token});

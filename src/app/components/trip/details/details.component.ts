@@ -24,6 +24,8 @@ export class DetailsComponent implements OnInit {
   constructor(private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
   }
 
+  
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
       console.log(params.get('id'));
