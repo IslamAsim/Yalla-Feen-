@@ -44,7 +44,6 @@ export class DetailsComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
   update(e: any) {
     this._commentService.updateComment(this.ido, {'text': this.addedComment}).subscribe((res) => {
       e.value = '';
@@ -55,13 +54,11 @@ export class DetailsComponent implements OnInit {
       console.log(error);
     }));
   }
-
   edit(id: string, text: string) {
     this.isEditEnable = !this.isEditEnable;
     this.ido = id;
     this.addedComment = text;
   }
-
   addComment(e: any) {
     if (!this.isLogged){
       this._router.navigateByUrl('user/login');

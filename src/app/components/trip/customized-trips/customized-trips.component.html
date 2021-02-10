@@ -1,42 +1,21 @@
 <section class="container home">
   <div  class="row row-cols-1 row-cols-md-3  row-wrapper">
-    <div *ngFor="let trip of trips" class="flip-card-container  col-xl-4 col-md-6 col" style="--hue: 220">
-      <div class="flip-card">
-        <div class="card-front">
-          <figure>
-            <div class="img-bg"></div>
-            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
-            <figcaption>{{trip.title}}</figcaption>
-          </figure>
-          <div class="card-body">
-            <p class="card-text">{{trip.description}}</p>
-            <div class="wrapper">
-              <app-rating [stars]="trip.rating"></app-rating>
-              <span>{{trip.workingHours}}</span>
-            </div>
-          </div>
+    <div class="card-wrapper col-xl-6 col-md-6 col" *ngFor="let trip of places; let i = index">
+      <div class="Card1" >
+        <div class="photo">
+          <img src='{{trip.images[0]}}' alt="{{trip.title}}">
         </div>
-        <div class="card-back">
-          <app-favorite [isFavorite]=false></app-favorite>
-          <figure>
-            <div class="img-bg"></div>
-            <img src='{{trip.placeImages[0]}}' alt="{{trip.title}}">
-          </figure>
-
-          <button routerLink="/trip/details/{{trip._id}}">Show Details</button>
-
-          <div class="design-container">
-            <span class="design design--1"></span>
-            <span class="design design--2"></span>
-            <span class="design design--3"></span>
-            <span class="design design--4"></span>
-            <span class="design design--5"></span>
-            <span class="design design--6"></span>
-            <span class="design design--7"></span>
-            <span class="design design--8"></span>
+        <ul class="details">
+          <li class="details-button btn btn-primary btn-style" routerLink="/trip/details/{{trip._id}}">Show Details</li>
+          <li class="fav"><app-favorite [isFavorite]="isLogged? isFavorite[i]: false"  [placeID]="trip._id"></app-favorite></li>
+          <li class="rating"><app-rating [placeID]="trip._id" [stars]='trip.rates'></app-rating></li>
+        </ul>
+        <div class="description">
+          <div class="line">
+            <h1 class="product_name">{{trip.title}}</h1>
           </div>
+          <p class="summary">{{trip.description}}</p>
         </div>
-
       </div>
     </div>
   </div>

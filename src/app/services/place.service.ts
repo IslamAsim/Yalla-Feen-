@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Place } from '../models/place';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -39,5 +38,8 @@ export class PlaceService {
   }
   getPlaceByTitle(title: string){
     return this._apiService.get(`place/place-title/${title}`);
+  }
+  getCustom(params: string){
+    return this._apiService.get('place/search?' + params);
   }
 }
