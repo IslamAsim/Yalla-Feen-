@@ -14,7 +14,7 @@
     height: calc(100vh - 110px);
     background-image: $wheat !important;
     position: relative;
-
+    box-shadow: 0 5px 12px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
     .Custom-form-wrapper {
       height: 100%;
       overflow-y: scroll;
@@ -167,7 +167,6 @@
         color: $hover-color;
         font-weight: bolder;
         transition: all 0.3s;
-
         &:hover {
           transform: scale(1.2);
         }
