@@ -2,21 +2,64 @@
   height: $calc-height;
   overflow-y: scroll;
 
+  .profile-img-wrapper {
+    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
+    img{
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s;
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
+  }
+  .fav-wrapper{
+    padding: 0 15px;
+    overflow-y: scroll;
+    height: calc(100vh - 130px - 100px);
+    .favorite-place{
+      overflow: hidden;
+      border-radius: 15px;
+      transition: all 0.6s;
+      height: 90px;
+      -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3), 0 0 5px rgba(0,0,0,0.2);
+      box-shadow: 0 0 5px rgba(0,0,0,0.3), 0 0 5px rgba(0,0,0,0.2);
+      &:hover{
+        box-shadow: none !important;
+      }
+      .fav-img-wrapper{
+        width: 100px;
+        transform: scale(1.1);
+        margin: 0;
+        height: 100%;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
   .fix-footer {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
     border-radius: 25px;
     color: $hover-color;
-    height: calc(100vh - 110px);
+    margin-top: 10px;
+    height: calc(100vh - 130px);
     background-image: $wheat !important;
     position: relative;
-    overflow-y: scroll;
+    //overflow-y: scroll;
     .form-flow {
       height: 100%;
-
     }
     .profile-wrapper {
       height: 100%;
       overflow-y: scroll;
-
       .ng-select-responsive {
         width: 55%;
         margin: 0 auto;
@@ -29,12 +72,15 @@
   }
 }
 .customDiv {
-  border-style: ridge;
+  border: none;
 }
+
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid $hover-color;
+  border-radius: 15px;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
 }
 
 /* Style the buttons inside the tab */
@@ -48,7 +94,10 @@
   transition: 0.3s;
   font-size: 17px;
 }
-
+iframe{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
+  border: none;
+}
 /* Change background color of buttons on hover */
 .tab button:hover {
   background-color: $hover-color;
@@ -69,26 +118,28 @@
 }
 
 .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
+
 .inputfile + label {
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color:#5C9B4C;
+  background-color: #5C9B4C;
   display: inline-block;
- // border-radius: 50%;
+  // border-radius: 50%;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
- // background-color: rgb(217, 255, 0);
+  // background-color: rgb(217, 255, 0);
 }
+
 .inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+  cursor: pointer; /* "hand" cursor */
 }

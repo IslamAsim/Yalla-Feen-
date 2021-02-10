@@ -18,39 +18,40 @@ export class HostProfileComponent implements OnInit {
   @ViewChild('fileInput', {static: false} ) fileInput: ElementRef;
   imageuploaded: any[];
    file = new FormData();
-   selectedFile: File
+   selectedFile: File;
    filo = new FormData();
    files: any [] = [];
   form: FormGroup;
-  editForm:FormGroup;
+  editForm: FormGroup;
   location = null;
-  locations = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   category = null;
   categories: string[];
   tag = null;
   tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
-  favorites: any = [];
   places: any = [];
   erro: string;
   cito = null;
-
   user: User;
   index = 1;
   isEdit: boolean = false;
   placeID: string;
   listOfFiles: any[] = [];
-  cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
-  iseditable:boolean=false;
-
+  cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
+  iseditable: boolean = false;
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
-
-  constructor( private _authentication:AuthenticationService,private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _router: Router, private _favoriteService: FavoriteService) { }
+  type = null;
+  constructor(
+    private _authentication:AuthenticationService,
+    private _api: ApiService,
+    private _placeService: PlaceService,
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _favoriteService: FavoriteService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       // @ts-ignore
       this.user = resp.profile;
       console.log(this.user);
-      
      // this.loc += this.user.city;
       this._api.get('category/list').subscribe((res) => {
         this.categories = res.data;
@@ -60,7 +61,6 @@ export class HostProfileComponent implements OnInit {
     this._placeService.getUserPlaces().subscribe((res) => {
       this.places = res.places;
     }, (error) => {
-        alert('yallahwyyy');
     });
     this.form = this._formBuilder.group({
       title: [
@@ -94,7 +94,6 @@ export class HostProfileComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(5),
         ],
       ],
       image: [
@@ -104,10 +103,10 @@ export class HostProfileComponent implements OnInit {
         ],
       ],
     });
-  
+
 
     this.editForm = this._formBuilder.group({
-     
+
       cito: [
         '',
       ],
@@ -134,7 +133,7 @@ export class HostProfileComponent implements OnInit {
           Validators.minLength(5),
         ],
       ],
-      
+
     });
 
     this._api.getWithToken('/user').subscribe((resp) => {
@@ -142,8 +141,8 @@ export class HostProfileComponent implements OnInit {
      // this.loc += this.user.city;
      console.log(this.user);
      console.log(this.user.city);
-     
-     
+
+
     });
     this.editForm.disable();
 
@@ -159,18 +158,13 @@ export class HostProfileComponent implements OnInit {
     });
 
   }
-
-
   deleteFavorite(id: string){
     this._favoriteService.deletewithToken(id).subscribe((res) => {
       console.log(res);
     }, (error) => {
       alert('yallahwyy couldn\'t delete');
     });
-
-
   }
-
   OnSubmit() {
      const filee = this.fileInput.nativeElement.files;
      for (const filo of filee ) {
@@ -216,7 +210,7 @@ export class HostProfileComponent implements OnInit {
       }, ((error) => {
         // this.erro = 'this username or email already exist';
         console.log("yallahwyyyy");
-        
+
         console.log(error);
       }));
     }
@@ -233,63 +227,29 @@ export class HostProfileComponent implements OnInit {
       location: place.location,
     });
   }
-
-
-
   OnEdit(){
-  
     this.editForm.enable();
-    console.log("im here");
-    
-
     const user = {
-     
       firstname: this.editForm.controls.firstname.value,
       lastname: this.editForm.controls.lastname.value,
       city: this.editForm.controls.cito.value,
       email: this.editForm.controls.Email.value,
-     
     };
     console.log(user);
-    setTimeout(() => 
-    this._authentication.editProfile(user).subscribe((response) => {
-      console.log("loooooool");
-      
-      console.log(response);
-      
-      
+    setTimeout(() => this._authentication.editProfile(user).subscribe((response) => {
     }, ((e) => {
-      
-      alert("yallahwyyy" );
+      alert('yallahwyyy');
     })), 4000);
   }
-
-
-  changeProfilePhoto(event:any){
-
+  changeProfilePhoto(event: any){
     this.selectedFile = event.target.files[0];
-   
-
-   
   }
-
   onUpload() {
-    console.log("uploaaad");
-    
-  console.log(this.selectedFile);
-  console.log(this.filo);
-  
-  
     this.filo.append('avatar', this.selectedFile);
     this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
-      console.log("responseeeeeeeee");
-      console.log(res);
-      
-    },(e)=>{
-      alert("yallahwyyy");
-      console.log(e);
-      
-    })
+    }, (e) => {
+      alert('yallahwyyy');
+    });
   }
 }
 

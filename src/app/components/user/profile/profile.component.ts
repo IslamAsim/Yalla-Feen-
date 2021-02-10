@@ -20,25 +20,20 @@ export class ProfileComponent implements OnInit {
   form: FormGroup;
   favorites: any = [];
   places: any = [];
-
   profilePicture:any;
   erro: string;
   user: User;
   index = 1;
   iseditable:boolean=false;
   cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
-
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt';
-  constructor(private _api: ApiService, private _placeService: PlaceService, private _favoriteService: FavoriteService,private _formBuilder: FormBuilder, private _authentication: AuthenticationService) { }
+  constructor(private _api: ApiService,
+              private _placeService: PlaceService,
+              private _favoriteService: FavoriteService,
+              private _formBuilder: FormBuilder,
+              private _authentication: AuthenticationService) { }
   ngOnInit(): void {
-
-    
-    
-
-
-    
     this.form = this._formBuilder.group({
-     
       cito: [
         '',
       ],
@@ -65,13 +60,8 @@ export class ProfileComponent implements OnInit {
           Validators.minLength(5),
         ],
       ],
-      
     });
-
-
     this.form.disable();
-
-
     this._api.getWithToken('/user').subscribe((resp) => {
       this.user = resp.profile;
      // this.loc += this.user.city;
@@ -84,6 +74,7 @@ export class ProfileComponent implements OnInit {
     });
     this._favoriteService.getUserFavorites().subscribe((res => {
       this.favorites = res.favorites_places;
+      console.log(this.favorites);
     }), (error) => {
       alert('yallahwyyy');
     });
@@ -101,27 +92,27 @@ export class ProfileComponent implements OnInit {
   OnSubmit(){
     this.form.enable();
     console.log("im here");
-    
+
 
     const user = {
-     
+
       firstname: this.form.controls.firstname.value,
       lastname: this.form.controls.lastname.value,
       city: this.form.controls.cito.value,
       email: this.form.controls.Email.value,
-     
+
     };
     console.log(user);
-    setTimeout(() => 
+    setTimeout(() =>
     this._authentication.editProfile(user).subscribe((response) => {
-      
+
       console.log("loooooool");
-      
+
       console.log(response);
-      
+
 
     }, ((e) => {
-      
+
       alert("yallahwyyy" );
     })), 4000);
   }
@@ -129,27 +120,27 @@ export class ProfileComponent implements OnInit {
   changeProfilePhoto(event:any){
 
     this.selectedFile = event.target.files[0];
-   
 
-   
+
+
   }
 
   onUpload() {
     console.log("uploaaad");
-    
+
   console.log(this.selectedFile);
   console.log(this.filo);
-  
-  
+
+
     this.filo.append('avatar', this.selectedFile);
     this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
       console.log("responseeeeeeeee");
       console.log(res);
-      
+
     },(e)=>{
       alert("yallahwyyy");
       console.log(e);
-      
+
     })
   }
 }
