@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -14,14 +14,14 @@ import { FavoriteService } from '../../../services/favorite.service';
 })
 
 export class ProfileComponent implements OnInit {
-  
-  username:string;
-  lastname:string;
-  email:string;
+  selectedFile: File
+  filo = new FormData();
   cito = null;
   form: FormGroup;
   favorites: any = [];
   places: any = [];
+
+  profilePicture:any;
   erro: string;
   user: User;
   index = 1;
@@ -32,8 +32,10 @@ export class ProfileComponent implements OnInit {
   constructor(private _api: ApiService, private _placeService: PlaceService, private _favoriteService: FavoriteService,private _formBuilder: FormBuilder, private _authentication: AuthenticationService) { }
   ngOnInit(): void {
 
-
     
+    
+
+
     
     this.form = this._formBuilder.group({
      
@@ -112,14 +114,43 @@ export class ProfileComponent implements OnInit {
     console.log(user);
     setTimeout(() => 
     this._authentication.editProfile(user).subscribe((response) => {
+      
       console.log("loooooool");
       
       console.log(response);
       
+
     }, ((e) => {
       
       alert("yallahwyyy" );
     })), 4000);
+  }
+
+  changeProfilePhoto(event:any){
+
+    this.selectedFile = event.target.files[0];
+   
+
+   
+  }
+
+  onUpload() {
+    console.log("uploaaad");
+    
+  console.log(this.selectedFile);
+  console.log(this.filo);
+  
+  
+    this.filo.append('avatar', this.selectedFile);
+    this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
+      console.log("responseeeeeeeee");
+      console.log(res);
+      
+    },(e)=>{
+      alert("yallahwyyy");
+      console.log(e);
+      
+    })
   }
 }
 

@@ -44,4 +44,13 @@ export class AuthenticationService {
   resetPassword(email: string, token: string, password: any){
     return this._apiService.post('user/reset-password-token',{"email":email,"reset_token":token,"newPassword":password});
   }
+  change_Profilepicture(image:any){
+    console.log("at service to upload image");
+    
+    console.log((image));
+    
+    return this._apiService.postWithToken('user/upload-profile-pic',image);
+  }
+
+  
 }

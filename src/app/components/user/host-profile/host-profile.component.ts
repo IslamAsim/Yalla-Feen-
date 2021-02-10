@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { PlaceService } from 'src/app/services/place.service';
 import { User } from '../../../models/user';
 import { FavoriteService } from '../../../services/favorite.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -17,8 +18,11 @@ export class HostProfileComponent implements OnInit {
   @ViewChild('fileInput', {static: false} ) fileInput: ElementRef;
   imageuploaded: any[];
    file = new FormData();
+   selectedFile: File
+   filo = new FormData();
    files: any [] = [];
   form: FormGroup;
+  editForm:FormGroup;
   location = null;
   locations = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   category = null;
@@ -28,17 +32,25 @@ export class HostProfileComponent implements OnInit {
   favorites: any = [];
   places: any = [];
   erro: string;
+  cito = null;
+
   user: User;
   index = 1;
   isEdit: boolean = false;
   placeID: string;
   listOfFiles: any[] = [];
+  cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
+  iseditable:boolean=false;
+
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
-  constructor(private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _router: Router, private _favoriteService: FavoriteService) { }
+
+  constructor( private _authentication:AuthenticationService,private _api: ApiService, private _placeService: PlaceService, private _formBuilder: FormBuilder, private _router: Router, private _favoriteService: FavoriteService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       // @ts-ignore
       this.user = resp.profile;
+      console.log(this.user);
+      
      // this.loc += this.user.city;
       this._api.get('category/list').subscribe((res) => {
         this.categories = res.data;
@@ -92,6 +104,49 @@ export class HostProfileComponent implements OnInit {
         ],
       ],
     });
+  
+
+    this.editForm = this._formBuilder.group({
+     
+      cito: [
+        '',
+      ],
+      firstname: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+        ],
+      ],
+      lastname: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+        ],
+      ],
+      Email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        ,
+          Validators.minLength(5),
+        ],
+      ],
+      
+    });
+
+    this._api.getWithToken('/user').subscribe((resp) => {
+      this.user = resp.profile;
+     // this.loc += this.user.city;
+     console.log(this.user);
+     console.log(this.user.city);
+     
+     
+    });
+    this.editForm.disable();
+
   }
   tabChanger(index: number) {
     this.index = index;
@@ -155,11 +210,13 @@ export class HostProfileComponent implements OnInit {
         console.log(error);
       }));
     }else {
-      this._placeService.update(place, this.placeID).subscribe((response) => {
+      this._placeService.update(this.file, this.placeID).subscribe((response) => {
         console.log(response);
         this._router.navigateByUrl(`trip/details/${this.placeID}`);
       }, ((error) => {
         // this.erro = 'this username or email already exist';
+        console.log("yallahwyyyy");
+        
         console.log(error);
       }));
     }
@@ -175,6 +232,64 @@ export class HostProfileComponent implements OnInit {
       type: place.type,
       location: place.location,
     });
+  }
+
+
+
+  OnEdit(){
+  
+    this.editForm.enable();
+    console.log("im here");
+    
+
+    const user = {
+     
+      firstname: this.editForm.controls.firstname.value,
+      lastname: this.editForm.controls.lastname.value,
+      city: this.editForm.controls.cito.value,
+      email: this.editForm.controls.Email.value,
+     
+    };
+    console.log(user);
+    setTimeout(() => 
+    this._authentication.editProfile(user).subscribe((response) => {
+      console.log("loooooool");
+      
+      console.log(response);
+      
+      
+    }, ((e) => {
+      
+      alert("yallahwyyy" );
+    })), 4000);
+  }
+
+
+  changeProfilePhoto(event:any){
+
+    this.selectedFile = event.target.files[0];
+   
+
+   
+  }
+
+  onUpload() {
+    console.log("uploaaad");
+    
+  console.log(this.selectedFile);
+  console.log(this.filo);
+  
+  
+    this.filo.append('avatar', this.selectedFile);
+    this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
+      console.log("responseeeeeeeee");
+      console.log(res);
+      
+    },(e)=>{
+      alert("yallahwyyy");
+      console.log(e);
+      
+    })
   }
 }
 
