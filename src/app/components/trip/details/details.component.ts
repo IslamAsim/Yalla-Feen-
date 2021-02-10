@@ -24,6 +24,7 @@ export class DetailsComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _router: Router, private _authentication: AuthenticationService, private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
   }
+
   ngOnInit(): void {
     this._authentication.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.paramMap.subscribe(params => {
@@ -44,6 +45,7 @@ export class DetailsComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
   update(e: any) {
     this._commentService.updateComment(this.ido, {'text': this.addedComment}).subscribe((res) => {
       e.value = '';
@@ -54,13 +56,15 @@ export class DetailsComponent implements OnInit {
       console.log(error);
     }));
   }
+
   edit(id: string, text: string) {
     this.isEditEnable = !this.isEditEnable;
     this.ido = id;
     this.addedComment = text;
   }
+
   addComment(e: any) {
-    if (!this.isLogged){
+    if (!this.isLogged) {
       this._router.navigateByUrl('user/login');
     }
     const comment: Comment = {
@@ -73,6 +77,7 @@ export class DetailsComponent implements OnInit {
       console.log(error);
     });
   }
+
   Render() {
     setTimeout(() => {
       this.ngOnInit();

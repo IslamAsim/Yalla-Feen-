@@ -1,10 +1,10 @@
-import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
-import { FormGroup,FormBuilder, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { PlaceService } from 'src/app/services/place.service';
-import { User } from '../../../models/user';
-import { FavoriteService } from '../../../services/favorite.service';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ApiService} from 'src/app/services/api.service';
+import {AuthenticationService} from 'src/app/services/authentication.service';
+import {PlaceService} from 'src/app/services/place.service';
+import {User} from '../../../models/user';
+import {FavoriteService} from '../../../services/favorite.service';
 
 
 @Component({
@@ -14,24 +14,27 @@ import { FavoriteService } from '../../../services/favorite.service';
 })
 
 export class ProfileComponent implements OnInit {
-  selectedFile: File
+  selectedFile: File;
   filo = new FormData();
   cito = null;
   form: FormGroup;
   favorites: any = [];
   places: any = [];
-  profilePicture:any;
+  profilePicture: any;
   erro: string;
   user: User;
   index = 1;
-  iseditable:boolean=false;
-  cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
-  loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt';
+  iseditable: boolean = false;
+  cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
+  loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+giza';
+
   constructor(private _api: ApiService,
               private _placeService: PlaceService,
               private _favoriteService: FavoriteService,
               private _formBuilder: FormBuilder,
-              private _authentication: AuthenticationService) { }
+              private _authentication: AuthenticationService) {
+  }
+
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       cito: [
@@ -56,7 +59,7 @@ export class ProfileComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-        ,
+          ,
           Validators.minLength(5),
         ],
       ],
@@ -64,13 +67,13 @@ export class ProfileComponent implements OnInit {
     this.form.disable();
     this._api.getWithToken('/user').subscribe((resp) => {
       this.user = resp.profile;
-     // this.loc += this.user.city;
+      // this.loc += this.user.city;
     });
     this._placeService.getUserPlaces().subscribe((res) => {
       this.places = res.data;
       console.log(this.places);
     }, (error) => {
-        alert('yallahwyyy');
+      alert('yallahwyyy');
     });
     this._favoriteService.getUserFavorites().subscribe((res => {
       this.favorites = res.favorites_places;
@@ -79,21 +82,22 @@ export class ProfileComponent implements OnInit {
       alert('yallahwyyy');
     });
   }
+
   tabChanger(index: number) {
     this.index = index;
   }
-  deleteFavorite(id: string){
+
+  deleteFavorite(id: string) {
     this._favoriteService.deletewithToken(id).subscribe((res) => {
       this.ngOnInit();
     }, (error) => {
       alert('yallahwyy couldn\'t delete');
     });
   }
-  OnSubmit(){
+
+  OnSubmit() {
     this.form.enable();
-    console.log("im here");
-
-
+    this.iseditable = !this.iseditable;
     const user = {
 
       firstname: this.form.controls.firstname.value,
@@ -104,44 +108,31 @@ export class ProfileComponent implements OnInit {
     };
     console.log(user);
     setTimeout(() =>
-    this._authentication.editProfile(user).subscribe((response) => {
+      this._authentication.editProfile(user).subscribe((response) => {
 
-      console.log("loooooool");
+        console.log('loooooool');
 
-      console.log(response);
+        console.log(response);
 
 
-    }, ((e) => {
+      }, ((e) => {
 
-      alert("yallahwyyy" );
-    })), 4000);
+        alert('yallahwyyy');
+      })), 4000);
   }
 
-  changeProfilePhoto(event:any){
-
+  onUpload(event: any) {
     this.selectedFile = event.target.files[0];
-
-
-
-  }
-
-  onUpload() {
-    console.log("uploaaad");
-
-  console.log(this.selectedFile);
-  console.log(this.filo);
-
-
     this.filo.append('avatar', this.selectedFile);
-    this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
-      console.log("responseeeeeeeee");
-      console.log(res);
-
-    },(e)=>{
-      alert("yallahwyyy");
+    this._authentication.change_Profilepicture(this.filo).subscribe((res) => {
+      this._api.getWithToken('/user').subscribe((resp) => {
+        this.user = resp.profile;
+        // this.loc += this.user.city;
+      });
+    }, (e) => {
+      alert('yallahwyyy');
       console.log(e);
-
-    })
+    });
   }
 }
 

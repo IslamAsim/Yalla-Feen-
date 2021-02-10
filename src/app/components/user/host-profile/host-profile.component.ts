@@ -16,7 +16,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export class HostProfileComponent implements OnInit {
   @ViewChild('fileInput', {static: false} ) fileInput: ElementRef;
-  imageuploaded: any[];
    file = new FormData();
    selectedFile: File;
    filo = new FormData();
@@ -229,14 +228,15 @@ export class HostProfileComponent implements OnInit {
   }
   OnEdit(){
     this.editForm.enable();
+    this.iseditable = !this.iseditable;
     const user = {
       firstname: this.editForm.controls.firstname.value,
       lastname: this.editForm.controls.lastname.value,
       city: this.editForm.controls.cito.value,
       email: this.editForm.controls.Email.value,
     };
-    console.log(user);
     setTimeout(() => this._authentication.editProfile(user).subscribe((response) => {
+      this.editForm.disable();
     }, ((e) => {
       alert('yallahwyyy');
     })), 4000);

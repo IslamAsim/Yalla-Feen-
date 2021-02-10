@@ -152,10 +152,8 @@ a{
   cursor: pointer;
 }
 .form-group{
-  opacity: 0.83;
   transition: all 0.3s;
   &:hover{
-    opacity: 1;
     -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 4px rgba(0,0,0,0.1);
     box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 4px rgba(0,0,0,0.1);
   }
