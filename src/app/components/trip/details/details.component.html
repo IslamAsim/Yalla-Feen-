@@ -17,7 +17,7 @@
         </p>
         <p>
           <span class="secondary-title mr-1 title-color">Working Hours </span><span
-          class="badge badge-success">{{place.createdAt}}</span>
+          class="badge badge-success">{{place.createdAt | date: 'dd/MM/yyyy'}}</span>
         </p>
       </div>
       <div class="col-md-8">
@@ -68,7 +68,7 @@
       <div class="card-body comment-body">
         <form >
           <div class="form-group">
-            <textarea #textarea class="form-control" name="commento" [(ngModel)]="addedComment" rows="3"></textarea>
+            <textarea #textarea class="form-control" name="commento" maxlength="120" [(ngModel)]="addedComment" rows="3"></textarea>
           </div>
           <button *ngIf="!isEditEnable" type="submit" (click)="addComment(textarea)" class="btn btn-primary">Submit</button>
           <button *ngIf="isEditEnable"  type="submit" (click)="update(textarea)" class="btn btn-danger">Update</button>

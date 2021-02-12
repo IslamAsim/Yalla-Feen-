@@ -67,6 +67,7 @@ export class HostProfileComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
+          Validators.maxLength(50)
         ],
       ],
       category: [
@@ -79,7 +80,8 @@ export class HostProfileComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(4),
+          Validators.maxLength(200)
         ],
       ],
       phone: [

@@ -14,7 +14,7 @@
         <div class="line">
           <h1 class="product_name">{{trip.title}}</h1>
         </div>
-        <p class="summary">{{trip.description}}</p>
+        <p class="summary"> {{ (trip.description.length>100)? (trip.description | slice:0:200)+'......':(trip.description) }}</p>
       </div>
     </div>
   </div>

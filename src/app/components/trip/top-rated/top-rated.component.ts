@@ -15,6 +15,7 @@ export class TopRatedComponent implements OnInit {
   isLogged: boolean;
   constructor(private _placeService: PlaceService, private _favoriteService: FavoriteService, private _Auth: AuthenticationService) {
   }
+  
   ngOnInit(): void {
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._placeService.get().subscribe((response: any) => {
