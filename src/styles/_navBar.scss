@@ -84,6 +84,7 @@ nav {
       @include mobile-screen{
         width: 70px;
       }
+
       &.deactivate {
         opacity: 0;
         visibility: hidden;
