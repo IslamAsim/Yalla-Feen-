@@ -46,6 +46,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  
   update(e: any) {
     this._commentService.updateComment(this.ido, {'text': this.addedComment}).subscribe((res) => {
       e.value = '';

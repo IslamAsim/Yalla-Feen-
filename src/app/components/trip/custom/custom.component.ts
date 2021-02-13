@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
+import { CategoryService } from './../../../services/category.service';
 
 @Component({
   selector: 'app-custom',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./custom.component.scss']
 })
 export class CustomComponent implements OnInit {
-  constructor(private _categories: CategoryService, private _router: Router) {
+  constructor(private _categories: CategoryService, private _router: Router, private categoryService:CategoryService) {
   }
   VisitorType: string;
   citySelected: string;
@@ -19,7 +20,7 @@ export class CustomComponent implements OnInit {
   MyStep: number = 1;
   types = ['solo', 'friends', 'couple', 'family'];
   categories: string[];
-  Tags = ['Restaurants', 'Shopping Center', 'Historical Places', 'Entertainment', 'Cinemas & Theater', 'Workspace', 'Gardens'];
+  Tags:any=[];
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   timeArray = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00'];
   isFromAM: boolean = false;
@@ -52,6 +53,18 @@ export class CustomComponent implements OnInit {
       this.CategorySelected = '';
     }else {
       this.CategorySelected = this.categories[index].title;
+      this.categoryService.getAllTags(this.categories[index]._id).subscribe((res:any)=>{
+        console.log(res.tags);
+       // this.Tags=res.tags;
+       this.Tags=[];
+        for (const iterator of res.tags) {
+          this.Tags.push(iterator.title);
+        }
+        console.log(this.Tags);
+        
+      },(error)=>{
+        alert("yallahwyyy");
+      })
     }
   }
   // tslint:disable-next-line:typedef

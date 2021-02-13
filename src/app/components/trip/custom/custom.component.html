@@ -75,12 +75,13 @@
           <h4 class="step-title mt-3 mb-3">Select Tag</h4>
           <div class="form-group">
             <ng-select class="ng-select-responsive" [items]="Tags"
-                       bindLabel="Place Tags"
+                       bindLabel="Tags"
                        [virtualScroll]="true"
                        bindValue="Place Tags"
                        id="Place Tags"
                        #tag
                        appendTo="body"
+                       [(ngModel)]="Tags"
                        (change)="StepChanger('next'); Tag(tag)"
                        placeholder="Choose From your category Tags ">
             </ng-select>

@@ -6,6 +6,7 @@ import { PlaceService } from 'src/app/services/place.service';
 import { User } from '../../../models/user';
 import { FavoriteService } from '../../../services/favorite.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CategoryService } from './../../../services/category.service';
 
 
 @Component({
@@ -23,10 +24,10 @@ export class HostProfileComponent implements OnInit {
   form: FormGroup;
   editForm: FormGroup;
   location = null;
-  category = null;
+  category:any = null;
   categories: string[];
   tag = null;
-  tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
+  //tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
   places: any = [];
   erro: string;
   cito = null;
@@ -35,6 +36,7 @@ export class HostProfileComponent implements OnInit {
   isEdit: boolean = false;
   placeID: string;
   listOfFiles: any[] = [];
+  dis:boolean=true;
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
   iseditable: boolean = false;
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
@@ -45,7 +47,7 @@ export class HostProfileComponent implements OnInit {
     private _placeService: PlaceService,
     private _formBuilder: FormBuilder,
     private _router: Router,
-    private _favoriteService: FavoriteService) { }
+    private _favoriteService: FavoriteService,private categoryService:CategoryService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       // @ts-ignore
@@ -55,7 +57,15 @@ export class HostProfileComponent implements OnInit {
       this._api.get('category/list').subscribe((res) => {
         this.categories = res.data;
       });
+
+
+
     });
+  
+    
+
+   
+   
 
     this._placeService.getUserPlaces().subscribe((res) => {
       this.places = res.places;
@@ -166,7 +176,26 @@ export class HostProfileComponent implements OnInit {
       alert('yallahwyy couldn\'t delete');
     });
   }
+
+  onOptionsSelected(){
+    
+    if(this.category!==null){
+      this.dis=false;
+      this.form.controls['tag'].enable();
+      console.log("ay7agaaaa  "+this.category);
+      const found = this.categories.find(element => element.title===this.category);
+      console.log("loool  "+found._id);
+      this.categoryService.getAllTags(found._id).subscribe((res:any)=>{
+        console.log(res.tags);
+        this.tags=res.tags;
+        
+      },(error)=>{
+        alert("yallahwyyy");
+      })
+    } 
+  }
   OnSubmit() {
+    console.log("ay7agaaaa  "+this.category)
      const filee = this.fileInput.nativeElement.files;
      for (const filo of filee ) {
      // this.imageuploaded.push(filo);
