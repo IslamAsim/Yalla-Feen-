@@ -10,6 +10,28 @@
 .secondary-title{
   color: $menu-icon-color;
 }
+  .media{
+    flex-basis: 80%;
+    .media-body{
+      span{
+        max-width: 700px;
+        width: 100%;
+        display: block;
+        @include x-large-screen{
+          max-width: 600px;
+        }
+        @include large-screen{
+          max-width: 500px;
+        }
+        @include medium-screen{
+          max-width: 300px;
+        }
+        @include mobile-screen{
+          max-width: 155px;
+        }
+      }
+    }
+  }
   .img-title {
     width: 200px;
     height: 200px;

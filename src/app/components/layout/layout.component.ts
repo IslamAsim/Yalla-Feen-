@@ -13,12 +13,15 @@ import {PlaceService} from '../../services/place.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+  isAdvertise: boolean = false;
   isCustom = false;
   IsNavOpen = false;
   IsSearchOpen = true;
   isLogged: boolean;
+  placesAdv = [];
   subscription: Subscription;
   // tslint:disable-next-line:typedef
+  private advPlace: any;
   componentAdded(e: any){
     e.isCustom ? this.isCustom = true : this.isCustom = false ;
   }
@@ -27,6 +30,19 @@ export class LayoutComponent implements OnInit {
   }
   ngOnInit(): void {
     this.subscription = this._authentication.status.subscribe(e => this.isLogged = e);
+    this._place.get().subscribe((res) => {
+      this.placesAdv = res.data;
+    }, () => {
+      this.isAdvertise = false;
+      clearInterval(adv);
+    });
+    const adv = setInterval(() => {
+      this.advPlace = this.placesAdv[Math.floor(Math.random() * this.placesAdv.length)];
+      this.isAdvertise = !this.isAdvertise;
+    }, 15000);
+  }
+  closeAdv(){
+    this.isAdvertise = false;
   }
   // tslint:disable-next-line:typedef
   OpenNav() {
