@@ -141,7 +141,7 @@
     }
 
     .wrapper i:nth-child(1) {
-      color: #4867AA;
+      color: $hover-color;
       cursor: pointer;
       text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
       transition: all ease-in-out 150ms;
@@ -154,7 +154,7 @@
     }
 
     .wrapper i:nth-child(2) {
-      color: #1DA1F2;
+      color: $hover-color;
       cursor: pointer;
       text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
       transition: all ease-in-out 150ms;
@@ -167,7 +167,7 @@
     }
 
     .wrapper i:nth-child(3) {
-      color: #362fbc;
+      color: $hover-color;
       cursor: pointer;
       text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
       transition: all ease-in-out 150ms;
@@ -223,19 +223,23 @@
 
 
     .body2 {
-
+      margin-top: 50px;
+      color: $hover-color;
       font-size: 62.5%;
       font-family: 'Lato', sans-serif;
-      font-weight: 300;
+      font-weight: 700;
     }
 
     .body2 section {
-
-      margin: 60px auto 120px;
+      color: white;
+      margin: 10px auto 50px;
       text-align: center;
-      padding: 50px 0 110px;
+      padding: 10px 0 110px;
       width: 80%;
       max-width: 1100px;
+      @include medium-screen{
+        padding: 10px 0 20px;
+      }
     }
 
     .body2 section h1 {
@@ -252,6 +256,7 @@
     }
 
     form .field {
+      border-radius: 15px !important;
       width: 100%;
       position: relative;
       margin-bottom: 15px;
@@ -262,7 +267,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: #398fac;
+      background: $hover-color;
       width: 100%;
       padding: 18px 0;
       font-size: 1.45em;
@@ -325,12 +330,12 @@
 
     form .field input[type="text"]:focus + label, form .field textarea:focus + label, form .field input[type="text"].focused + label, form .field textarea.focused + label {
       width: 18%;
-      background: #fd9638;
-      color: #313a3d;
+      background: $hover-color;
+      color: white;
     }
 
     form .field input[type="text"].focused + label, form .field textarea.focused + label {
-      color: #fd9638;
+      color: white;
     }
 
     form .field:hover label {
@@ -338,9 +343,10 @@
       background: #313a3d;
       color: white;
     }
-
     form input[type="submit"] {
-      background: #fd9638;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
+      border-radius: 25px;
+      background: $hover-color;
       color: white;
       -webkit-appearance: none;
       border: none;
@@ -360,12 +366,12 @@
 
     form input[type="submit"]:hover {
       background: #313a3d;
-      color: #fd9638;
+      color: white;
     }
 
     form input[type="submit"]:focus {
       outline: none;
-      background: #cd6302;
+      background: white;
     }
 
   }
