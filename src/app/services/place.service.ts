@@ -16,7 +16,7 @@ export class PlaceService {
   }
   get()
   {
-   return this._apiService.get('place/list');
+   return this._apiService.get('place/top');
   }
   getUserPlaces()
   {
@@ -41,5 +41,8 @@ export class PlaceService {
   }
   getCustom(params: string){
     return this._apiService.get('place/search?' + params);
+  }
+  getRelatedPlaces(category_id: string){
+    return this._apiService.get(`place/related/${category_id}`);
   }
 }

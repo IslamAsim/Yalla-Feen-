@@ -17,6 +17,10 @@ import { CategoryService } from './../../../services/category.service';
 
 export class HostProfileComponent implements OnInit {
   @ViewChild('fileInput', {static: false} ) fileInput: ElementRef;
+
+  lat:any;
+  lng:any;
+
    file = new FormData();
    selectedFile: File;
    filo = new FormData();
@@ -160,6 +164,7 @@ export class HostProfileComponent implements OnInit {
   }
   tabChanger(index: number) {
     this.index = index;
+    if(this.index===2)this.getLocation();
   }
   deletePlace(id: string){
     this._placeService.delete(id).subscribe((res) => {
@@ -195,6 +200,10 @@ export class HostProfileComponent implements OnInit {
     } 
   }
   OnSubmit() {
+
+   
+
+
     console.log("ay7agaaaa  "+this.category)
      const filee = this.fileInput.nativeElement.files;
      for (const filo of filee ) {
@@ -281,6 +290,26 @@ export class HostProfileComponent implements OnInit {
     }, (e) => {
       alert('yallahwyyy');
     });
+  }
+
+  // this.getLocation();
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: Position) => {
+        if (position) {
+          console.log("Latitude: " + position.coords.latitude +
+            "  Longitude: " + position.coords.longitude);
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(this.lat);
+          console.log(this.lng);
+        }
+      },
+
+        (error: PositionError) => console.log(error));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
 }
 

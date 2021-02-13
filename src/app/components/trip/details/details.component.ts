@@ -21,6 +21,7 @@ export class DetailsComponent implements OnInit {
   ido: string;
   isFavorite: boolean;
   isLogged: boolean;
+  relatedPlaces:any;
   // tslint:disable-next-line:variable-name
   constructor(private _router: Router, private _authentication: AuthenticationService, private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
   }
@@ -31,13 +32,29 @@ export class DetailsComponent implements OnInit {
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
-      this._favoriteService.isFav(this.id).subscribe((res) => {
+      this._favoriteService.isFav(this.id).subscribe((res:any) => {
         this.isFavorite = res.success;
       });
       this.place = response;
+      console.log(this.place.category);
+      this._placeService.getRelatedPlaces(this.place.category).subscribe((res:any)=>{
+        console.log("Relateeed places");
+        
+        console.log(res.data);
+       this.relatedPlaces=res.data;
+       console.log(res.data);
+        
+      },(err)=>{
+        alert("yallahwooo");
+        console.log(err);
+        
+      })
     }, error => {
       alert('yallahwyyy');
     });
+   
+    
+   
   }
 
   delete(id: string, index: number) {

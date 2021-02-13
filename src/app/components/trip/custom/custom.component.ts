@@ -39,10 +39,14 @@ export class CustomComponent implements OnInit {
   City(city: any) {
     this.citySelected = city.itemsList._selectionModel._selected[0].value;
   }
+
   // tslint:disable-next-line:typedef
   Tag(e: any) {
     this.tagSelected = e.itemsList._selectionModel._selected[0].value;
   }
+  
+
+
   // tslint:disable-next-line:typedef
   Budget(e: any) {
     this.budgetSelected = e.value;
