@@ -43,10 +43,10 @@ export class LayoutComponent implements OnInit {
       this.isAdvertise = false;
       clearInterval(adv);
     });
-    const adv = setInterval(() => {
-      this.advPlace = this.placesAdv[Math.floor(Math.random() * this.placesAdv.length)];
-      this.isAdvertise = !this.isAdvertise;
-    }, 15000);
+    // const adv = setInterval(() => {
+    //   this.advPlace = this.placesAdv[Math.floor(Math.random() * this.placesAdv.length)];
+    //   this.isAdvertise = !this.isAdvertise;
+    // }, 15000);
   }
 
  

@@ -67,7 +67,7 @@ export class HostProfileComponent implements OnInit {
     });
   
     
-
+    this.getLocation();
    
    
 
@@ -164,7 +164,7 @@ export class HostProfileComponent implements OnInit {
   }
   tabChanger(index: number) {
     this.index = index;
-    if(this.index===2)this.getLocation();
+  
   }
   deletePlace(id: string){
     this._placeService.delete(id).subscribe((res) => {
@@ -202,7 +202,7 @@ export class HostProfileComponent implements OnInit {
   OnSubmit() {
 
    
-
+    this.getLocation();
 
     console.log("ay7agaaaa  "+this.category)
      const filee = this.fileInput.nativeElement.files;
@@ -210,12 +210,21 @@ export class HostProfileComponent implements OnInit {
      // this.imageuploaded.push(filo);
      this.listOfFiles.push(filo);
     }
+    console.log(this.lat +" hheehehehehhe "+this.lng);
      this.file.append('title', this.form.controls.title.value);
      this.file.append('category', this.form.controls.category.value);
      this.file.append('tag', this.form.controls.tag.value);
      this.file.append('description', this.form.controls.description.value);
      this.file.append('phone', this.form.controls.phone.value);
      this.file.append('type', this.form.controls.type.value);
+     if(this.lat!==undefined && this.lng !==undefined)
+     {
+       console.log(this.lat +" hheehehehehhe "+this.lng);
+       
+      this.file.append('location', this.lng);
+      this.file.append('location', this.lat);
+     }
+
      console.log(this.file);
     // tslint:disable-next-line:prefer-for-of
      for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
