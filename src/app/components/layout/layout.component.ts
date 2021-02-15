@@ -13,7 +13,6 @@ import {PlaceService} from '../../services/place.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  
   isAdvertise: boolean = false;
   isCustom = false;
   IsNavOpen = false;
@@ -30,10 +29,6 @@ export class LayoutComponent implements OnInit {
   constructor( private _authentication: AuthenticationService, private _router: Router, private _place: PlaceService) {
   }
   ngOnInit(): void {
-
-   
-
-
     this.subscription = this._authentication.status.subscribe(e => this.isLogged = e);
     this._place.get().subscribe((res) => {
       this.placesAdv = res.data;
@@ -43,13 +38,11 @@ export class LayoutComponent implements OnInit {
       this.isAdvertise = false;
       clearInterval(adv);
     });
-    // const adv = setInterval(() => {
-    //   this.advPlace = this.placesAdv[Math.floor(Math.random() * this.placesAdv.length)];
-    //   this.isAdvertise = !this.isAdvertise;
-    // }, 15000);
+    const adv = setInterval(() => {
+      this.advPlace = this.placesAdv[Math.floor(Math.random() * this.placesAdv.length)];
+      this.isAdvertise = !this.isAdvertise;
+    }, 30000);
   }
-
- 
   closeAdv(){
     this.isAdvertise = false;
   }

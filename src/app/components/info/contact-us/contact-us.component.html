@@ -27,7 +27,7 @@
 
             <input class="button mt-3 mb-2" (click)="formMsg(name,mail,msg)" type="submit" value="Send" />
             <br>
-            <p *ngIf="" style="color: darkred; font-size: 10px">*Field is empty</p>
+            <p *ngIf="invalid" style="color: darkred; font-size: 10px">*Field is empty</p>
           </form>
         </section>
       </div>

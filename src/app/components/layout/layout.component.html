@@ -76,7 +76,7 @@
     <img src='{{advPlace.images[0]}}' alt="{{advPlace.title}}">
   </div>
   <ul class="details">
-    <li class="details-button btn btn-primary btn-style" routerLink="/trip/details/{{advPlace._id}}">Show Details</li>
+    <li class="details-button btn btn-primary btn-style" routerLink="/trip/details/{{advPlace._id}}" (click)="closeAdv()">Show Details</li>
     <li class="fav"><app-favorite [isFavorite]="false"  [placeID]="advPlace._id"></app-favorite></li>
     <li class="rating"><app-rating [placeID]="advPlace._id" [stars]='advPlace.rates'></app-rating></li>
   </ul>
