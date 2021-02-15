@@ -159,3 +159,18 @@ a{
     box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 4px rgba(0,0,0,0.1);
   }
 }
+.loading-screen{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 100000;
+  background-image: url("../assets/images/33001465-fcf4-48ab-93b0-14577909acd5.jpg");
+  background-size: cover;
+  background-position: 50% 100%;
+  background-attachment: fixed;
+  img{
+    width: 300px;
+    height: auto;
+  }
+}

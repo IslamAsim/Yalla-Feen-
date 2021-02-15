@@ -15,6 +15,7 @@ export class TopRatedComponent implements OnInit {
   isLogged: boolean;
   notEmptyPost = true;
   notscrolly = true;
+  isLoaded = false;
   constructor(
     private spinner: NgxSpinnerService,
     private _placeService: PlaceService,
@@ -23,9 +24,11 @@ export class TopRatedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._placeService.get().subscribe((response: any) => {
       this.places = response.data;
+      // this.isLoaded = false;
       if (this.isLogged){
         for (const place of this.places){
           this._favoriteService.isFav(place._id).subscribe(() => {
