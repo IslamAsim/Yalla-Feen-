@@ -160,17 +160,25 @@ a{
   }
 }
 .loading-screen{
+  transition: all 0.3s;
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   z-index: 100000;
-  background-image: url("../assets/images/33001465-fcf4-48ab-93b0-14577909acd5.jpg");
-  background-size: cover;
-  background-position: 50% 100%;
+  background-image: url("/assets/images/banner.jpg");
+  //background-size: cover;
+  //background-position: 50% 100%;
   background-attachment: fixed;
+  padding-top: 30vh;
   img{
     width: 300px;
     height: auto;
+  }
+  .spinner-style{
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    color: $white !important;
   }
 }

@@ -28,7 +28,7 @@ export class TopRatedComponent implements OnInit {
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._placeService.get().subscribe((response: any) => {
       this.places = response.data;
-      // this.isLoaded = false;
+      this.isLoaded = false;
       if (this.isLogged){
         for (const place of this.places){
           this._favoriteService.isFav(place._id).subscribe(() => {
