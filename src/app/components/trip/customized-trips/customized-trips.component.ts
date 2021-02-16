@@ -15,6 +15,7 @@ export class CustomizedTripsComponent implements OnInit {
   isFavorite: boolean[] = [];
   isLogged: boolean;
   queryParams: object = {};
+  isLoaded = true;
   constructor(
     private _placeService: PlaceService,
     private _favoriteService: FavoriteService,
@@ -23,6 +24,7 @@ export class CustomizedTripsComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
+    this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.queryParamMap.subscribe(params => {
       this.queryParams = params.params;
@@ -34,6 +36,7 @@ export class CustomizedTripsComponent implements OnInit {
     });
     this._placeService.getCustom(`type=${this.queryParams.type || 'x'}&city=${this.queryParams.city || 'x'}&category=${this.queryParams.category || 'x'}&tag=${this.queryParams.tag || 'x'}&budget=${this.queryParams.budget || 'x'}`).subscribe((response: any) => {
       console.log(response);
+      this.isLoaded = false;
       this.places = response.data[0].places;
       console.log(this.places);
       if (this.isLogged){
@@ -46,6 +49,7 @@ export class CustomizedTripsComponent implements OnInit {
         }
       }
     } , error => {
+      this.isLoaded = false;
       console.log(error);
     });
   }

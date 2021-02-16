@@ -21,12 +21,20 @@ export class DetailsComponent implements OnInit {
   ido: string;
   isFavorite: boolean;
   isLogged: boolean;
-  relatedPlaces:any;
+  relatedPlaces: any;
+  isLoaded = true;
   // tslint:disable-next-line:variable-name
-  constructor(private _router: Router, private _authentication: AuthenticationService, private _favoriteService: FavoriteService, private _api: ApiService, private _activatedRoute: ActivatedRoute, private _placeService: PlaceService, private _commentService: CommentService) {
+  constructor(private _router: Router,
+              private _authentication: AuthenticationService,
+              private _favoriteService: FavoriteService,
+              private _api: ApiService,
+              private _activatedRoute: ActivatedRoute,
+              private _placeService: PlaceService,
+              private _commentService: CommentService) {
   }
 
   ngOnInit(): void {
+    this.isLoaded = true;
     this._authentication.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -37,24 +45,21 @@ export class DetailsComponent implements OnInit {
       });
       this.place = response;
       console.log(this.place.category);
-      this._placeService.getRelatedPlaces(this.place.category).subscribe((res:any)=>{
-        console.log("Relateeed places");
-        
+      this._placeService.getRelatedPlaces(this.place.category).subscribe((res: any) => {
+        this.isLoaded = false;
+        console.log('Relateeed places');
         console.log(res.data);
-       this.relatedPlaces=res.data;
-       console.log(res.data);
-        
-      },(err)=>{
-        alert("yallahwooo");
+        this.relatedPlaces=res.data;
+        console.log(res.data);
+      }, (err) => {
+        this.isLoaded = false;
+        alert('yallahwooo');
         console.log(err);
-        
-      })
+      });
     }, error => {
+      this.isLoaded = false;
       alert('yallahwyyy');
     });
-   
-    
-   
   }
 
   delete(id: string, index: number) {
@@ -62,9 +67,8 @@ export class DetailsComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
-  
   update(e: any) {
+
     this._commentService.updateComment(this.ido, {'text': this.addedComment}).subscribe((res) => {
       e.value = '';
       this.isEditEnable = !this.isEditEnable;

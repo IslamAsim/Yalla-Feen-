@@ -15,14 +15,13 @@ export class TopRatedComponent implements OnInit {
   isLogged: boolean;
   notEmptyPost = true;
   notscrolly = true;
-  isLoaded = false;
+  isLoaded = true;
   constructor(
     private spinner: NgxSpinnerService,
     private _placeService: PlaceService,
     private _favoriteService: FavoriteService,
     private _Auth: AuthenticationService) {
   }
-
   ngOnInit(): void {
     this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
@@ -49,7 +48,7 @@ export class TopRatedComponent implements OnInit {
       this.loadNextPost();
     }
   }
-// load th next 6 posts
+// load th next 20 posts
   loadNextPost() {
     // return last post from the array
     const lastPost = this.places[this.places.length - 1];
