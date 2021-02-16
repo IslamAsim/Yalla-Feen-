@@ -27,6 +27,7 @@ export class CustomizedTripsComponent implements OnInit {
     this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.queryParamMap.subscribe(params => {
+      this.isLoaded = false;
       this.queryParams = params.params;
         // .set('type', params.params.type)
         // .set('city', params.params.city)

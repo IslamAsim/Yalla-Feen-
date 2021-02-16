@@ -1,6 +1,9 @@
 <app-loading *ngIf="isLoaded"></app-loading>
 <section class="container home">
-  <div  class="row row-cols-1 row-cols-md-3  row-wrapper">
+  <div class="container text-center mt-5 font-weight-bolder" *ngIf="places.length === 0">
+    <h2>No Places Found...</h2>
+  </div>
+  <div  class="row row-cols-1 row-cols-md-3  row-wrapper" *ngIf="places.length != 0" >
     <div class="card-wrapper col-xl-6 col-md-6 col" *ngFor="let trip of places; let i = index">
       <div class="Card1" >
         <div class="photo">
