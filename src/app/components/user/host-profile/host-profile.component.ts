@@ -18,8 +18,8 @@ import { CategoryService } from './../../../services/category.service';
 export class HostProfileComponent implements OnInit {
   @ViewChild('fileInput', {static: false} ) fileInput: ElementRef;
 
-  lat:any;
-  lng:any;
+  lat: any;
+  lng: any;
 
    file = new FormData();
    selectedFile: File;
@@ -28,51 +28,37 @@ export class HostProfileComponent implements OnInit {
   form: FormGroup;
   editForm: FormGroup;
   location = null;
-  category:any = null;
+  category: any = null;
   categories: string[];
   tag = null;
-  //tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
   places: any = [];
   erro: string;
   cito = null;
   user: User;
   index = 1;
-  
-  isEdit: boolean = false;
+  isEdit = false;
   placeID: string;
   listOfFiles: any[] = [];
-  dis:boolean=true;
+  dis = true;
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh' , 'Idfu'];
-  iseditable: boolean = false;
+  iseditable = false;
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+madinty';
   type = null;
   constructor(
-    private _authentication:AuthenticationService,
+    private _authentication: AuthenticationService,
     private _api: ApiService,
     private _placeService: PlaceService,
     private _formBuilder: FormBuilder,
     private _router: Router,
-    private _favoriteService: FavoriteService,private categoryService:CategoryService) { }
+    private _favoriteService: FavoriteService, private categoryService: CategoryService) { }
   ngOnInit(): void {
     this._api.getWithToken('/user').subscribe((resp) => {
       // @ts-ignore
       this.user = resp.profile;
-      console.log(this.user);
-     // this.loc += this.user.city;
       this._api.get('category/list').subscribe((res) => {
         this.categories = res.data;
       });
-
-
-      
-
     });
-  
-    
-    this.getLocation();
-   
-   
-
     this._placeService.getUserPlaces().subscribe((res) => {
       this.places = res.places;
     }, (error) => {
@@ -155,24 +141,17 @@ export class HostProfileComponent implements OnInit {
 
     this._api.getWithToken('/user').subscribe((resp) => {
       this.user = resp.profile;
-     // this.loc += this.user.city;
-     console.log(this.user);
-     console.log(this.user.city);
-
-
     });
     this.editForm.disable();
-
+    this.getLocation();
   }
   tabChanger(index: number) {
     this.index = index;
-  
   }
   deletePlace(id: string){
     this._placeService.delete(id).subscribe((res) => {
       this.ngOnInit();
     }, (error) => {
-      alert('yallahwyy couldn\'t delete');
     });
 
   }
@@ -180,56 +159,42 @@ export class HostProfileComponent implements OnInit {
     this._favoriteService.deletewithToken(id).subscribe((res) => {
       console.log(res);
     }, (error) => {
-      alert('yallahwyy couldn\'t delete');
     });
   }
 
   onOptionsSelected(){
-    
-    if(this.category!==null){
-      this.dis=false;
-      this.form.controls['tag'].enable();
-      console.log("ay7agaaaa  "+this.category);
-      const found = this.categories.find(element => element.title===this.category);
-      console.log("loool  "+found._id);
-      this.categoryService.getAllTags(found._id).subscribe((res:any)=>{
-        console.log(res.tags);
-        this.tags=res.tags;
-        
-      },(error)=>{
-        alert("yallahwyyy");
-      })
-    } 
+    if (this.category !== null){
+      this.dis = false;
+      this.form.controls.tag.enable();
+      const found = this.categories.find(element => element.title === this.category);
+      this.categoryService.getAllTags(found._id).subscribe((res: any) => {
+        this.tags = res.tags;
+      }, () => {
+      });
+    }
   }
   OnSubmit() {
-
-   
     this.getLocation();
-
-    console.log("ay7agaaaa  "+this.category)
-     const filee = this.fileInput.nativeElement.files;
-     for (const filo of filee ) {
+    const filee = this.fileInput.nativeElement.files;
+    for (const filo of filee ) {
      // this.imageuploaded.push(filo);
      this.listOfFiles.push(filo);
     }
-    console.log(this.lat +" hheehehehehhe "+this.lng);
-     this.file.append('title', this.form.controls.title.value);
-     this.file.append('category', this.form.controls.category.value);
-     this.file.append('tag', this.form.controls.tag.value);
-     this.file.append('description', this.form.controls.description.value);
-     this.file.append('phone', this.form.controls.phone.value);
-     this.file.append('type', this.form.controls.type.value);
-     if(this.lat!==undefined && this.lng !==undefined)
+    this.file.append('title', this.form.controls.title.value);
+    this.file.append('category', this.form.controls.category.value);
+    this.file.append('tag', this.form.controls.tag.value);
+    this.file.append('description', this.form.controls.description.value);
+    this.file.append('phone', this.form.controls.phone.value);
+    this.file.append('type', this.form.controls.type.value);
+    if (this.lat !== undefined && this.lng !== undefined)
      {
-       console.log(this.lat +" hheehehehehhe "+this.lng);
-       
       this.file.append('location', this.lng);
       this.file.append('location', this.lat);
      }
 
-     console.log(this.file);
+    console.log(this.file);
     // tslint:disable-next-line:prefer-for-of
-     for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
+    for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
       this.file.append('images', this.fileInput.nativeElement.files[index]);
   }
     const place: any = {
@@ -241,7 +206,7 @@ export class HostProfileComponent implements OnInit {
       type: this.form.controls.type.value,
       images: this.files
     };
-     if (!this.isEdit){
+    if (!this.isEdit){
       this._placeService.create(this.file).subscribe((response) => {
         console.log(response);
         this.listOfFiles = [];
@@ -257,11 +222,7 @@ export class HostProfileComponent implements OnInit {
       this._placeService.update(this.file, this.placeID).subscribe((response) => {
         console.log(response);
         this._router.navigateByUrl(`trip/details/${this.placeID}`);
-      }, ((error) => {
-        // this.erro = 'this username or email already exist';
-        console.log("yallahwyyyy");
-
-        console.log(error);
+      }, (() => {
       }));
     }
   }
@@ -289,15 +250,11 @@ export class HostProfileComponent implements OnInit {
     setTimeout(() => this._authentication.editProfile(user).subscribe((response) => {
       this.editForm.disable();
     }, ((e) => {
-      alert('yallahwyyy');
     })), 4000);
-  }
-  changeProfilePhoto(event: any){
-    this.selectedFile = event.target.files[0];
   }
   onUpload() {
     this.filo.append('avatar', this.selectedFile);
-    this._authentication.change_Profilepicture(this.filo).subscribe((res)=>{
+    this._authentication.change_Profilepicture(this.filo).subscribe((res) => {
     }, (e) => {
       alert('yallahwyyy');
     });
@@ -308,18 +265,15 @@ export class HostProfileComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         if (position) {
-          console.log("Latitude: " + position.coords.latitude +
-            "  Longitude: " + position.coords.longitude);
+          console.log('Latitude: ' + position.coords.latitude +
+            '  Longitude: ' + position.coords.longitude);
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
-          console.log(this.lat);
-          console.log(this.lng);
         }
       },
-
         (error: PositionError) => console.log(error));
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
     }
   }
 }

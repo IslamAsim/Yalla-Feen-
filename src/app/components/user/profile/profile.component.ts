@@ -25,7 +25,8 @@ export class ProfileComponent implements OnInit {
   user: User;
   index = 1;
   iseditable: boolean = false;
-  cities = ['Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
+  avatarChanged: boolean = false;
+  cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+giza';
 
   constructor(private _api: ApiService,
@@ -73,13 +74,11 @@ export class ProfileComponent implements OnInit {
       this.places = res.data;
       console.log(this.places);
     }, (error) => {
-      alert('yallahwyyy');
     });
     this._favoriteService.getUserFavorites().subscribe((res => {
       this.favorites = res.favorites_places;
       console.log(this.favorites);
     }), (error) => {
-      alert('yallahwyyy');
     });
   }
 
@@ -125,6 +124,10 @@ export class ProfileComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     this.filo.append('avatar', this.selectedFile);
     this._authentication.change_Profilepicture(this.filo).subscribe((res) => {
+      this.avatarChanged = true;
+      setTimeout(() => {
+        this.avatarChanged = false;
+      }, 3500);
       this._api.getWithToken('/user').subscribe((resp) => {
         this.user = resp.profile;
         // this.loc += this.user.city;

@@ -27,7 +27,6 @@ export class CustomizedTripsComponent implements OnInit {
     this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.queryParamMap.subscribe(params => {
-      this.isLoaded = false;
       this.queryParams = params.params;
         // .set('type', params.params.type)
         // .set('city', params.params.city)
@@ -37,9 +36,7 @@ export class CustomizedTripsComponent implements OnInit {
     });
     this._placeService.getCustom(`type=${this.queryParams.type || 'x'}&city=${this.queryParams.city || 'x'}&category=${this.queryParams.category || 'x'}&tag=${this.queryParams.tag || 'x'}&budget=${this.queryParams.budget || 'x'}`).subscribe((response: any) => {
       console.log(response);
-      this.isLoaded = false;
-      this.places = response.data[0].places;
-      console.log(this.places);
+      this.places = response.places;
       if (this.isLogged){
         for (const place of this.places){
           this._favoriteService.isFav(place._id).subscribe(() => {
@@ -50,7 +47,6 @@ export class CustomizedTripsComponent implements OnInit {
         }
       }
     } , error => {
-      this.isLoaded = false;
       console.log(error);
     });
   }

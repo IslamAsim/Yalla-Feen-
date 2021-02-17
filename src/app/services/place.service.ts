@@ -18,6 +18,14 @@ export class PlaceService {
   {
    return this._apiService.get('place/top');
   }
+  getAdv()
+  {
+    return this._apiService.get('advertise/list');
+  }
+  getPagination(skip: number, limit: number)
+  {
+    return this._apiService.get(`place/top?skip=${skip}&limit=${limit}`);
+  }
   getUserPlaces()
   {
    return this._apiService.getWithToken('place/my-places');

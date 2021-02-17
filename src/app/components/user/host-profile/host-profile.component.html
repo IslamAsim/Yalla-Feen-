@@ -8,7 +8,7 @@
         <br />
         <h5>Joined at {{ user.createdAt | date: 'dd/MM/yyyy' }}</h5>
         <h3>{{ user.firstname }} {{ user.lastname }}</h3>
-        <a routerLink="/info/contact-us" class="btn btn-info" role="button">Add ads now!</a>
+        <a routerLink="/info/contact-us" class="btn btn-success" role="button">Add ads now!</a>
 
       </div>
       <div class="col-md-9">
@@ -327,6 +327,9 @@
                     <input type="submit" [disabled]="form.invalid" formControlName="Add"
                       value="{{ isEdit ? 'Update' : 'Add' }}" class="btn float-right login_btn" />
                   </div>
+<!--                  <div class="alert alert-success" role="alert">-->
+<!--                    isEdit? The place have been added successfully, waiting for approval.-->
+<!--                  </div>-->
                   <small class="form-text text-danger">{{ erro }}</small>
                 </form>
               </div>
@@ -346,9 +349,9 @@
                   <h6 class="text-secondary">{{ place.description }}</h6>
                 </div>
               </div>
-              <div class="col-4 text-right svg-decoration">
-              <div *ngIf="!place.isApproved" class="badge badge-warning">pending</div>
-              <div *ngIf="place.isApproved" class="badge badge-success">pending</div>
+              <div class="col-4 text-right svg-decoration align-items-center">
+              <div *ngIf="!place.isApproved" class="badge badge-warning badge-style">pending</div>
+              <div *ngIf="place.isApproved" class="badge badge-success badge-style">Approved</div>
                 <svg routerLink="/trip/details/{{ place._id }}" class="p-0 m-2 mt-0 edit-delete-style" width="22px"
                   height="auto" fill="#5c9b4c" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                   <path

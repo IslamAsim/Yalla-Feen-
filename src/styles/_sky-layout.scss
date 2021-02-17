@@ -3,12 +3,13 @@
   height: 100vh;
   position: fixed;
   z-index: -100;
-  opacity: 0.5;
+  background-color: #a6c3dd !important;
   &.blur{
     filter: blur(4px) grayscale(50%);
     -webkit-filter: blur(4px) grayscale(50%);
   }
   .sky1-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 34px;
     animation:skyAnimation1 infinite 112s linear;
@@ -17,6 +18,7 @@
     }
   }
   .sky1-1-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 34px;
     animation:skyAnimation1-1 infinite 112s linear;
@@ -25,6 +27,7 @@
     }
   }
   .sky2-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 134px;
     animation:skyAnimation2 infinite 110s linear;
@@ -33,6 +36,7 @@
     }
   }
   .sky2-2-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 134px;
     animation:skyAnimation2-2 infinite 110s linear;
@@ -41,6 +45,7 @@
     }
   }
   .sky3-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 310px;
     animation:skyAnimation3 infinite  108s linear;
@@ -49,6 +54,7 @@
     }
   }
   .sky3-3-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 310px;
     animation:skyAnimation3-3 infinite  108s linear;
@@ -57,6 +63,7 @@
     }
   }
   .sky4-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 234px;
     animation:skyAnimation4 infinite  117s linear;
@@ -65,6 +72,7 @@
     }
   }
   .sky4-4-wrapper{
+    opacity: 0.6;
     position: absolute;
     top: 234px;
     animation:skyAnimation4-4 infinite  117s linear;

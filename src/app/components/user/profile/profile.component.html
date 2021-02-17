@@ -1,4 +1,7 @@
 <section class="hostProfile">
+  <div class="alert alert-success alert-abs" [class.active]="avatarChanged" role="alert">
+    Your profile picture have changed successfully..
+  </div>
   <div class="container fix-footer">
     <div class="row p-3 pt-4">
       <div class="col-md-3 text-center">
@@ -184,7 +187,7 @@
             <div class="row ">
               <div class="col-9 ml-0 d-flex align-items-center">
                 <div class="fav-img-wrapper">
-                  <img src="http://www.newdesignfile.com/postpic/2013/01/generic-user-icon-windows_321380.png"
+                  <img src="/assets/images/fav.png"
                        style="width: 100%" alt=""/>
                 </div>
                 <h2 class="text-secondary ml-3">{{ favorite.title }}</h2>

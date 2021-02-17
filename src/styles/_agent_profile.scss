@@ -1,7 +1,10 @@
 .hostProfile {
   height: $calc-height;
   overflow-y: scroll;
-
+.badge-style{
+  margin: auto 0;
+  padding: 5px;
+}
   .profile-img-wrapper {
     margin: 0 auto;
     width: 130px;
@@ -40,6 +43,7 @@
         box-shadow: none !important;
       }
       .fav-img-wrapper{
+        background-color: $hover-color;
         width: 100px;
         transform: scale(1.1);
         margin: 0;

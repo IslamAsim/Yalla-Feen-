@@ -27,7 +27,12 @@
 
             <input class="button mt-3 mb-2" (click)="formMsg(name,mail,msg)" type="submit" value="Send" />
             <br>
-            <p *ngIf="invalid" style="color: darkred; font-size: 10px">*Field is empty</p>
+            <div *ngIf="invalid === false" class="alert alert-success mt-2" role="alert">
+              Thanks for contact us, we will contact you soon.
+            </div>
+            <div *ngIf="invalid" class="alert alert-warning mt-2" role="alert">
+              *All fields is required
+            </div>
           </form>
         </section>
       </div>

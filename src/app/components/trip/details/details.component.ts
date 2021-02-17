@@ -22,7 +22,6 @@ export class DetailsComponent implements OnInit {
   isFavorite: boolean;
   isLogged: boolean;
   relatedPlaces: any;
-  isLoaded = true;
   // tslint:disable-next-line:variable-name
   constructor(private _router: Router,
               private _authentication: AuthenticationService,
@@ -34,7 +33,6 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoaded = true;
     this._authentication.status.subscribe(e => this.isLogged = e);
     this._activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -46,19 +44,10 @@ export class DetailsComponent implements OnInit {
       this.place = response;
       console.log(this.place.category);
       this._placeService.getRelatedPlaces(this.place.category).subscribe((res: any) => {
-        this.isLoaded = false;
-        console.log('Relateeed places');
-        console.log(res.data);
         this.relatedPlaces=res.data;
-        console.log(res.data);
       }, (err) => {
-        this.isLoaded = false;
-        alert('yallahwooo');
-        console.log(err);
       });
     }, error => {
-      this.isLoaded = false;
-      alert('yallahwyyy');
     });
   }
 
@@ -74,8 +63,6 @@ export class DetailsComponent implements OnInit {
       this.isEditEnable = !this.isEditEnable;
       this.ngOnInit();
     }, (error => {
-      alert('yllahwyyyyyyy');
-      console.log(error);
     }));
   }
 
@@ -96,13 +83,12 @@ export class DetailsComponent implements OnInit {
       this.ngOnInit();
       e.value = '';
     }, (error) => {
-      console.log(error);
     });
   }
 
-  Render() {
+  Render(n: number) {
     setTimeout(() => {
       this.ngOnInit();
-    }, 4000);
+    }, n);
   }
 }

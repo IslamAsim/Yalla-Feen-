@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   padding-bottom: 25px;
   padding-top: 85px;
   position: relative;
@@ -154,10 +155,6 @@ a{
 }
 .form-group{
   transition: all 0.3s;
-  &:hover{
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 4px rgba(0,0,0,0.1);
-    box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 4px rgba(0,0,0,0.1);
-  }
 }
 .loading-screen{
   transition: all 0.3s;
@@ -165,7 +162,7 @@ a{
   width: 100vw;
   height: 100vh;
   top: 0;
-  z-index: 100000;
+  z-index: 100000000;
   background-image: url("/assets/images/banner.jpg");
   //background-size: cover;
   //background-position: 50% 100%;
@@ -180,5 +177,23 @@ a{
     width: 50px;
     height: 50px;
     color: $white !important;
+  }
+}
+.btn-success{
+  background-color: $hover-color !important;
+}
+.alert-abs{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0 !important;
+  z-index: 1000000;
+  border-radius: 10px;
+  font-size: 14px;
+  color: $hover-color;
+  transform: translateX(100%);
+  transition: all 0.5s;
+  &.active{
+    transform: translateX(0);
   }
 }

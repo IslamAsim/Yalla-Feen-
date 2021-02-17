@@ -260,3 +260,10 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22) !important;
   }
 }
+.spinner-styling{
+  background-color: transparent !important;
+  z-index: 100 !important;
+  ngx-spinner{
+    background-color: transparent !important;
+  }
+}

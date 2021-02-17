@@ -20,15 +20,12 @@ export class CustomComponent implements OnInit {
   types = ['solo', 'friends', 'couple', 'family'];
   categories: string[];
   Tags: any = [];
-  isLoaded = true;
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   timeArray = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00'];
   isFromAM: boolean = false;
   isToAM: boolean = false;
   ngOnInit(): void {
-    this.isLoaded = true;
     this._categories.getAllCategories().subscribe((res) => {
-      this.isLoaded = false;
       this.categories = res.data;
     });
   }

@@ -30,11 +30,9 @@ export class LayoutComponent implements OnInit {
   }
   ngOnInit(): void {
     this.subscription = this._authentication.status.subscribe(e => this.isLogged = e);
-    this._place.get().subscribe((res) => {
-      this.placesAdv = res.data;
-      this.advPlace = this.placesAdv[0];
-      console.log(this.placesAdv);
-    }, () => {
+    this._place.getAdv().subscribe((res) => {
+      this.placesAdv = res.ads;
+    }, (err) => {
       this.isAdvertise = false;
       clearInterval(adv);
     });

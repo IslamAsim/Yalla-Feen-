@@ -1,4 +1,3 @@
-<app-loading *ngIf="isLoaded"></app-loading>
 <section class="container home">
   <div class="">
     <div class="search-results"
@@ -32,24 +31,22 @@
         </div>
       </div>
       <!-- spinner -->
-      <div class="row pb-5">
-        <div class="col-md-12 p-5">
+      <div class="row spinner-styling" >
+        <div class="col-md-12 p-4">
           <ngx-spinner
             bdOpacity = 0.9
-            bdColor = ""
+            bdColor = "#a6c3dd"
             size = "default"
-            color = "#581f87"
+            color = "#5c9b4c"
             type = "ball-pulse-sync"
-            [fullScreen] = "false"
-          >
+            [fullScreen] = "false">
           </ngx-spinner>
         </div>
       </div>
-
       <!-- Alert no more post -->
-      <div *ngIf = "!notEmptyPost" class="row pb-5">
-        <div class="col-md-12 d-flex justify-content-center">
-          <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+      <div *ngIf = "!notEmptyPost" class="row pb-4">
+        <div class="col-md-12 d-flex justify-content-center m-0">
+          <div class="text-muted h6 alert alert-secondary p-2 m-0">No more items to show</div>
         </div>
       </div>
     </div>

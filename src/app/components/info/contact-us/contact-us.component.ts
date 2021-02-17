@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { ApiService } from './../../../services/api.service';
+import {ApiService} from './../../../services/api.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -8,44 +8,36 @@ import { ApiService } from './../../../services/api.service';
 })
 export class ContactUsComponent implements OnInit {
   private message: {} = {};
-  private invalid: boolean = false;
+  private invalid: boolean;
 
   constructor(private apiService: ApiService) {
   }
-
-
-
-
 
 
   ngOnInit(): void {
   }
 
 
-
-
-
 // tslint:disable-next-line:typedef
-  formMsg(name: any, email: any, msg: any,e:any) {
-    
-    if(name.value && email.value && msg.value){
+  formMsg(name: any, email: any, msg: any, e: any) {
+    if (name.value && email.value && msg.value) {
       this.invalid = false;
       this.message = {
-       "name": name.value,
-        "email":email.value,
-        "msg":msg.value
-      }
+        name: name.value,
+        email: email.value,
+        msg: msg.value
+      };
       console.log(this.message);
-      this.apiService.post('message/create',this.message).subscribe((res)=>{
+      this.apiService.post('message/create', this.message).subscribe((res) => {
         console.log(res);
-        
-      },((err)=>{
-        alert("yallahwyyyy");
-        console.log(err);
-        
-      }))
 
-    }else {
+      }, ((err) => {
+        alert('yallahwyyyy');
+        console.log(err);
+        this.invalid = true;
+      }));
+
+    } else {
       this.invalid = true;
     }
     e.preventDefault();

@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  isLoaded = true;
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
 
 }

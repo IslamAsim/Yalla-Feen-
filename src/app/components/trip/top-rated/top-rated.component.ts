@@ -15,7 +15,9 @@ export class TopRatedComponent implements OnInit {
   isLogged: boolean;
   notEmptyPost = true;
   notscrolly = true;
-  isLoaded = true;
+  skip: number = 0;
+  spinning = false;
+  limit = 2;
   constructor(
     private spinner: NgxSpinnerService,
     private _placeService: PlaceService,
@@ -23,11 +25,10 @@ export class TopRatedComponent implements OnInit {
     private _Auth: AuthenticationService) {
   }
   ngOnInit(): void {
-    this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
-    this._placeService.get().subscribe((response: any) => {
+    this._placeService.getPagination(this.skip, this.limit).subscribe((response: any) => {
+      this.skip = this.skip + this.limit;
       this.places = response.data;
-      this.isLoaded = false;
       if (this.isLogged){
         for (const place of this.places){
           this._favoriteService.isFav(place._id).subscribe(() => {
@@ -43,6 +44,7 @@ export class TopRatedComponent implements OnInit {
   }
   onScroll() {
     if (this.notscrolly && this.notEmptyPost) {
+      this.spinning = true;
       this.spinner.show();
       this.notscrolly = false;
       this.loadNextPost();
@@ -50,24 +52,20 @@ export class TopRatedComponent implements OnInit {
   }
 // load th next 20 posts
   loadNextPost() {
-    // return last post from the array
-    const lastPost = this.places[this.places.length - 1];
-    // get id of last post
-    const lastPostId = lastPost._id;
-    // sent this id as key value pare using formdata()
-    const dataToSend = new FormData();
-    dataToSend.append('_id', lastPostId);
-    // call http request
-    this._placeService.get()
+    this.spinning = true;
+    this._placeService.getPagination(this.skip, this.limit)
       .subscribe( (data: any) => {
-        const newPost = data.data[0];
+        this.skip = this.skip + this.limit;
+        this.spinning = false;
+        // const newPost = data.data[0];
         this.spinner.hide();
-        if (newPost.length === 0 ) {
-          this.notEmptyPost =  false;
-        }
         // add newly fetched posts to the existing post
-        this.places = this.places.concat(newPost);
+        this.places = this.places.concat(data.data);
         this.notscrolly = true;
-      });
+      }, (error => {
+        this.notEmptyPost =  false;
+        this.spinning = false;
+        this.spinner.hide();
+      }));
   }
 }
