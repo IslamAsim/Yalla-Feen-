@@ -3,7 +3,6 @@
   overflow-y: scroll;
 
   .about-us {
-    /* about us section   */
     .body3 {
       background-color: rgba(92, 155, 76, 0.71);
       font-family: 'Montserrat', sans-serif;
@@ -104,16 +103,9 @@
     .box .text div p {
       font-size: 15px;
     }
-
-    /* .box:hover {
-      transform: translate(-50%, -50%) rotateY(-20deg) skewY(3deg);
-    } */
     .box:hover .text {
       transform: rotateY(20deg) skewY(-3deg);
     }
-
-
-    /* background*/
 
     .br {
       border-radius: 50%;
@@ -245,7 +237,6 @@
     .body2 section h1 {
       /* margin-bottom: 40px; */
       font-size: 4em;
-      text-transform: uppercase;
       font-family: 'Lato', sans-serif;
       font-weight: 100;
     }
@@ -263,7 +254,6 @@
     }
 
     form .field label {
-      text-transform: uppercase;
       position: absolute;
       top: 0;
       left: 0;
@@ -306,7 +296,6 @@
       color: #313a3d;
       font-size: 1.4em;
       letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
 
     form .field input[type="text"]#msg, form .field textarea#msg {
@@ -350,7 +339,6 @@
       color: white;
       -webkit-appearance: none;
       border: none;
-      text-transform: uppercase;
       position: relative;
       padding: 13px 50px;
       font-size: 1.4em;
@@ -559,10 +547,6 @@
       margin-right: 0;
 
     }
-
-
-    /* Third stack example (One stack element rotated in the opposite direction) */
-
     .stack.twisted:before {
       -webkit-transform: rotate(4deg);
       -moz-transform: rotate(4deg);

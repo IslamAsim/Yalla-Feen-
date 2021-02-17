@@ -6,7 +6,7 @@ import { PlaceService } from 'src/app/services/place.service';
 import { User } from '../../../models/user';
 import { FavoriteService } from '../../../services/favorite.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { CategoryService } from './../../../services/category.service';
+import { CategoryService } from '../../../services/category.service';
 
 
 @Component({
@@ -20,10 +20,7 @@ export class HostProfileComponent implements OnInit {
 
   lat: any;
   lng: any;
-
    file = new FormData();
-   selectedFile: File;
-   filo = new FormData();
    files: any [] = [];
   form: FormGroup;
   editForm: FormGroup;
@@ -155,12 +152,6 @@ export class HostProfileComponent implements OnInit {
     });
 
   }
-  deleteFavorite(id: string){
-    this._favoriteService.deletewithToken(id).subscribe((res) => {
-      console.log(res);
-    }, (error) => {
-    });
-  }
 
   onOptionsSelected(){
     if (this.category !== null){
@@ -177,7 +168,6 @@ export class HostProfileComponent implements OnInit {
     this.getLocation();
     const filee = this.fileInput.nativeElement.files;
     for (const filo of filee ) {
-     // this.imageuploaded.push(filo);
      this.listOfFiles.push(filo);
     }
     this.file.append('title', this.form.controls.title.value);
@@ -197,15 +187,6 @@ export class HostProfileComponent implements OnInit {
     for (let index = 0; index < this.fileInput.nativeElement.files.length; index++) {
       this.file.append('images', this.fileInput.nativeElement.files[index]);
   }
-    const place: any = {
-      title: this.form.controls.title.value,
-      category: this.form.controls.category.value,
-      tag: this.form.controls.tag.value,
-      description: this.form.controls.description.value,
-      phone: this.form.controls.phone.value,
-      type: this.form.controls.type.value,
-      images: this.files
-    };
     if (!this.isEdit){
       this._placeService.create(this.file).subscribe((response) => {
         console.log(response);
@@ -220,7 +201,6 @@ export class HostProfileComponent implements OnInit {
       }));
     }else {
       this._placeService.update(this.file, this.placeID).subscribe((response) => {
-        console.log(response);
         this._router.navigateByUrl(`trip/details/${this.placeID}`);
       }, (() => {
       }));
@@ -249,18 +229,9 @@ export class HostProfileComponent implements OnInit {
     };
     setTimeout(() => this._authentication.editProfile(user).subscribe((response) => {
       this.editForm.disable();
-    }, ((e) => {
+    }, (() => {
     })), 4000);
   }
-  onUpload() {
-    this.filo.append('avatar', this.selectedFile);
-    this._authentication.change_Profilepicture(this.filo).subscribe((res) => {
-    }, (e) => {
-      alert('yallahwyyy');
-    });
-  }
-
-  // this.getLocation();
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {

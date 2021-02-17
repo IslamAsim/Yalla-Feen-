@@ -1,11 +1,9 @@
-// @ts-ignore
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {PlaceService} from '../../services/place.service';
 
-// @ts-ignore
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'layout',

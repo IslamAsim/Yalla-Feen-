@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {ApiService} from 'src/app/services/api.service';
 import {AuthenticationService} from 'src/app/services/authentication.service';
@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
   avatarChanged: boolean = false;
   cities = ['Cairo', 'Alexandria', 'Gizeh', 'Port Said', 'Suez', 'Luxor', 'al-Mansura', 'El-Mahalla El-Kubra', 'Tanta', 'Asyut', 'Ismailia', 'Fayyum', 'Zagazig', 'Aswan', 'Damietta', 'Damanhur', 'al-Minya', 'Beni Suef', 'Qena', 'Sohag', 'Hurghada', '6th of October City', 'Shibin El Kom', 'Banha', 'Kafr el-Sheikh', 'Arish', '10th of Ramadan City', 'Bilbais', 'Marsa Matruh', 'Idfu'];
   loc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Egypt+giza';
-
   constructor(private _api: ApiService,
               private _placeService: PlaceService,
               private _favoriteService: FavoriteService,
@@ -68,17 +67,15 @@ export class ProfileComponent implements OnInit {
     this.form.disable();
     this._api.getWithToken('/user').subscribe((resp) => {
       this.user = resp.profile;
-      // this.loc += this.user.city;
     });
     this._placeService.getUserPlaces().subscribe((res) => {
       this.places = res.data;
       console.log(this.places);
-    }, (error) => {
+    }, () => {
     });
     this._favoriteService.getUserFavorites().subscribe((res => {
       this.favorites = res.favorites_places;
-      console.log(this.favorites);
-    }), (error) => {
+    }), () => {
     });
   }
 
@@ -89,8 +86,7 @@ export class ProfileComponent implements OnInit {
   deleteFavorite(id: string) {
     this._favoriteService.deletewithToken(id).subscribe((res) => {
       this.ngOnInit();
-    }, (error) => {
-      alert('yallahwyy couldn\'t delete');
+    }, () => {
     });
   }
 
@@ -98,7 +94,6 @@ export class ProfileComponent implements OnInit {
     this.form.enable();
     this.iseditable = !this.iseditable;
     const user = {
-
       firstname: this.form.controls.firstname.value,
       lastname: this.form.controls.lastname.value,
       city: this.form.controls.cito.value,
@@ -108,15 +103,7 @@ export class ProfileComponent implements OnInit {
     console.log(user);
     setTimeout(() =>
       this._authentication.editProfile(user).subscribe((response) => {
-
-        console.log('loooooool');
-
-        console.log(response);
-
-
-      }, ((e) => {
-
-        alert('yallahwyyy');
+      }, (() => {
       })), 4000);
   }
 
@@ -130,11 +117,8 @@ export class ProfileComponent implements OnInit {
       }, 3500);
       this._api.getWithToken('/user').subscribe((resp) => {
         this.user = resp.profile;
-        // this.loc += this.user.city;
       });
-    }, (e) => {
-      alert('yallahwyyy');
-      console.log(e);
+    }, () => {
     });
   }
 }

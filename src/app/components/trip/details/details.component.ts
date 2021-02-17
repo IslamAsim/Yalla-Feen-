@@ -22,7 +22,6 @@ export class DetailsComponent implements OnInit {
   isFavorite: boolean;
   isLogged: boolean;
   relatedPlaces: any;
-  // tslint:disable-next-line:variable-name
   constructor(private _router: Router,
               private _authentication: AuthenticationService,
               private _favoriteService: FavoriteService,
@@ -38,14 +37,13 @@ export class DetailsComponent implements OnInit {
       this.id = params.get('id');
     });
     this._placeService.getDetails(this.id).subscribe((response: any) => {
-      this._favoriteService.isFav(this.id).subscribe((res:any) => {
+      this._favoriteService.isFav(this.id).subscribe((res: any) => {
         this.isFavorite = res.success;
       });
       this.place = response;
-      console.log(this.place.category);
       this._placeService.getRelatedPlaces(this.place.category).subscribe((res: any) => {
-        this.relatedPlaces=res.data;
-      }, (err) => {
+        this.relatedPlaces = res.data;
+      }, () => {
       });
     }, error => {
     });
@@ -62,8 +60,8 @@ export class DetailsComponent implements OnInit {
       e.value = '';
       this.isEditEnable = !this.isEditEnable;
       this.ngOnInit();
-    }, (error => {
-    }));
+    }, () => {
+    });
   }
 
   edit(id: string, text: string) {
