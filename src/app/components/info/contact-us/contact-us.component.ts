@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { ApiService } from './../../../services/api.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -6,27 +7,47 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
-  private massage: {} = {};
+  private message: {} = {};
   private invalid: boolean = false;
 
-  constructor() {
+  constructor(private apiService: ApiService) {
   }
+
+
+
+
 
 
   ngOnInit(): void {
   }
 
+
+
+
+
 // tslint:disable-next-line:typedef
-  formMsg(name: string, email: string, msg: string) {
-    if(name && email && msg){
+  formMsg(name: any, email: any, msg: any,e:any) {
+    
+    if(name.value && email.value && msg.value){
       this.invalid = false;
-      this.massage = {
-        name,
-        email,
-        msg
-      };
+      this.message = {
+       "name": name.value,
+        "email":email.value,
+        "msg":msg.value
+      }
+      console.log(this.message);
+      this.apiService.post('message/create',this.message).subscribe((res)=>{
+        console.log(res);
+        
+      },((err)=>{
+        alert("yallahwyyyy");
+        console.log(err);
+        
+      }))
+
     }else {
       this.invalid = true;
     }
+    e.preventDefault();
   }
 }

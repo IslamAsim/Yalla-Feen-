@@ -8,6 +8,7 @@
         <br />
         <h5>Joined at {{ user.createdAt | date: 'dd/MM/yyyy' }}</h5>
         <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+        <a routerLink="/info/contact-us" class="btn btn-info" role="button">Add ads now!</a>
 
       </div>
       <div class="col-md-9">
@@ -346,6 +347,8 @@
                 </div>
               </div>
               <div class="col-4 text-right svg-decoration">
+              <div *ngIf="!place.isApproved" class="badge badge-warning">pending</div>
+              <div *ngIf="place.isApproved" class="badge badge-success">pending</div>
                 <svg routerLink="/trip/details/{{ place._id }}" class="p-0 m-2 mt-0 edit-delete-style" width="22px"
                   height="auto" fill="#5c9b4c" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                   <path

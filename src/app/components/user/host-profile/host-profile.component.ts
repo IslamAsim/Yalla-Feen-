@@ -37,6 +37,7 @@ export class HostProfileComponent implements OnInit {
   cito = null;
   user: User;
   index = 1;
+  
   isEdit: boolean = false;
   placeID: string;
   listOfFiles: any[] = [];
@@ -63,6 +64,7 @@ export class HostProfileComponent implements OnInit {
       });
 
 
+      
 
     });
   
