@@ -74,7 +74,7 @@ export class DetailsComponent implements OnInit {
     if (!this.isLogged) {
       this._router.navigateByUrl('user/login');
     }
-    const comment: Comment = {
+    const comment: any = {
       text: this.addedComment,
     };
     this._placeService.addComment(this.place._id, comment).subscribe((res) => {

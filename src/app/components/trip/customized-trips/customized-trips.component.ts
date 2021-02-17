@@ -14,7 +14,7 @@ export class CustomizedTripsComponent implements OnInit {
   places: Place[] = [];
   isFavorite: boolean[] = [];
   isLogged: boolean;
-  queryParams: object = {};
+  queryParams: any = {};
   isLoaded = true;
   constructor(
     private _placeService: PlaceService,
@@ -26,16 +26,14 @@ export class CustomizedTripsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoaded = true;
     this._Auth.status.subscribe(e => this.isLogged = e);
-    this._activatedRoute.queryParamMap.subscribe(params => {
+    this._activatedRoute.queryParamMap.subscribe((params: any) => {
       this.queryParams = params.params;
-        // .set('type', params.params.type)
-        // .set('city', params.params.city)
-        // .set('category', params.params.category)
-        // .set('tag', params.params.tag)
-        // .set('budget', params.params.budget);
     });
-    this._placeService.getCustom(`type=${this.queryParams.type || 'x'}&city=${this.queryParams.city || 'x'}&category=${this.queryParams.category || 'x'}&tag=${this.queryParams.tag || 'x'}&budget=${this.queryParams.budget || 'x'}`).subscribe((response: any) => {
-      console.log(response);
+    this._placeService.getCustom(`type=${this.queryParams.type || 'x'}
+    &city=${this.queryParams.city || 'x'}
+    &category=${this.queryParams.category || 'x'}
+    &tag=${this.queryParams.tag || 'x'}
+    &budget=${this.queryParams.budget || 'x'}`).subscribe((response: any) => {
       this.places = response.places;
       if (this.isLogged){
         for (const place of this.places){

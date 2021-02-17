@@ -22,7 +22,7 @@ remove = false;
     this._authentication.status.subscribe(e => this.isLogged = e);
   }
 
-  deleteFavorite(placeID) {
+  deleteFavorite(placeID: any) {
     if (!this.isLogged) {
       this._router.navigateByUrl('user/login');
     }
@@ -37,7 +37,7 @@ remove = false;
     });
   }
 
-  addFavorite(placeID) {
+  addFavorite(placeID: any) {
     if (!this.isLogged) {
       this._router.navigateByUrl('user/login');
     }

@@ -22,7 +22,7 @@ export class RatingComponent implements OnInit {
     if (!this.isLogged){
       this._router.navigateByUrl('user/login');
     }else{
-      this._PlaceService.addRating(this.placeID, {rate_value: newStars}).subscribe((response) => {
+      this._PlaceService.addRating(this.placeID, {rate_value: newStars}).subscribe((response: any) => {
         this.isRated = true;
         setTimeout(() => {
           this.isRated = false;

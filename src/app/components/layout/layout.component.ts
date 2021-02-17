@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit {
   placesAdv = [];
   subscription: Subscription;
   // tslint:disable-next-line:typedef
-  private advPlace: any;
+  advPlace: any;
   componentAdded(e: any){
     e.isCustom ? this.isCustom = true : this.isCustom = false ;
   }
@@ -28,7 +28,7 @@ export class LayoutComponent implements OnInit {
   }
   ngOnInit(): void {
     this.subscription = this._authentication.status.subscribe(e => this.isLogged = e);
-    this._place.getAdv().subscribe((res) => {
+    this._place.getAdv().subscribe((res: any) => {
       this.placesAdv = res.ads;
     }, (err) => {
       this.isAdvertise = false;
@@ -64,8 +64,8 @@ export class LayoutComponent implements OnInit {
     this._authentication.logout();
     this._router.navigateByUrl('/');
   }
-  titleSearch(title: object){
-    this._place.getPlaceByTitle(title.value).subscribe((res) => {
+  titleSearch(title: any){
+    this._place.getPlaceByTitle(title.value).subscribe((res: any) => {
         this._router.navigateByUrl(`trip/details/${res.id}`);
         title.value = '';
     }, (err) => {

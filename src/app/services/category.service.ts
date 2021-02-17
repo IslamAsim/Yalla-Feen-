@@ -11,7 +11,7 @@ export class CategoryService {
   {
     return this._apiService.get('category/list');
   }
-  getAllTags(categoryID:string){
+  getAllTags(categoryID: any){
     return this._apiService.get(`category/tags/${categoryID}`);
   }
 }

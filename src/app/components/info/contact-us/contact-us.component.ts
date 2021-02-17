@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from './../../../services/api.service';
+import {ApiService} from '../../../services/api.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,8 +7,8 @@ import {ApiService} from './../../../services/api.service';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
-  private message: {} = {};
-  private invalid: boolean;
+   message: {} = {};
+ invalid: boolean;
 
   constructor(private apiService: ApiService) {
   }
@@ -32,7 +32,6 @@ export class ContactUsComponent implements OnInit {
         console.log(res);
 
       }, ((err) => {
-        alert('yallahwyyyy');
         console.log(err);
         this.invalid = true;
       }));

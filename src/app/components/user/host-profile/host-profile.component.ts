@@ -26,7 +26,7 @@ export class HostProfileComponent implements OnInit {
   editForm: FormGroup;
   location = null;
   category: any = null;
-  categories: string[];
+  categories: any[];
   tag = null;
   places: any = [];
   erro: string;
@@ -52,11 +52,11 @@ export class HostProfileComponent implements OnInit {
     this._api.getWithToken('/user').subscribe((resp) => {
       // @ts-ignore
       this.user = resp.profile;
-      this._api.get('category/list').subscribe((res) => {
+      this._api.get('category/list').subscribe((res: any) => {
         this.categories = res.data;
       });
     });
-    this._placeService.getUserPlaces().subscribe((res) => {
+    this._placeService.getUserPlaces().subscribe((res: any) => {
       this.places = res.places;
     }, (error) => {
     });
@@ -136,7 +136,7 @@ export class HostProfileComponent implements OnInit {
 
     });
 
-    this._api.getWithToken('/user').subscribe((resp) => {
+    this._api.getWithToken('/user').subscribe((resp: any) => {
       this.user = resp.profile;
     });
     this.editForm.disable();
@@ -157,9 +157,9 @@ export class HostProfileComponent implements OnInit {
     if (this.category !== null){
       this.dis = false;
       this.form.controls.tag.enable();
-      const found = this.categories.find(element => element.title === this.category);
+      const found: any = this.categories.find((element: any) => element.title === this.category);
       this.categoryService.getAllTags(found._id).subscribe((res: any) => {
-        this.tags = res.tags;
+        this.tag = res.tags;
       }, () => {
       });
     }
@@ -188,7 +188,7 @@ export class HostProfileComponent implements OnInit {
       this.file.append('images', this.fileInput.nativeElement.files[index]);
   }
     if (!this.isEdit){
-      this._placeService.create(this.file).subscribe((response) => {
+      this._placeService.create(this.file).subscribe((response: any) => {
         console.log(response);
         this.listOfFiles = [];
         if (response.success){

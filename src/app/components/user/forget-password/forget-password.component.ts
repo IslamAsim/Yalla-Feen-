@@ -40,7 +40,7 @@ export class ForgetPasswordComponent implements OnInit {
     });
   }
   // tslint:disable-next-line:typedef
-  SubmitEmail(e: string, email: string){
+  SubmitEmail(e: string){
     switch (e) {
       case 'submit':
         this._authService.forgetpassword(this.Email).subscribe((res) => {

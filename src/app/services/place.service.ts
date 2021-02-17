@@ -47,7 +47,7 @@ export class PlaceService {
   getPlaceByTitle(title: string){
     return this._apiService.get(`place/place-title/${title}`);
   }
-  getCustom(params: string){
+  getCustom(params: any){
     return this._apiService.get('place/search?' + params);
   }
   getRelatedPlaces(category_id: string){

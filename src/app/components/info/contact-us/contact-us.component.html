@@ -25,7 +25,7 @@
               <span class="ss-icon">check</span>
             </div>
 
-            <input class="button mt-3 mb-2" (click)="formMsg(name,mail,msg)" type="submit" value="Send" />
+            <input #inputE class="button mt-3 mb-2" (click)="formMsg(name,mail,msg,inputE)" type="submit" value="Send" />
             <br>
             <div *ngIf="invalid === false" class="alert alert-success mt-2" role="alert">
               Thanks for contact us, we will contact you soon.

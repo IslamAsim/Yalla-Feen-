@@ -65,15 +65,15 @@ export class ProfileComponent implements OnInit {
       ],
     });
     this.form.disable();
-    this._api.getWithToken('/user').subscribe((resp) => {
+    this._api.getWithToken('/user').subscribe((resp: any) => {
       this.user = resp.profile;
     });
-    this._placeService.getUserPlaces().subscribe((res) => {
+    this._placeService.getUserPlaces().subscribe((res: any) => {
       this.places = res.data;
       console.log(this.places);
     }, () => {
     });
-    this._favoriteService.getUserFavorites().subscribe((res => {
+    this._favoriteService.getUserFavorites().subscribe(((res: any) => {
       this.favorites = res.favorites_places;
     }), () => {
     });
@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
       setTimeout(() => {
         this.avatarChanged = false;
       }, 3500);
-      this._api.getWithToken('/user').subscribe((resp) => {
+      this._api.getWithToken('/user').subscribe((resp: any) => {
         this.user = resp.profile;
       });
     }, () => {
