@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 
@@ -13,9 +12,9 @@ export class ForgetPasswordComponent implements OnInit {
   FormMail: FormGroup;
   FormCode: FormGroup;
   isSubmit: boolean = false;
-  Email:string;
-  token:string;
-  constructor(private _formBuilder: FormBuilder,private _authService:AuthenticationService,private router: Router) { }
+  Email: string;
+  token: string;
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.FormMail = this._formBuilder.group({
@@ -41,45 +40,24 @@ export class ForgetPasswordComponent implements OnInit {
     });
   }
   // tslint:disable-next-line:typedef
-  SubmitEmail(e: string, email:string){
+  SubmitEmail(e: string, email: string){
     switch (e) {
       case 'submit':
-        
-        console.log(this.Email);
-        
-        this._authService.forgetpassword(this.Email).subscribe((res)=>{
+        this._authService.forgetpassword(this.Email).subscribe((res) => {
           console.log(res);
-          
-        },(error)=>{
-          alert("yallahwyyy");
-          console.log(error);
-          
+        }, (error) => {
         });
         this.isSubmit = true;
-         
-      
-
-        
-
-      
       break;
       case 'verify':
-        console.log(e);
         console.log(this.token + this.Email);
-        
-        this._authService.check_token(this.Email,this.token).subscribe((res)=>{
-          console.log(res);
+        this._authService.check_token(this.Email,this.token).subscribe((res) => {
           this.router.navigate(['/user/reset-password',{"email":this.Email,"reset-token":this.token}]);
-          
-        },(error)=>{
-          alert("yallahwyyy");
-          console.log(error);
+        }, (error) => {
           this.router.navigate(['/user/reset-password',{"email":this.Email,"reset-token":this.token}]);
-
-        })
-      
-      this.isSubmit = true;
-       break;
+        });
+        this.isSubmit = true;
+        break;
     }
   }
 }
