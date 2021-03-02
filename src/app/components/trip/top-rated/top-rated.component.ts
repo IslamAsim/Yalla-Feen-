@@ -17,7 +17,7 @@ export class TopRatedComponent implements OnInit {
   notscrolly = true;
   skip: number = 0;
   spinning = false;
-  limit = 2;
+  limit = 4;
   constructor(
     private spinner: NgxSpinnerService,
     private _placeService: PlaceService,
